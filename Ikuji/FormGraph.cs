@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Ikuji
 {
-    public partial class Form1 : Form
+    public partial class FormGraph : Form
     {
-        public Form1()
+        public FormGraph()
         {
             InitializeComponent();
         }

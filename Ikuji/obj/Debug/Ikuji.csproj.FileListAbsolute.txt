@@ -1,0 +1,17 @@
+C:\Ikuji\Ikuji\bin\Debug\Ikuji.exe.config
+C:\Ikuji\Ikuji\bin\Debug\Ikuji.exe
+C:\Ikuji\Ikuji\bin\Debug\Ikuji.pdb
+C:\Ikuji\Ikuji\obj\Debug\Ikuji.csproj.AssemblyReference.cache
+C:\Ikuji\Ikuji\obj\Debug\Ikuji.csproj.SuggestedBindingRedirects.cache
+C:\Ikuji\Ikuji\obj\Debug\Ikuji.Properties.Resources.resources
+C:\Ikuji\Ikuji\obj\Debug\Ikuji.csproj.GenerateResource.cache
+C:\Ikuji\Ikuji\obj\Debug\Ikuji.csproj.CoreCompileInputs.cache
+C:\Ikuji\Ikuji\obj\Debug\Ikuji.exe
+C:\Ikuji\Ikuji\obj\Debug\Ikuji.pdb
+C:\Ikuji\Ikuji\obj\Debug\Ikuji.FormBabyRestore.resources
+C:\Ikuji\Ikuji\obj\Debug\Ikuji.FormDBEdit.resources
+C:\Ikuji\Ikuji\obj\Debug\Ikuji.FormGraph.resources
+C:\Ikuji\Ikuji\obj\Debug\Ikuji.FormMain.resources
+C:\Ikuji\Ikuji\obj\Debug\Ikuji.FormMilkRestore.resources
+C:\Ikuji\Ikuji\obj\Debug\Ikuji.FormOmutuRestore.resources
+C:\Ikuji\Ikuji\obj\Debug\Ikuji.FormWeightRestore.resources

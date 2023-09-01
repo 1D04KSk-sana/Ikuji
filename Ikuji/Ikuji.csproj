@@ -46,14 +46,71 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormBabyRestore.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormBabyRestore.Designer.cs">
+      <DependentUpon>FormBabyRestore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDBEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDBEdit.Designer.cs">
+      <DependentUpon>FormDBEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGraph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGraph.Designer.cs">
+      <DependentUpon>FormGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMilkRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMilkRestore.Designer.cs">
+      <DependentUpon>FormMilkRestore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormOmutuRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOmutuRestore.Designer.cs">
+      <DependentUpon>FormOmutuRestore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormWeightRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormWeightRestore.Designer.cs">
+      <DependentUpon>FormWeightRestore.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormBabyRestore.resx">
+      <DependentUpon>FormBabyRestore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDBEdit.resx">
+      <DependentUpon>FormDBEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGraph.resx">
+      <DependentUpon>FormGraph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMilkRestore.resx">
+      <DependentUpon>FormMilkRestore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOmutuRestore.resx">
+      <DependentUpon>FormOmutuRestore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormWeightRestore.resx">
+      <DependentUpon>FormWeightRestore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
