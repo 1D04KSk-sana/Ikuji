@@ -54,6 +54,7 @@
             this.btnGraph.TabIndex = 2;
             this.btnGraph.Text = "グラフ表示";
             this.btnGraph.UseVisualStyleBackColor = true;
+            this.btnGraph.Click += new System.EventHandler(this.btnGraph_Click);
             // 
             // btnDBEdit
             // 
@@ -63,6 +64,7 @@
             this.btnDBEdit.TabIndex = 3;
             this.btnDBEdit.Text = "記録編集";
             this.btnDBEdit.UseVisualStyleBackColor = true;
+            this.btnDBEdit.Click += new System.EventHandler(this.btnDBEdit_Click);
             // 
             // btnMilkRestore
             // 
@@ -72,6 +74,7 @@
             this.btnMilkRestore.TabIndex = 4;
             this.btnMilkRestore.Text = "授乳記録";
             this.btnMilkRestore.UseVisualStyleBackColor = true;
+            this.btnMilkRestore.Click += new System.EventHandler(this.btnMilkRestore_Click);
             // 
             // btnOmutuRestore
             // 
@@ -81,6 +84,7 @@
             this.btnOmutuRestore.TabIndex = 5;
             this.btnOmutuRestore.Text = "オムツ記録";
             this.btnOmutuRestore.UseVisualStyleBackColor = true;
+            this.btnOmutuRestore.Click += new System.EventHandler(this.btnOmutuRestore_Click);
             // 
             // btnWeightRestore
             // 
@@ -90,6 +94,7 @@
             this.btnWeightRestore.TabIndex = 6;
             this.btnWeightRestore.Text = "体重体温記録";
             this.btnWeightRestore.UseVisualStyleBackColor = true;
+            this.btnWeightRestore.Click += new System.EventHandler(this.btnWeightRestore_Click);
             // 
             // FormMain
             // 
