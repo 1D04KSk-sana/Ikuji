@@ -26,5 +26,50 @@ namespace Ikuji
             this.Hide();
             //書くときは.Closeでお願いします。
         }
+
+        private void btnGraph_Click(object sender, EventArgs e)
+        {
+            FormGraph formGraph = new FormGraph();
+
+            formGraph.Show();
+
+            this.Hide();
+        }
+
+        private void btnMilkRestore_Click(object sender, EventArgs e)
+        {
+            FormMilkRestore formMilkRestore = new FormMilkRestore();
+
+            formMilkRestore.Show();
+
+            this.Hide();
+        }
+
+        private void btnWeightRestore_Click(object sender, EventArgs e)
+        {
+            FormWeightRestore formWeightRestore = new FormWeightRestore();
+
+            formWeightRestore.Show();
+
+            this.Hide();
+        }
+
+        private void btnDBEdit_Click(object sender, EventArgs e)
+        {
+            FormDBEdit formDBEdit = new FormDBEdit();
+
+            formDBEdit.Show();
+
+            this.Hide();
+        }
+
+        private void btnOmutuRestore_Click(object sender, EventArgs e)
+        {
+            FormOmutuRestore formOmutuRestore = new FormOmutuRestore();
+
+            formOmutuRestore.Show();
+
+            this.Hide();
+        }
     }
 }

@@ -16,5 +16,14 @@ namespace Ikuji
         {
             InitializeComponent();
         }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            FormMain formmain = new FormMain();
+
+            formmain.Show();
+
+            this.Hide();
+        }
     }
 }
