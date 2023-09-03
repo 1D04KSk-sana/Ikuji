@@ -23,7 +23,7 @@ namespace Ikuji
 
             formmain.Show();
 
-            this.Hide();
+            this.Close();
         }
     }
 }
