@@ -25,5 +25,10 @@ namespace Ikuji
 
             this.Close();
         }
+
+        private void btnRestore_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
