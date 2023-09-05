@@ -17,6 +17,7 @@ namespace Ikuji
             InitializeComponent();
         }
 
+        //クラスの宣言
         BabyDBConnections babyDBConnections = new BabyDBConnections();
 
         private void btnReturn_Click(object sender, EventArgs e)
