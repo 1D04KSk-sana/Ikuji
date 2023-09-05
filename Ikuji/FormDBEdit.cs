@@ -51,7 +51,7 @@ namespace Ikuji
             //選択された行の1列目がミルクのとき
             if (dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == "体重・体温")
             {
-                ControlCreateWeight();
+                ControlCreateWeight("体重","体温");
             }
         }
 
@@ -196,9 +196,42 @@ namespace Ikuji
         //戻り値 : なし
         //機 能 : 各テキストボックスの動的生成
         ///////////////////////////////
-        private void ControlCreateWeight()
+        private void ControlCreateWeight(string upName, string downName)
         {
-            //ここに上のコードを参考にして各テキストボックスを生成してください
+            Panel pnlCommon = new Panel();
+
+            pnlCommon.BackColor = Color.DarkGray;
+
+            pnlCommon.Location = new Point(10, 40);
+
+            pnlCommon.Size = new Size(170, 80);
+
+            pnlDynamic.Controls.Add(pnlCommon);
+
+            TextBox txbUp = new TextBox();
+
+            txbUp.Location = new Point(50, 10);
+
+            Label lblUp = new Label();
+
+            lblUp.Text = upName;
+
+            lblUp.Location = new Point(10, 13);
+
+            TextBox txbDown = new TextBox();
+
+            txbDown.Location = new Point(50, 40);
+
+            Label lblDown = new Label();
+
+            lblDown.Text = downName;
+
+            lblDown.Location = new Point(10, 43);
+
+            pnlCommon.Controls.Add(txbUp);
+            pnlCommon.Controls.Add(lblUp);
+            pnlCommon.Controls.Add(txbDown);
+            pnlCommon.Controls.Add(lblDown);
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
