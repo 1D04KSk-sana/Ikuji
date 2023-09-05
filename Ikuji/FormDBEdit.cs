@@ -51,7 +51,7 @@ namespace Ikuji
             //選択された行の1列目がミルクのとき
             if (dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == "体重・体温")
             {
-                ControlCreateWeight("体重","体温");
+                ControlCreateWeight();
             }
         }
 
@@ -196,42 +196,32 @@ namespace Ikuji
         //戻り値 : なし
         //機 能 : 各テキストボックスの動的生成
         ///////////////////////////////
-        private void ControlCreateWeight(string upName, string downName)
+        private void ControlCreateWeight()
         {
-            Panel pnlCommon = new Panel();
+            TextBox txbWeight = new TextBox();
 
-            pnlCommon.BackColor = Color.DarkGray;
+            txbWeight.Location = new Point(50, 10);
 
-            pnlCommon.Location = new Point(10, 40);
+            Label lblWeight = new Label();
 
-            pnlCommon.Size = new Size(170, 80);
+            lblWeight.Text = "体重";
 
-            pnlDynamic.Controls.Add(pnlCommon);
+            lblWeight.Location = new Point(10, 13);
 
-            TextBox txbUp = new TextBox();
+            TextBox txbTemperature = new TextBox();
 
-            txbUp.Location = new Point(50, 10);
+            txbTemperature.Location = new Point(50, 40);
 
-            Label lblUp = new Label();
+            Label lblTemperature = new Label();
 
-            lblUp.Text = upName;
+            lblTemperature.Text = "体温";
 
-            lblUp.Location = new Point(10, 13);
+            lblTemperature.Location = new Point(10, 43);
 
-            TextBox txbDown = new TextBox();
-
-            txbDown.Location = new Point(50, 40);
-
-            Label lblDown = new Label();
-
-            lblDown.Text = downName;
-
-            lblDown.Location = new Point(10, 43);
-
-            pnlCommon.Controls.Add(txbUp);
-            pnlCommon.Controls.Add(lblUp);
-            pnlCommon.Controls.Add(txbDown);
-            pnlCommon.Controls.Add(lblDown);
+            pnlDynamic.Controls.Add(txbWeight);
+            pnlDynamic.Controls.Add(lblWeight);
+            pnlDynamic.Controls.Add(txbTemperature);
+            pnlDynamic.Controls.Add(lblTemperature);
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
