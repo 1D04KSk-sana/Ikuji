@@ -54,7 +54,7 @@
             // dtpMonthDay
             // 
             this.dtpMonthDay.Location = new System.Drawing.Point(111, 12);
-            this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(4);
             this.dtpMonthDay.Name = "dtpMonthDay";
             this.dtpMonthDay.Size = new System.Drawing.Size(115, 22);
             this.dtpMonthDay.TabIndex = 2;
@@ -63,7 +63,7 @@
             // 
             this.cmbHour.FormattingEnabled = true;
             this.cmbHour.Location = new System.Drawing.Point(453, 10);
-            this.cmbHour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbHour.Margin = new System.Windows.Forms.Padding(4);
             this.cmbHour.Name = "cmbHour";
             this.cmbHour.Size = new System.Drawing.Size(97, 23);
             this.cmbHour.TabIndex = 3;
@@ -72,7 +72,7 @@
             // 
             this.cmbMinit.FormattingEnabled = true;
             this.cmbMinit.Location = new System.Drawing.Point(609, 10);
-            this.cmbMinit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbMinit.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMinit.Name = "cmbMinit";
             this.cmbMinit.Size = new System.Drawing.Size(97, 23);
             this.cmbMinit.TabIndex = 4;
@@ -82,7 +82,7 @@
             this.pnlMilkBonyu.Controls.Add(this.rbdBonyu);
             this.pnlMilkBonyu.Controls.Add(this.rdbMilk);
             this.pnlMilkBonyu.Location = new System.Drawing.Point(20, 82);
-            this.pnlMilkBonyu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlMilkBonyu.Margin = new System.Windows.Forms.Padding(4);
             this.pnlMilkBonyu.Name = "pnlMilkBonyu";
             this.pnlMilkBonyu.Size = new System.Drawing.Size(251, 244);
             this.pnlMilkBonyu.TabIndex = 5;
@@ -91,7 +91,7 @@
             // 
             this.rbdBonyu.AutoSize = true;
             this.rbdBonyu.Location = new System.Drawing.Point(47, 145);
-            this.rbdBonyu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbdBonyu.Margin = new System.Windows.Forms.Padding(4);
             this.rbdBonyu.Name = "rbdBonyu";
             this.rbdBonyu.Size = new System.Drawing.Size(91, 19);
             this.rbdBonyu.TabIndex = 1;
@@ -103,7 +103,7 @@
             // 
             this.rdbMilk.AutoSize = true;
             this.rdbMilk.Location = new System.Drawing.Point(47, 68);
-            this.rdbMilk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbMilk.Margin = new System.Windows.Forms.Padding(4);
             this.rdbMilk.Name = "rdbMilk";
             this.rdbMilk.Size = new System.Drawing.Size(107, 19);
             this.rdbMilk.TabIndex = 0;
@@ -114,17 +114,18 @@
             // btnRestore
             // 
             this.btnRestore.Location = new System.Drawing.Point(29, 366);
-            this.btnRestore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRestore.Margin = new System.Windows.Forms.Padding(4);
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(240, 31);
             this.btnRestore.TabIndex = 6;
             this.btnRestore.Text = "登録ボタン";
             this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // txbComment
             // 
             this.txbComment.Location = new System.Drawing.Point(411, 370);
-            this.txbComment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbComment.Margin = new System.Windows.Forms.Padding(4);
             this.txbComment.Name = "txbComment";
             this.txbComment.Size = new System.Drawing.Size(319, 22);
             this.txbComment.TabIndex = 7;

@@ -49,17 +49,18 @@
             // btnRestore
             // 
             this.btnRestore.Location = new System.Drawing.Point(44, 364);
-            this.btnRestore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRestore.Margin = new System.Windows.Forms.Padding(4);
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(240, 31);
             this.btnRestore.TabIndex = 7;
             this.btnRestore.Text = "登録ボタン";
             this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // txbNameRestore
             // 
             this.txbNameRestore.Location = new System.Drawing.Point(52, 49);
-            this.txbNameRestore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbNameRestore.Margin = new System.Windows.Forms.Padding(4);
             this.txbNameRestore.Name = "txbNameRestore";
             this.txbNameRestore.Size = new System.Drawing.Size(229, 22);
             this.txbNameRestore.TabIndex = 8;
@@ -67,7 +68,7 @@
             // txbYearRestore
             // 
             this.txbYearRestore.Location = new System.Drawing.Point(53, 95);
-            this.txbYearRestore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbYearRestore.Margin = new System.Windows.Forms.Padding(4);
             this.txbYearRestore.Name = "txbYearRestore";
             this.txbYearRestore.Size = new System.Drawing.Size(229, 22);
             this.txbYearRestore.TabIndex = 9;
@@ -75,7 +76,7 @@
             // txbMonthRestore
             // 
             this.txbMonthRestore.Location = new System.Drawing.Point(412, 95);
-            this.txbMonthRestore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbMonthRestore.Margin = new System.Windows.Forms.Padding(4);
             this.txbMonthRestore.Name = "txbMonthRestore";
             this.txbMonthRestore.Size = new System.Drawing.Size(229, 22);
             this.txbMonthRestore.TabIndex = 10;

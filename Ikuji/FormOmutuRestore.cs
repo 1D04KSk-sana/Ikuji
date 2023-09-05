@@ -21,5 +21,18 @@ namespace Ikuji
         {
             this.Close();
         }
+
+        private void btnRestore_Click(object sender, EventArgs e)
+        {
+            string omutsuYearAndDay,omutsuHour,omutsuMinute,omutsuComment;
+
+            omutsuYearAndDay = dtpMonthDay.Text;
+
+            omutsuHour = cmbHour.Text;
+
+            omutsuMinute = cmbMinit.Text;
+
+            omutsuComment = txbComment.Text;
+        }
     }
 }

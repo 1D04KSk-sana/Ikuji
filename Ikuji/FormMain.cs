@@ -83,9 +83,15 @@ namespace Ikuji
             this.Hide();
         }
 
+<<<<<<< HEAD
         private void ChildForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();
+=======
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+>>>>>>> main
         }
     }
 }
