@@ -14,9 +14,9 @@ namespace Ikuji
         //おしっこ・うんこ・母乳・粉ミルク
         public string BabySub { get; set; }
         //体重
-        public int BabyWeight { get; set; }
+        public int? BabyWeight { get; set; }
         //体温
-        public double BabyTemperature { get; set; }
+        public double? BabyTemperature { get; set; }
         //日付
         public string BabyDate { get; set; }
         //時間

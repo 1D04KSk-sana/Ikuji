@@ -96,6 +96,8 @@ namespace Ikuji
                 BabyMain = "ミルク",
                 BabySub = milkKinds,
                 BabyDate = dtpMonthDay.Value.ToShortDateString(),
+                BabyWeight = null,
+                BabyTemperature = null,
                 BabyHour = 1,
                 BabyMinit = 35,
                 BabyComment = txbComment.Text,
