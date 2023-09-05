@@ -28,6 +28,13 @@ namespace Ikuji
 
         private void btnRestore_Click(object sender, EventArgs e)
         {
+            string babyName,babyYear,babyMonth;
+
+            babyName = txbNameRestore.Text;
+
+            babyYear = txbYearRestore.Text;
+
+            babyMonth = txbMonthRestore.Text;
 
         }
     }

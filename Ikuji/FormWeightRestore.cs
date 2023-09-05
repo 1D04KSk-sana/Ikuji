@@ -25,5 +25,20 @@ namespace Ikuji
 
             this.Close();
         }
+
+        private void btnRestore_Click(object sender, EventArgs e)
+        {
+            int babyWeight, babyTemperature;
+
+            string babyYearAndMonth,babyComment;
+
+            babyYearAndMonth = dtpMonthDay.Text;
+
+            babyWeight = int.Parse(txbWeight.Text);
+
+            babyTemperature = int.Parse(txbTemperature.Text);
+
+            babyComment = txbComment.Text;
+        }
     }
 }

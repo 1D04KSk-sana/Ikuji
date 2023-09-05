@@ -50,7 +50,7 @@
             // dtpMonthDay
             // 
             this.dtpMonthDay.Location = new System.Drawing.Point(132, 15);
-            this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(4);
             this.dtpMonthDay.Name = "dtpMonthDay";
             this.dtpMonthDay.Size = new System.Drawing.Size(115, 22);
             this.dtpMonthDay.TabIndex = 4;
@@ -58,7 +58,7 @@
             // txbWeight
             // 
             this.txbWeight.Location = new System.Drawing.Point(36, 135);
-            this.txbWeight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbWeight.Margin = new System.Windows.Forms.Padding(4);
             this.txbWeight.Name = "txbWeight";
             this.txbWeight.Size = new System.Drawing.Size(187, 22);
             this.txbWeight.TabIndex = 5;
@@ -66,7 +66,7 @@
             // txbTemperature
             // 
             this.txbTemperature.Location = new System.Drawing.Point(36, 209);
-            this.txbTemperature.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbTemperature.Margin = new System.Windows.Forms.Padding(4);
             this.txbTemperature.Name = "txbTemperature";
             this.txbTemperature.Size = new System.Drawing.Size(187, 22);
             this.txbTemperature.TabIndex = 6;
@@ -74,17 +74,18 @@
             // btnRestore
             // 
             this.btnRestore.Location = new System.Drawing.Point(36, 340);
-            this.btnRestore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRestore.Margin = new System.Windows.Forms.Padding(4);
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(240, 31);
             this.btnRestore.TabIndex = 8;
             this.btnRestore.Text = "登録ボタン";
             this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // txbComment
             // 
             this.txbComment.Location = new System.Drawing.Point(392, 344);
-            this.txbComment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbComment.Margin = new System.Windows.Forms.Padding(4);
             this.txbComment.Name = "txbComment";
             this.txbComment.Size = new System.Drawing.Size(319, 22);
             this.txbComment.TabIndex = 9;

@@ -54,7 +54,7 @@
             // dtpMonthDay
             // 
             this.dtpMonthDay.Location = new System.Drawing.Point(148, 12);
-            this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(4);
             this.dtpMonthDay.Name = "dtpMonthDay";
             this.dtpMonthDay.Size = new System.Drawing.Size(115, 22);
             this.dtpMonthDay.TabIndex = 3;
@@ -63,7 +63,7 @@
             // 
             this.cmbHour.FormattingEnabled = true;
             this.cmbHour.Location = new System.Drawing.Point(472, 15);
-            this.cmbHour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbHour.Margin = new System.Windows.Forms.Padding(4);
             this.cmbHour.Name = "cmbHour";
             this.cmbHour.Size = new System.Drawing.Size(97, 23);
             this.cmbHour.TabIndex = 4;
@@ -72,7 +72,7 @@
             // 
             this.cmbMinit.FormattingEnabled = true;
             this.cmbMinit.Location = new System.Drawing.Point(617, 15);
-            this.cmbMinit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbMinit.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMinit.Name = "cmbMinit";
             this.cmbMinit.Size = new System.Drawing.Size(97, 23);
             this.cmbMinit.TabIndex = 5;
@@ -82,7 +82,7 @@
             this.pnlUntiOsikko.Controls.Add(this.Osikko);
             this.pnlUntiOsikko.Controls.Add(this.rdbUnti);
             this.pnlUntiOsikko.Location = new System.Drawing.Point(39, 102);
-            this.pnlUntiOsikko.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlUntiOsikko.Margin = new System.Windows.Forms.Padding(4);
             this.pnlUntiOsikko.Name = "pnlUntiOsikko";
             this.pnlUntiOsikko.Size = new System.Drawing.Size(251, 244);
             this.pnlUntiOsikko.TabIndex = 6;
@@ -91,7 +91,7 @@
             // 
             this.Osikko.AutoSize = true;
             this.Osikko.Location = new System.Drawing.Point(47, 145);
-            this.Osikko.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Osikko.Margin = new System.Windows.Forms.Padding(4);
             this.Osikko.Name = "Osikko";
             this.Osikko.Size = new System.Drawing.Size(103, 19);
             this.Osikko.TabIndex = 1;
@@ -103,7 +103,7 @@
             // 
             this.rdbUnti.AutoSize = true;
             this.rdbUnti.Location = new System.Drawing.Point(47, 68);
-            this.rdbUnti.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbUnti.Margin = new System.Windows.Forms.Padding(4);
             this.rdbUnti.Name = "rdbUnti";
             this.rdbUnti.Size = new System.Drawing.Size(93, 19);
             this.rdbUnti.TabIndex = 0;
@@ -114,17 +114,18 @@
             // btnRestore
             // 
             this.btnRestore.Location = new System.Drawing.Point(39, 385);
-            this.btnRestore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRestore.Margin = new System.Windows.Forms.Padding(4);
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(240, 31);
             this.btnRestore.TabIndex = 7;
             this.btnRestore.Text = "登録ボタン";
             this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // txbComment
             // 
             this.txbComment.Location = new System.Drawing.Point(396, 385);
-            this.txbComment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbComment.Margin = new System.Windows.Forms.Padding(4);
             this.txbComment.Name = "txbComment";
             this.txbComment.Size = new System.Drawing.Size(319, 22);
             this.txbComment.TabIndex = 8;

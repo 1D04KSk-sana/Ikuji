@@ -25,5 +25,20 @@ namespace Ikuji
 
             this.Close();
         }
+
+        private void btnRestore_Click(object sender, EventArgs e)
+        {
+            string milkYearAndMonth,milkHour,milkMinute,milkComment;
+
+            milkYearAndMonth = dtpMonthDay.Text;
+
+            milkHour = cmbHour.Text;
+
+            milkMinute = cmbMinit.Text;
+
+            milkComment = txbComment.Text;
+
+            MessageBox.Show(milkYearAndMonth+milkHour+milkMinute+milkComment);
+        }
     }
 }

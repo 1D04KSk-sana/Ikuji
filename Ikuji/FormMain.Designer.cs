@@ -109,6 +109,7 @@
             this.Controls.Add(this.btnBabyRestore);
             this.Name = "FormMain";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.ResumeLayout(false);
 
         }
