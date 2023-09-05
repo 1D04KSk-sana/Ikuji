@@ -70,5 +70,10 @@ namespace Ikuji
 
             this.Hide();
         }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
