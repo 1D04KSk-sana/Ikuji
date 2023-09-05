@@ -33,7 +33,7 @@
             this.cmbHour = new System.Windows.Forms.ComboBox();
             this.cmbMinit = new System.Windows.Forms.ComboBox();
             this.pnlUntiOsikko = new System.Windows.Forms.Panel();
-            this.Osikko = new System.Windows.Forms.RadioButton();
+            this.rdbOsikko = new System.Windows.Forms.RadioButton();
             this.rdbUnti = new System.Windows.Forms.RadioButton();
             this.btnRestore = new System.Windows.Forms.Button();
             this.txbComment = new System.Windows.Forms.TextBox();
@@ -62,6 +62,31 @@
             // cmbHour
             // 
             this.cmbHour.FormattingEnabled = true;
+            this.cmbHour.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23"});
             this.cmbHour.Location = new System.Drawing.Point(472, 15);
             this.cmbHour.Margin = new System.Windows.Forms.Padding(4);
             this.cmbHour.Name = "cmbHour";
@@ -71,6 +96,67 @@
             // cmbMinit
             // 
             this.cmbMinit.FormattingEnabled = true;
+            this.cmbMinit.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50",
+            "51",
+            "52",
+            "53",
+            "54",
+            "55",
+            "56",
+            "57",
+            "58",
+            "59"});
             this.cmbMinit.Location = new System.Drawing.Point(617, 15);
             this.cmbMinit.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMinit.Name = "cmbMinit";
@@ -79,7 +165,7 @@
             // 
             // pnlUntiOsikko
             // 
-            this.pnlUntiOsikko.Controls.Add(this.Osikko);
+            this.pnlUntiOsikko.Controls.Add(this.rdbOsikko);
             this.pnlUntiOsikko.Controls.Add(this.rdbUnti);
             this.pnlUntiOsikko.Location = new System.Drawing.Point(39, 102);
             this.pnlUntiOsikko.Margin = new System.Windows.Forms.Padding(4);
@@ -87,17 +173,17 @@
             this.pnlUntiOsikko.Size = new System.Drawing.Size(251, 244);
             this.pnlUntiOsikko.TabIndex = 6;
             // 
-            // Osikko
+            // rdbOsikko
             // 
-            this.Osikko.AutoSize = true;
-            this.Osikko.Location = new System.Drawing.Point(47, 145);
-            this.Osikko.Margin = new System.Windows.Forms.Padding(4);
-            this.Osikko.Name = "Osikko";
-            this.Osikko.Size = new System.Drawing.Size(103, 19);
-            this.Osikko.TabIndex = 1;
-            this.Osikko.TabStop = true;
-            this.Osikko.Text = "おしっこボタン";
-            this.Osikko.UseVisualStyleBackColor = true;
+            this.rdbOsikko.AutoSize = true;
+            this.rdbOsikko.Location = new System.Drawing.Point(47, 145);
+            this.rdbOsikko.Margin = new System.Windows.Forms.Padding(4);
+            this.rdbOsikko.Name = "rdbOsikko";
+            this.rdbOsikko.Size = new System.Drawing.Size(103, 19);
+            this.rdbOsikko.TabIndex = 1;
+            this.rdbOsikko.TabStop = true;
+            this.rdbOsikko.Text = "おしっこボタン";
+            this.rdbOsikko.UseVisualStyleBackColor = true;
             // 
             // rdbUnti
             // 
@@ -159,7 +245,7 @@
         private System.Windows.Forms.ComboBox cmbHour;
         private System.Windows.Forms.ComboBox cmbMinit;
         private System.Windows.Forms.Panel pnlUntiOsikko;
-        private System.Windows.Forms.RadioButton Osikko;
+        private System.Windows.Forms.RadioButton rdbOsikko;
         private System.Windows.Forms.RadioButton rdbUnti;
         private System.Windows.Forms.Button btnRestore;
         private System.Windows.Forms.TextBox txbComment;

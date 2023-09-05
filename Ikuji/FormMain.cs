@@ -92,5 +92,20 @@ namespace Ikuji
         {
             Application.Exit();
         }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            //DB使用のための変数を設定
+            var context = new BabyContext();
+
+            //クラスで設定しているDB内の項目を作成
+            context.Babys.Create();
+
+            //作成したDBを保存
+            context.SaveChanges();
+
+            //作成した変数を削除
+            context.Dispose();
+        }
     }
 }
