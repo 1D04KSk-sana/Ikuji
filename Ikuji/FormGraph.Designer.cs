@@ -64,22 +64,26 @@
             this.cmbGraphChange.Name = "cmbGraphChange";
             this.cmbGraphChange.Size = new System.Drawing.Size(71, 20);
             this.cmbGraphChange.TabIndex = 5;
+            this.cmbGraphChange.SelectedIndexChanged += new System.EventHandler(this.cmbGraphChange_SelectedIndexChanged);
             // 
             // grfHistory
             // 
             chartArea1.Name = "ChartArea1";
             this.grfHistory.ChartAreas.Add(chartArea1);
+            this.grfHistory.Cursor = System.Windows.Forms.Cursors.AppStarting;
             legend1.Name = "Legend1";
             this.grfHistory.Legends.Add(legend1);
-            this.grfHistory.Location = new System.Drawing.Point(73, 110);
+            this.grfHistory.Location = new System.Drawing.Point(39, 102);
+            this.grfHistory.Margin = new System.Windows.Forms.Padding(5);
             this.grfHistory.Name = "grfHistory";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.grfHistory.Series.Add(series1);
-            this.grfHistory.Size = new System.Drawing.Size(300, 300);
+            this.grfHistory.Size = new System.Drawing.Size(894, 450);
             this.grfHistory.TabIndex = 6;
             this.grfHistory.Text = "chart1";
+            this.grfHistory.Click += new System.EventHandler(this.grfHistory_Click);
             // 
             // FormGraph
             // 
@@ -94,6 +98,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormGraph";
             this.Text = "FormGraph";
+            this.Load += new System.EventHandler(this.FormGraph_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grfHistory)).EndInit();
             this.ResumeLayout(false);
 
