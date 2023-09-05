@@ -57,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Baby.cs" />
+    <Compile Include="BabyContext.cs" />
     <Compile Include="FormBabyRestore.cs">
       <SubType>Form</SubType>
     </Compile>
