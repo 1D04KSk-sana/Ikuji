@@ -20,6 +20,9 @@ namespace Ikuji
         //クラスの宣言
         BabyDBConnections babyDBConnections = new BabyDBConnections();
 
+        //変数の宣言
+        public string milkComment = "";
+
         private void btnReturn_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -63,6 +66,11 @@ namespace Ikuji
         private bool GetVaildDataBabyRestore()
         {
             //もしもrdbMilkがチェックされてなくて、かつrdbBonyuがチェックされてないとき⇒MessageBoxでエラーを表示しfalseを返す
+
+
+
+
+            //もしもtxbCommentのisNullOrEmptyがfalseのとき⇒txbCommentのテキストの空白を消してmilkCommentに代入
 
 
 
@@ -115,7 +123,7 @@ namespace Ikuji
                 BabyDate = dtpMonthDay.Value.ToShortDateString(),
                 BabyHour = cmbHour.SelectedIndex,
                 BabyMinit = cmbMinit.SelectedIndex,
-                BabyComment = txbComment.Text,
+                BabyComment = milkComment,
             };
         }
     }
