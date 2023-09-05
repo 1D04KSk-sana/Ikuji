@@ -20,9 +20,9 @@ namespace Ikuji
         //日付
         public string BabyDate { get; set; }
         //時間
-        public int BabyHour { get; set; }
+        public int? BabyHour { get; set; }
         //分
-        public int BabyMinit { get; set; }
+        public int? BabyMinit { get; set; }
         //コメント
         public string BabyComment { get; set; }
     }
