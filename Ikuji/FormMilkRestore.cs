@@ -26,17 +26,13 @@ namespace Ikuji
 
         private void btnRestore_Click(object sender, EventArgs e)
         {
-            //string milkYearAndMonth,milkHour,milkMinute,milkComment;
-
-            //milkYearAndMonth = dtpMonthDay.Text;
-
-            //milkHour = cmbHour.Text;
-
-            //milkMinute = cmbMinit.Text;
-
-            //milkComment = txbComment.Text;
-
             string milkKind = "";
+
+            //GetVaildDataBabyRestoreからの戻り値がfalseのとき、メソッドを終了
+            if (!GetVaildDataBabyRestore())
+            {
+                return;
+            }
 
             //粉ミルクがチェックされているとき
             if (rdbMilk.Checked )
@@ -53,6 +49,24 @@ namespace Ikuji
             var resBaby = GenerateDataBaby(milkKind);
             //赤ちゃん情報の登録
             RestoreAddBabyData(resBaby);
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetValidDataBabyRestore()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetVaildDataBabyRestore()
+        {
+            //もしもrdbMilkがチェックされてなくて、かつrdbBonyuがチェックされてないとき⇒MessageBoxでエラーを表示しfalseを返す
+
+
+
+
+            return true;
         }
 
         ///////////////////////////////
@@ -95,11 +109,11 @@ namespace Ikuji
             {
                 BabyMain = "ミルク",
                 BabySub = milkKinds,
-                BabyDate = dtpMonthDay.Value.ToShortDateString(),
                 BabyWeight = null,
                 BabyTemperature = null,
-                BabyHour = 1,
-                BabyMinit = 35,
+                BabyDate = dtpMonthDay.Value.ToShortDateString(),
+                BabyHour = cmbHour.SelectedIndex,
+                BabyMinit = cmbMinit.SelectedIndex,
                 BabyComment = txbComment.Text,
             };
         }
