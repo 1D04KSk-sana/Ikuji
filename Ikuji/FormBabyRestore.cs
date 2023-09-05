@@ -19,11 +19,19 @@ namespace Ikuji
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            FormMain formMain = new FormMain();
-
-            formMain.Show();
-
             this.Close();
+        }
+
+        private void btnRestore_Click(object sender, EventArgs e)
+        {
+            string babyName,babyYear,babyMonth;
+
+            babyName = txbNameRestore.Text;
+
+            babyYear = txbYearRestore.Text;
+
+            babyMonth = txbMonthRestore.Text;
+
         }
     }
 }

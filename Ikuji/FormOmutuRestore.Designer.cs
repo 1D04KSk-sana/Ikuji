@@ -33,7 +33,7 @@
             this.cmbHour = new System.Windows.Forms.ComboBox();
             this.cmbMinit = new System.Windows.Forms.ComboBox();
             this.pnlUntiOsikko = new System.Windows.Forms.Panel();
-            this.Osikko = new System.Windows.Forms.RadioButton();
+            this.rdbOsikko = new System.Windows.Forms.RadioButton();
             this.rdbUnti = new System.Windows.Forms.RadioButton();
             this.btnRestore = new System.Windows.Forms.Button();
             this.txbComment = new System.Windows.Forms.TextBox();
@@ -42,70 +42,154 @@
             // 
             // btnReturn
             // 
-            this.btnReturn.Location = new System.Drawing.Point(12, 12);
-            this.btnReturn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(201)))), ((int)(((byte)(232)))));
+            this.btnReturn.Location = new System.Drawing.Point(9, 10);
+            this.btnReturn.Margin = new System.Windows.Forms.Padding(2);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(75, 22);
+            this.btnReturn.Size = new System.Drawing.Size(56, 18);
             this.btnReturn.TabIndex = 1;
             this.btnReturn.Text = "戻る";
-            this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.UseVisualStyleBackColor = false;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // dtpMonthDay
             // 
-            this.dtpMonthDay.Location = new System.Drawing.Point(148, 12);
-            this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpMonthDay.Location = new System.Drawing.Point(111, 10);
             this.dtpMonthDay.Name = "dtpMonthDay";
-            this.dtpMonthDay.Size = new System.Drawing.Size(115, 22);
+            this.dtpMonthDay.Size = new System.Drawing.Size(87, 19);
             this.dtpMonthDay.TabIndex = 3;
             // 
             // cmbHour
             // 
             this.cmbHour.FormattingEnabled = true;
-            this.cmbHour.Location = new System.Drawing.Point(472, 15);
-            this.cmbHour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbHour.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23"});
+            this.cmbHour.Location = new System.Drawing.Point(354, 12);
+            this.cmbHour.Margin = new System.Windows.Forms.Padding(4);
             this.cmbHour.Name = "cmbHour";
-            this.cmbHour.Size = new System.Drawing.Size(97, 23);
+            this.cmbHour.Size = new System.Drawing.Size(74, 20);
             this.cmbHour.TabIndex = 4;
             // 
             // cmbMinit
             // 
             this.cmbMinit.FormattingEnabled = true;
-            this.cmbMinit.Location = new System.Drawing.Point(617, 15);
-            this.cmbMinit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbMinit.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50",
+            "51",
+            "52",
+            "53",
+            "54",
+            "55",
+            "56",
+            "57",
+            "58",
+            "59"});
+            this.cmbMinit.Location = new System.Drawing.Point(463, 12);
+            this.cmbMinit.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMinit.Name = "cmbMinit";
-            this.cmbMinit.Size = new System.Drawing.Size(97, 23);
+            this.cmbMinit.Size = new System.Drawing.Size(74, 20);
             this.cmbMinit.TabIndex = 5;
             // 
             // pnlUntiOsikko
             // 
-            this.pnlUntiOsikko.Controls.Add(this.Osikko);
+            this.pnlUntiOsikko.Controls.Add(this.rdbOsikko);
             this.pnlUntiOsikko.Controls.Add(this.rdbUnti);
-            this.pnlUntiOsikko.Location = new System.Drawing.Point(39, 102);
-            this.pnlUntiOsikko.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlUntiOsikko.Location = new System.Drawing.Point(29, 82);
             this.pnlUntiOsikko.Name = "pnlUntiOsikko";
-            this.pnlUntiOsikko.Size = new System.Drawing.Size(251, 244);
+            this.pnlUntiOsikko.Size = new System.Drawing.Size(188, 195);
             this.pnlUntiOsikko.TabIndex = 6;
             // 
-            // Osikko
+            // rdbOsikko
             // 
-            this.Osikko.AutoSize = true;
-            this.Osikko.Location = new System.Drawing.Point(47, 145);
-            this.Osikko.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Osikko.Name = "Osikko";
-            this.Osikko.Size = new System.Drawing.Size(103, 19);
-            this.Osikko.TabIndex = 1;
-            this.Osikko.TabStop = true;
-            this.Osikko.Text = "おしっこボタン";
-            this.Osikko.UseVisualStyleBackColor = true;
+            this.rdbOsikko.AutoSize = true;
+            this.rdbOsikko.Location = new System.Drawing.Point(47, 145);
+            this.rdbOsikko.Margin = new System.Windows.Forms.Padding(4);
+            this.rdbOsikko.Name = "rdbOsikko";
+            this.rdbOsikko.Size = new System.Drawing.Size(103, 19);
+            this.rdbOsikko.TabIndex = 1;
+            this.rdbOsikko.TabStop = true;
+            this.rdbOsikko.Text = "おしっこボタン";
+            this.rdbOsikko.UseVisualStyleBackColor = true;
             // 
             // rdbUnti
             // 
             this.rdbUnti.AutoSize = true;
-            this.rdbUnti.Location = new System.Drawing.Point(47, 68);
-            this.rdbUnti.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbUnti.Location = new System.Drawing.Point(35, 54);
             this.rdbUnti.Name = "rdbUnti";
-            this.rdbUnti.Size = new System.Drawing.Size(93, 19);
+            this.rdbUnti.Size = new System.Drawing.Size(76, 16);
             this.rdbUnti.TabIndex = 0;
             this.rdbUnti.TabStop = true;
             this.rdbUnti.Text = "うんちボタン";
@@ -113,27 +197,27 @@
             // 
             // btnRestore
             // 
-            this.btnRestore.Location = new System.Drawing.Point(39, 385);
-            this.btnRestore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRestore.Location = new System.Drawing.Point(29, 308);
             this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(240, 31);
+            this.btnRestore.Size = new System.Drawing.Size(180, 25);
             this.btnRestore.TabIndex = 7;
             this.btnRestore.Text = "登録ボタン";
             this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // txbComment
             // 
-            this.txbComment.Location = new System.Drawing.Point(396, 385);
-            this.txbComment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbComment.Location = new System.Drawing.Point(297, 308);
             this.txbComment.Name = "txbComment";
-            this.txbComment.Size = new System.Drawing.Size(319, 22);
+            this.txbComment.Size = new System.Drawing.Size(240, 19);
             this.txbComment.TabIndex = 8;
             // 
             // FormOmutuRestore
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
+            this.ClientSize = new System.Drawing.Size(600, 360);
             this.Controls.Add(this.txbComment);
             this.Controls.Add(this.btnRestore);
             this.Controls.Add(this.pnlUntiOsikko);
@@ -141,7 +225,7 @@
             this.Controls.Add(this.cmbHour);
             this.Controls.Add(this.dtpMonthDay);
             this.Controls.Add(this.btnReturn);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormOmutuRestore";
             this.Text = "FormOmutuRestore";
             this.pnlUntiOsikko.ResumeLayout(false);
@@ -158,7 +242,7 @@
         private System.Windows.Forms.ComboBox cmbHour;
         private System.Windows.Forms.ComboBox cmbMinit;
         private System.Windows.Forms.Panel pnlUntiOsikko;
-        private System.Windows.Forms.RadioButton Osikko;
+        private System.Windows.Forms.RadioButton rdbOsikko;
         private System.Windows.Forms.RadioButton rdbUnti;
         private System.Windows.Forms.Button btnRestore;
         private System.Windows.Forms.TextBox txbComment;

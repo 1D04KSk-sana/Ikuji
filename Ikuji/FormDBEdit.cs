@@ -198,15 +198,34 @@ namespace Ikuji
         ///////////////////////////////
         private void ControlCreateWeight()
         {
-            //ここに上のコードを参考にして各テキストボックスを生成してください
+            TextBox txbWeight = new TextBox();
+
+            txbWeight.Location = new Point(50, 10);
+
+            Label lblWeight = new Label();
+
+            lblWeight.Text = "体重";
+
+            lblWeight.Location = new Point(10, 13);
+
+            TextBox txbTemperature = new TextBox();
+
+            txbTemperature.Location = new Point(50, 40);
+
+            Label lblTemperature = new Label();
+
+            lblTemperature.Text = "体温";
+
+            lblTemperature.Location = new Point(10, 43);
+
+            pnlDynamic.Controls.Add(txbWeight);
+            pnlDynamic.Controls.Add(lblWeight);
+            pnlDynamic.Controls.Add(txbTemperature);
+            pnlDynamic.Controls.Add(lblTemperature);
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            FormMain formMain = new FormMain();
-
-            formMain.Show();
-
             this.Close();
         }
     }
