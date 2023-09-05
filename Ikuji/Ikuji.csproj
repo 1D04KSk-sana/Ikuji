@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Baby.cs" />
     <Compile Include="BabyContext.cs" />
+    <Compile Include="BabyDBConnections.cs" />
     <Compile Include="FormBabyRestore.cs">
       <SubType>Form</SubType>
     </Compile>
