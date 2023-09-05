@@ -92,5 +92,6 @@ namespace Ikuji
         {
             Application.Exit();
         }
+
     }
 }
