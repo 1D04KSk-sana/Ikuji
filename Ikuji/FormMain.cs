@@ -21,6 +21,8 @@ namespace Ikuji
         {
             FormBabyRestore formBabyRestore = new FormBabyRestore();
 
+            formBabyRestore.Owner = this;
+            formBabyRestore.FormClosed += ChildForm_FormClosed;
             formBabyRestore.Show();
 
             this.Hide();
@@ -30,6 +32,8 @@ namespace Ikuji
         {
             FormGraph formGraph = new FormGraph();
 
+            formGraph.Owner = this;
+            formGraph.FormClosed += ChildForm_FormClosed;
             formGraph.Show();
 
             this.Hide();
@@ -39,6 +43,8 @@ namespace Ikuji
         {
             FormDBEdit formDBEdit = new FormDBEdit();
 
+            formDBEdit.Owner = this;
+            formDBEdit.FormClosed += ChildForm_FormClosed;
             formDBEdit.Show();
 
             this.Hide();
@@ -48,6 +54,8 @@ namespace Ikuji
         {
             FormMilkRestore formMilkRestore = new FormMilkRestore();
 
+            formMilkRestore.Owner = this;
+            formMilkRestore.FormClosed += ChildForm_FormClosed;
             formMilkRestore.Show();
 
             this.Hide();
@@ -57,6 +65,8 @@ namespace Ikuji
         {
             FormOmutuRestore formOmutuRestore = new FormOmutuRestore();
 
+            formOmutuRestore.Owner = this;
+            formOmutuRestore.FormClosed += ChildForm_FormClosed;
             formOmutuRestore.Show();
 
             this.Hide();
@@ -66,9 +76,16 @@ namespace Ikuji
         {
             FormWeightRestore formWeightRestore = new FormWeightRestore();
 
+            formWeightRestore.Owner = this;
+            formWeightRestore.FormClosed += ChildForm_FormClosed;
             formWeightRestore.Show();
 
             this.Hide();
+        }
+
+        private void ChildForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)

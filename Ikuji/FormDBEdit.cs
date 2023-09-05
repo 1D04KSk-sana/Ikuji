@@ -203,10 +203,6 @@ namespace Ikuji
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            FormMain formMain = new FormMain();
-
-            formMain.Show();
-
             this.Close();
         }
     }
