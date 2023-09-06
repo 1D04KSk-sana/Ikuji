@@ -38,10 +38,10 @@
             // btnReturn
             // 
             this.btnReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(201)))), ((int)(((byte)(232)))));
-            this.btnReturn.Location = new System.Drawing.Point(9, 10);
-            this.btnReturn.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReturn.Location = new System.Drawing.Point(12, 12);
+            this.btnReturn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(56, 18);
+            this.btnReturn.Size = new System.Drawing.Size(75, 22);
             this.btnReturn.TabIndex = 1;
             this.btnReturn.Text = "戻る";
             this.btnReturn.UseVisualStyleBackColor = false;
@@ -49,41 +49,44 @@
             // 
             // dtpMonthDay
             // 
-            this.dtpMonthDay.Location = new System.Drawing.Point(87, 12);
+            this.dtpMonthDay.Location = new System.Drawing.Point(116, 15);
+            this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpMonthDay.Name = "dtpMonthDay";
-            this.dtpMonthDay.Size = new System.Drawing.Size(87, 19);
+            this.dtpMonthDay.Size = new System.Drawing.Size(115, 22);
             this.dtpMonthDay.TabIndex = 3;
             // 
             // cmbViewChange
             // 
             this.cmbViewChange.FormattingEnabled = true;
-            this.cmbViewChange.Location = new System.Drawing.Point(12, 57);
+            this.cmbViewChange.Location = new System.Drawing.Point(16, 71);
+            this.cmbViewChange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbViewChange.Name = "cmbViewChange";
-            this.cmbViewChange.Size = new System.Drawing.Size(71, 20);
+            this.cmbViewChange.Size = new System.Drawing.Size(93, 23);
             this.cmbViewChange.TabIndex = 4;
             // 
             // dgvRecordEditing
             // 
             this.dgvRecordEditing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRecordEditing.Location = new System.Drawing.Point(21, 174);
+            this.dgvRecordEditing.Location = new System.Drawing.Point(12, 102);
+            this.dgvRecordEditing.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvRecordEditing.Name = "dgvRecordEditing";
             this.dgvRecordEditing.RowHeadersWidth = 51;
             this.dgvRecordEditing.RowTemplate.Height = 21;
-            this.dgvRecordEditing.Size = new System.Drawing.Size(531, 153);
+            this.dgvRecordEditing.Size = new System.Drawing.Size(775, 335);
             this.dgvRecordEditing.TabIndex = 5;
             this.dgvRecordEditing.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecordEditing_CellClick);
             // 
             // FormDBEdit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(600, 360);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgvRecordEditing);
             this.Controls.Add(this.cmbViewChange);
             this.Controls.Add(this.dtpMonthDay);
             this.Controls.Add(this.btnReturn);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormDBEdit";
             this.Text = "FormDBEdit";
             this.Load += new System.EventHandler(this.FormDBEdit_Load);

@@ -32,5 +32,22 @@ namespace Ikuji
                 return false;
             }
         }
+
+        ///////////////////////////////
+        //メソッド名：GetBabyData()
+        //引　数   ：なし
+        //戻り値   ：部署データ
+        //機　能   ：部署データの取得
+        ///////////////////////////////
+        public List<Baby> GetBabyData()
+        {
+            List<Baby> baby = new List<Baby>();
+
+            var context = new BabyContext();
+            baby = context.Babys.ToList();
+            context.Dispose();
+
+            return baby;
+        }
     }
 }

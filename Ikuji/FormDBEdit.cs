@@ -17,12 +17,18 @@ namespace Ikuji
             InitializeComponent();
         }
 
+        //クラスの宣言
+        BabyDBConnections babyDBConnections = new BabyDBConnections();
+
         //パネルの宣言　※メソッドをまたいで使いたいのでpublic
         public Panel pnlDynamic = new Panel();
 
+        //データグリッドビュー用の赤ちゃんデータ
+        private static List<Baby> Baby;
+
         private void FormDBEdit_Load(object sender, EventArgs e)
         {
-            TestSettingdgvRecordEditing();
+            GetdgvRecordEditingView();
         }
 
         private void dgvRecordEditing_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -56,12 +62,26 @@ namespace Ikuji
         }
 
         ///////////////////////////////
-        //メソッド名 : TestSettingdgvRecordEditing()
+        //メソッド名 : GetgvRecordEditingView()
         //引 数 : なし
         //戻り値 : なし
-        //機 能 : データグリッドビューのテスト用設定
+        //機 能 : データグリッドビューの設定
         ///////////////////////////////
-        private void TestSettingdgvRecordEditing()
+        private void GetdgvRecordEditingView()
+        {
+            Baby = babyDBConnections.GetBabyData();
+
+            SettingdgvRecordEditing();
+        }
+
+
+        ///////////////////////////////
+        //メソッド名 : SettingdgvRecordEditing()
+        //引 数 : なし
+        //戻り値 : なし
+        //機 能 : データグリッドビューの設定
+        ///////////////////////////////
+        private void SettingdgvRecordEditing()
         {
             //行単位で選択するようにする
             dgvRecordEditing.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -75,17 +95,36 @@ namespace Ikuji
             //ユーザーが新しい行を追加できないようにする
             dgvRecordEditing.AllowUserToAddRows = false;
 
-            //列数を指定
-            dgvRecordEditing.ColumnCount = 2;
+            //左端の項目列を削除
+            dgvRecordEditing.RowHeadersVisible = false;
+            //行の自動追加をオフ
+            dgvRecordEditing.AllowUserToAddRows = false;
 
-            //ヘッダーの設定
-            dgvRecordEditing.Columns[0].HeaderText = "モード";
-            dgvRecordEditing.Columns[1].HeaderText = "test";
+            dgvRecordEditing.DataSource = Baby.ToList();
 
-            //データの設定
-            dgvRecordEditing.Rows.Add("ミルク",0);
-            dgvRecordEditing.Rows.Add("オムツ",1);
-            dgvRecordEditing.Rows.Add("体重・体温",2);
+            //各列幅の指定
+            dgvRecordEditing.Columns[0].Width = 40;
+            dgvRecordEditing.Columns[1].Width = 70;
+            dgvRecordEditing.Columns[2].Width = 70;
+            dgvRecordEditing.Columns[3].Width = 60;
+            dgvRecordEditing.Columns[4].Width = 60;
+            dgvRecordEditing.Columns[5].Width = 70;
+            dgvRecordEditing.Columns[6].Width = 60;
+            dgvRecordEditing.Columns[7].Width = 60;
+            dgvRecordEditing.Columns[8].Width = 100;
+
+            ////ヘッダーの設定
+            //dgvRecordEditing.Columns[0].HeaderText = "ID";
+            //dgvRecordEditing.Columns[1].HeaderText = "表示";
+            //dgvRecordEditing.Columns[2].HeaderText = "種類";
+            //dgvRecordEditing.Columns[3].HeaderText = "体重";
+            //dgvRecordEditing.Columns[4].HeaderText = "体温";
+            //dgvRecordEditing.Columns[5].HeaderText = "日付";
+            //dgvRecordEditing.Columns[6].HeaderText = "時間";
+            //dgvRecordEditing.Columns[7].HeaderText = "分";
+            //dgvRecordEditing.Columns[8].HeaderText = "コメント";
+
+            dgvRecordEditing.Refresh();
         }
 
         ///////////////////////////////
