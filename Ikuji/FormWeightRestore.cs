@@ -40,9 +40,9 @@ namespace Ikuji
 
             babyYearAndMonth = dtpMonthDay.Text;
 
-            babyWeight = int.Parse(txbWeight.Text);
+            /*babyWeight = int.Parse(txbWeight.Text);
 
-            babyTemperature = double.Parse(txbTemperature.Text);
+            babyTemperature = double.Parse(txbTemperature.Text);*/
 
             babyComment = txbComment.Text;
 
@@ -69,7 +69,7 @@ namespace Ikuji
         private bool GetVaildDataBabyRestore()
         {
             //もしもtxbWeightがnullでtxbTemperatureもnullのとき⇒MessageBoxでエラーを表示しfalseを返す
-            if(txbWeight.Text == null && txbTemperature.Text == null)
+            if(txbWeight.Text == String.Empty && txbTemperature.Text == String.Empty)
                 {
                       MessageBox.Show("エラー");
                       return false;
