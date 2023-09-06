@@ -11,29 +11,30 @@ namespace Ikuji
 {
     class SideRoundButton : Button
     {
-        private static int num = 0;
-
-        public void number(int colorcount)
+        public SideRoundButton(int num)
         {
-            num = colorcount;
+            InitializeButton(num);
         }
 
-        protected override void OnPaint(PaintEventArgs pevent)
+        private void InitializeButton(int num)
         {
-            //型の宣言
-            float x = 0.0f;
-            float y = 0.0f;
-            float w = ClientSize.Width;
-            float h = ClientSize.Height;
-            GraphicsPath graphics = new GraphicsPath();
+            this.Paint += (sender, e) =>
+            {
+                using (GraphicsPath path = new GraphicsPath())
+                {
+                    int radius = 15; // 角丸の半径を設定
+                    Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
 
+                    path.AddArc(rect.X, rect.Y, radius * 2, radius * 2, 180, 90); // 左上の角
+                    path.AddArc(rect.X + rect.Width - 2 * radius, rect.Y, radius * 2, radius * 2, 270, 90); // 右上の角
+                    path.AddArc(rect.X + rect.Width - 2 * radius, rect.Y + rect.Height - 2 * radius, radius * 2, radius * 2, 0, 90); // 右下の角
+                    path.AddArc(rect.X, rect.Y + rect.Height - 2 * radius, radius * 2, radius * 2, 90, 90); // 左下の角
+                    path.CloseAllFigures();
 
-            //丸みをつける設定
-            graphics.StartFigure();
-            graphics.AddArc(x, y, h, h, 90.0f, 180.0f);
-            graphics.AddArc(w - h, y, h, h, 270.0f, 180.0f);
-            graphics.CloseFigure();
-            this.Region = new System.Drawing.Region(graphics);
+                    this.Region = new Region(path);
+                }
+            };
+
             Size = new System.Drawing.Size(100, 40);
 
             FlatStyle = FlatStyle.Flat;
@@ -73,7 +74,9 @@ namespace Ikuji
             //FlatAppearance.MouseDownBackColor = System.Drawing.Color.Pink;
             //マウスを乗せたときの色
             //FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(232)))), ((int)(((byte)(197)))));
-            base.OnPaint(pevent);
+            
         }
+
+        
     }
 }
