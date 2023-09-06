@@ -104,6 +104,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sideroundbutton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="FormBabyRestore.resx">
       <DependentUpon>FormBabyRestore.cs</DependentUpon>
     </EmbeddedResource>

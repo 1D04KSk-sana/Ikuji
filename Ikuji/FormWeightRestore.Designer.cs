@@ -39,10 +39,10 @@
             // btnReturn
             // 
             this.btnReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(201)))), ((int)(((byte)(232)))));
-            this.btnReturn.Location = new System.Drawing.Point(9, 10);
-            this.btnReturn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnReturn.Location = new System.Drawing.Point(27, 19);
+            this.btnReturn.Margin = new System.Windows.Forms.Padding(2);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(67, 21);
+            this.btnReturn.Size = new System.Drawing.Size(63, 30);
             this.btnReturn.TabIndex = 0;
             this.btnReturn.Text = "戻る";
             this.btnReturn.UseVisualStyleBackColor = false;
@@ -50,7 +50,7 @@
             // 
             // dtpMonthDay
             // 
-            this.dtpMonthDay.Location = new System.Drawing.Point(99, 12);
+            this.dtpMonthDay.Location = new System.Drawing.Point(130, 19);
             this.dtpMonthDay.Name = "dtpMonthDay";
             this.dtpMonthDay.Size = new System.Drawing.Size(87, 19);
             this.dtpMonthDay.TabIndex = 4;
@@ -71,17 +71,18 @@
             // 
             // btnRestore
             // 
-            this.btnRestore.Location = new System.Drawing.Point(27, 272);
+            this.btnRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(195)))), ((int)(((byte)(255)))));
+            this.btnRestore.Location = new System.Drawing.Point(27, 293);
             this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(180, 25);
+            this.btnRestore.Size = new System.Drawing.Size(120, 49);
             this.btnRestore.TabIndex = 8;
             this.btnRestore.Text = "登録ボタン";
-            this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.UseVisualStyleBackColor = false;
             this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // txbComment
             // 
-            this.txbComment.Location = new System.Drawing.Point(294, 275);
+            this.txbComment.Location = new System.Drawing.Point(297, 293);
             this.txbComment.Name = "txbComment";
             this.txbComment.Size = new System.Drawing.Size(240, 19);
             this.txbComment.TabIndex = 9;
@@ -98,7 +99,7 @@
             this.Controls.Add(this.txbWeight);
             this.Controls.Add(this.dtpMonthDay);
             this.Controls.Add(this.btnReturn);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormWeightRestore";
             this.Text = "FormWeightRestore";
             this.ResumeLayout(false);

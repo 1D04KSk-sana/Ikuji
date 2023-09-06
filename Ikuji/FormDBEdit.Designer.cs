@@ -40,10 +40,10 @@
             // btnReturn
             // 
             this.btnReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(201)))), ((int)(((byte)(232)))));
-            this.btnReturn.Location = new System.Drawing.Point(9, 10);
-            this.btnReturn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnReturn.Location = new System.Drawing.Point(27, 19);
+            this.btnReturn.Margin = new System.Windows.Forms.Padding(2);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(56, 18);
+            this.btnReturn.Size = new System.Drawing.Size(63, 30);
             this.btnReturn.TabIndex = 1;
             this.btnReturn.Text = "戻る";
             this.btnReturn.UseVisualStyleBackColor = false;
@@ -51,7 +51,7 @@
             // 
             // dtpMonthDay
             // 
-            this.dtpMonthDay.Location = new System.Drawing.Point(87, 12);
+            this.dtpMonthDay.Location = new System.Drawing.Point(130, 19);
             this.dtpMonthDay.Name = "dtpMonthDay";
             this.dtpMonthDay.Size = new System.Drawing.Size(87, 19);
             this.dtpMonthDay.TabIndex = 3;
@@ -64,7 +64,7 @@
             "オムツ",
             "体重",
             "体温"});
-            this.cmbViewChange.Location = new System.Drawing.Point(12, 57);
+            this.cmbViewChange.Location = new System.Drawing.Point(27, 58);
             this.cmbViewChange.Name = "cmbViewChange";
             this.cmbViewChange.Size = new System.Drawing.Size(71, 20);
             this.cmbViewChange.TabIndex = 4;
@@ -83,7 +83,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(89, 57);
+            this.btnDelete.Location = new System.Drawing.Point(118, 57);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 20);
             this.btnDelete.TabIndex = 6;
@@ -92,7 +92,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(170, 57);
+            this.btnUpdate.Location = new System.Drawing.Point(213, 57);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 20);
             this.btnUpdate.TabIndex = 7;
@@ -111,7 +111,7 @@
             this.Controls.Add(this.cmbViewChange);
             this.Controls.Add(this.dtpMonthDay);
             this.Controls.Add(this.btnReturn);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormDBEdit";
             this.Text = "FormDBEdit";
             this.Load += new System.EventHandler(this.FormDBEdit_Load);

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnReturn = new System.Windows.Forms.Button();
             this.dtpMonthDay = new System.Windows.Forms.DateTimePicker();
             this.cmbGraphChange = new System.Windows.Forms.ComboBox();
@@ -41,10 +41,10 @@
             // btnReturn
             // 
             this.btnReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(201)))), ((int)(((byte)(232)))));
-            this.btnReturn.Location = new System.Drawing.Point(9, 10);
+            this.btnReturn.Location = new System.Drawing.Point(27, 19);
             this.btnReturn.Margin = new System.Windows.Forms.Padding(2);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(56, 18);
+            this.btnReturn.Size = new System.Drawing.Size(63, 30);
             this.btnReturn.TabIndex = 1;
             this.btnReturn.Text = "戻る";
             this.btnReturn.UseVisualStyleBackColor = false;
@@ -52,7 +52,7 @@
             // 
             // dtpMonthDay
             // 
-            this.dtpMonthDay.Location = new System.Drawing.Point(91, 12);
+            this.dtpMonthDay.Location = new System.Drawing.Point(130, 19);
             this.dtpMonthDay.Name = "dtpMonthDay";
             this.dtpMonthDay.Size = new System.Drawing.Size(87, 19);
             this.dtpMonthDay.TabIndex = 4;
@@ -60,7 +60,7 @@
             // cmbGraphChange
             // 
             this.cmbGraphChange.FormattingEnabled = true;
-            this.cmbGraphChange.Location = new System.Drawing.Point(213, 10);
+            this.cmbGraphChange.Location = new System.Drawing.Point(239, 18);
             this.cmbGraphChange.Name = "cmbGraphChange";
             this.cmbGraphChange.Size = new System.Drawing.Size(71, 20);
             this.cmbGraphChange.TabIndex = 5;
@@ -68,18 +68,18 @@
             // 
             // grfHistory
             // 
-            chartArea1.Name = "ChartArea1";
-            this.grfHistory.ChartAreas.Add(chartArea1);
+            chartArea4.Name = "ChartArea1";
+            this.grfHistory.ChartAreas.Add(chartArea4);
             this.grfHistory.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            legend1.Name = "Legend1";
-            this.grfHistory.Legends.Add(legend1);
+            legend4.Name = "Legend1";
+            this.grfHistory.Legends.Add(legend4);
             this.grfHistory.Location = new System.Drawing.Point(39, 102);
             this.grfHistory.Margin = new System.Windows.Forms.Padding(5);
             this.grfHistory.Name = "grfHistory";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.grfHistory.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.grfHistory.Series.Add(series4);
             this.grfHistory.Size = new System.Drawing.Size(894, 450);
             this.grfHistory.TabIndex = 6;
             this.grfHistory.Text = "chart1";
