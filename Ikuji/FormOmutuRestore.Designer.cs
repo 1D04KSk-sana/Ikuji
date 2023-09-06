@@ -61,6 +61,7 @@
             // 
             // cmbHour
             // 
+            this.cmbHour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbHour.FormattingEnabled = true;
             this.cmbHour.Items.AddRange(new object[] {
             "0",
@@ -95,6 +96,7 @@
             // 
             // cmbMinit
             // 
+            this.cmbMinit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMinit.FormattingEnabled = true;
             this.cmbMinit.Items.AddRange(new object[] {
             "0",
@@ -178,7 +180,7 @@
             this.rdbOsikko.Location = new System.Drawing.Point(47, 145);
             this.rdbOsikko.Margin = new System.Windows.Forms.Padding(4);
             this.rdbOsikko.Name = "rdbOsikko";
-            this.rdbOsikko.Size = new System.Drawing.Size(103, 19);
+            this.rdbOsikko.Size = new System.Drawing.Size(85, 16);
             this.rdbOsikko.TabIndex = 1;
             this.rdbOsikko.TabStop = true;
             this.rdbOsikko.Text = "おしっこボタン";
@@ -228,6 +230,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormOmutuRestore";
             this.Text = "FormOmutuRestore";
+            this.Load += new System.EventHandler(this.FormOmutuRestore_Load);
             this.pnlUntiOsikko.ResumeLayout(false);
             this.pnlUntiOsikko.PerformLayout();
             this.ResumeLayout(false);

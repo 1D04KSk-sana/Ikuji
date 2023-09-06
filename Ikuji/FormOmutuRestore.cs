@@ -126,5 +126,12 @@ namespace Ikuji
                 BabyComment = omutuComment,
             };
         }
+
+        private void FormOmutuRestore_Load(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            cmbHour.Text = dt.Hour.ToString();
+            cmbMinit.Text = dt.Minute.ToString();
+        }
     }
 }
