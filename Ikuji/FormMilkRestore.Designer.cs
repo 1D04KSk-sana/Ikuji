@@ -227,6 +227,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMilkRestore";
             this.Text = "FormMilk";
+            this.Load += new System.EventHandler(this.FormMilkRestore_Load);
             this.pnlMilkBonyu.ResumeLayout(false);
             this.pnlMilkBonyu.PerformLayout();
             this.ResumeLayout(false);
