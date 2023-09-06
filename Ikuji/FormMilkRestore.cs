@@ -68,7 +68,7 @@ namespace Ikuji
             //もしもrdbMilkがチェックされてなくて、かつrdbBonyuがチェックされてないとき⇒MessageBoxでエラーを表示しfalseを返す
             if(rdbMilk.Checked == false && rdbBonyu.Checked == false) 
             {
-                MessageBox.Show("エラー");
+                MessageBox.Show("母乳か粉ミルクか選択してください","エラー",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return false;
             }
 

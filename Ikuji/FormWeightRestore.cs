@@ -71,7 +71,7 @@ namespace Ikuji
             //もしもtxbWeightがnullでtxbTemperatureもnullのとき⇒MessageBoxでエラーを表示しfalseを返す
             if(txbWeight.Text == String.Empty && txbTemperature.Text == String.Empty)
                 {
-                      MessageBox.Show("エラー");
+                MessageBox.Show("体重か体温を入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
                       return false;
                 }
 

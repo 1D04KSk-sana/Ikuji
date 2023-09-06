@@ -68,7 +68,7 @@ namespace Ikuji
             //もしもrdbOsikkoがチェックされてなくて、かつrdbUntiがチェックされてないとき⇒MessageBoxでエラーを表示しfalseを返す
             if(rdbOsikko.Checked == false && rdbUnti.Checked == false) 
             {
-                MessageBox.Show("エラー");
+                MessageBox.Show("うんちかおしっこか選択してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
                 return false;
             }
 
