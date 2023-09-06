@@ -41,24 +41,44 @@ namespace Ikuji
             ControlCreateCommon();
 
             //選択された行の1列目がミルクのとき
-            if (dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == "ミルク")
+            if (dgvRecordEditing[1, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == "ミルク")
             {
                 ControlCreateCommonTime();
                 ControlCreateOmutuMilk("粉ミルク", "母乳");
             }
 
             //選択された行の1列目がオムツのとき
-            if (dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == "オムツ")
+            if (dgvRecordEditing[1, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == "オムツ")
             {
                 ControlCreateCommonTime();
                 ControlCreateOmutuMilk("うんち", "おしっこ");
             }
 
             //選択された行の1列目がミルクのとき
-            if (dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == "体重・体温")
+            if (dgvRecordEditing[1, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == "体重・体温")
             {
                 ControlCreateWeight();
             }
+
+            GenerateDataAtSelect(dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString());
+        }
+
+        ///////////////////////////////
+        //メソッド名：GenerateDataAtSelect()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：赤ちゃん情報の取得
+        ///////////////////////////////
+        private void GenerateDataAtSelect(string strBabyMain)
+        {
+            Baby baby = new Baby()
+            {
+                BabyMain = strBabyMain,
+            };
+            Baby = babyDBConnections.GetBabyData(baby);
+
+            dgvRecordEditing.DataSource = Baby;
+            dgvRecordEditing.Refresh();
         }
 
         ///////////////////////////////
@@ -112,17 +132,6 @@ namespace Ikuji
             dgvRecordEditing.Columns[6].Width = 60;
             dgvRecordEditing.Columns[7].Width = 60;
             dgvRecordEditing.Columns[8].Width = 100;
-
-            ////ヘッダーの設定
-            //dgvRecordEditing.Columns[0].HeaderText = "ID";
-            //dgvRecordEditing.Columns[1].HeaderText = "表示";
-            //dgvRecordEditing.Columns[2].HeaderText = "種類";
-            //dgvRecordEditing.Columns[3].HeaderText = "体重";
-            //dgvRecordEditing.Columns[4].HeaderText = "体温";
-            //dgvRecordEditing.Columns[5].HeaderText = "日付";
-            //dgvRecordEditing.Columns[6].HeaderText = "時間";
-            //dgvRecordEditing.Columns[7].HeaderText = "分";
-            //dgvRecordEditing.Columns[8].HeaderText = "コメント";
 
             dgvRecordEditing.Refresh();
         }

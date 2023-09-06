@@ -36,8 +36,8 @@ namespace Ikuji
         ///////////////////////////////
         //メソッド名：GetBabyData()
         //引　数   ：なし
-        //戻り値   ：部署データ
-        //機　能   ：部署データの取得
+        //戻り値   ：赤ちゃんデータリスト
+        //機　能   ：赤ちゃんデータの取得
         ///////////////////////////////
         public List<Baby> GetBabyData()
         {
@@ -45,6 +45,23 @@ namespace Ikuji
 
             var context = new BabyContext();
             baby = context.Babys.ToList();
+            context.Dispose();
+
+            return baby;
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetBabyData()  オーバーロード
+        //引　数   ：検索条件
+        //戻り値   ：赤ちゃんデータリスト
+        //機　能   ：赤ちゃんデータの取得
+        ///////////////////////////////
+        public List<Baby> GetBabyData(Baby babyCondition)
+        {
+            List<Baby> baby = new List<Baby>();
+
+            var context = new BabyContext();
+            baby = context.Babys.Where(x => x.BabyMain.Contains(babyCondition.BabyMain)).ToList();
             context.Dispose();
 
             return baby;

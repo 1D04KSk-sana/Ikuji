@@ -58,6 +58,11 @@
             // cmbViewChange
             // 
             this.cmbViewChange.FormattingEnabled = true;
+            this.cmbViewChange.Items.AddRange(new object[] {
+            "ミルク",
+            "オムツ",
+            "体重",
+            "体温"});
             this.cmbViewChange.Location = new System.Drawing.Point(16, 71);
             this.cmbViewChange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbViewChange.Name = "cmbViewChange";
@@ -67,12 +72,12 @@
             // dgvRecordEditing
             // 
             this.dgvRecordEditing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRecordEditing.Location = new System.Drawing.Point(12, 102);
+            this.dgvRecordEditing.Location = new System.Drawing.Point(12, 139);
             this.dgvRecordEditing.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvRecordEditing.Name = "dgvRecordEditing";
             this.dgvRecordEditing.RowHeadersWidth = 51;
             this.dgvRecordEditing.RowTemplate.Height = 21;
-            this.dgvRecordEditing.Size = new System.Drawing.Size(775, 335);
+            this.dgvRecordEditing.Size = new System.Drawing.Size(775, 298);
             this.dgvRecordEditing.TabIndex = 5;
             this.dgvRecordEditing.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecordEditing_CellClick);
             // 
