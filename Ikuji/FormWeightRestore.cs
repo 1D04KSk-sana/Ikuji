@@ -127,7 +127,7 @@ namespace Ikuji
         {
             return new Baby
             {
-                BabyMain = "ミルク",
+                BabyMain = "体重・体温",
                 BabySub = String.Empty,
                 BabyWeight = babyWeight,
                 BabyTemperature = babyTemperature,

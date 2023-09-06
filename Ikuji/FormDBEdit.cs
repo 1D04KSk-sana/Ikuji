@@ -60,7 +60,7 @@ namespace Ikuji
                 ControlCreateWeight();
             }
 
-            GenerateDataAtSelect(dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString());
+            GenerateDataAtSelect(dgvRecordEditing[1, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString());
         }
 
         ///////////////////////////////
@@ -275,6 +275,11 @@ namespace Ikuji
         private void btnReturn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cmbViewChange_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GenerateDataAtSelect(cmbViewChange.SelectedItem.ToString());
         }
     }
 }

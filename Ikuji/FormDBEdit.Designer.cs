@@ -68,6 +68,7 @@
             this.cmbViewChange.Name = "cmbViewChange";
             this.cmbViewChange.Size = new System.Drawing.Size(93, 23);
             this.cmbViewChange.TabIndex = 4;
+            this.cmbViewChange.SelectedIndexChanged += new System.EventHandler(this.cmbViewChange_SelectedIndexChanged);
             // 
             // dgvRecordEditing
             // 
