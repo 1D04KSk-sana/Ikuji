@@ -66,12 +66,19 @@ namespace Ikuji
         private bool GetVaildDataBabyRestore()
         {
             //もしもrdbOsikkoがチェックされてなくて、かつrdbUntiがチェックされてないとき⇒MessageBoxでエラーを表示しfalseを返す
-
+            if(rdbOsikko.Checked == false && rdbUnti.Checked == false) 
+            {
+                MessageBox.Show("エラー");
+                return false;
+            }
 
 
 
             //もしもtxbCommentのisNullOrEmptyがfalseのとき⇒txbCommentのテキストの空白を消してomutuCommentに代入
-
+            if(String.IsNullOrEmpty(txbComment.Text) == false) 
+            {
+                omutuComment = txbComment.Text.Trim();
+            }
 
 
 

@@ -44,9 +44,9 @@ namespace Ikuji
                 milkKind = rdbMilk.Text;
             }
             //母乳がチェックされているとき
-            if (rbdBonyu.Checked )
+            if (rdbBonyu.Checked )
             {
-                milkKind = rbdBonyu.Text;
+                milkKind = rdbBonyu.Text;
             }
 
             //赤ちゃん情報のセット
@@ -66,12 +66,19 @@ namespace Ikuji
         private bool GetVaildDataBabyRestore()
         {
             //もしもrdbMilkがチェックされてなくて、かつrdbBonyuがチェックされてないとき⇒MessageBoxでエラーを表示しfalseを返す
-
+            if(rdbMilk.Checked == false && rdbBonyu.Checked == false) 
+            {
+                MessageBox.Show("エラー");
+                return false;
+            }
 
 
 
             //もしもtxbCommentのisNullOrEmptyがfalseのとき⇒txbCommentのテキストの空白を消してmilkCommentに代入
-
+            if(String.IsNullOrEmpty(rdbMilk.Text) == false) 
+            {
+                milkComment = txbComment.Text.Trim();
+            }
 
 
 

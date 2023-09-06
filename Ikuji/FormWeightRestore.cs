@@ -32,7 +32,9 @@ namespace Ikuji
 
         private void btnRestore_Click(object sender, EventArgs e)
         {
-            int babyWeight, babyTemperature;
+            int babyWeight;
+
+            double babyTemperature;
 
             string babyYearAndMonth,babyComment;
 
@@ -40,7 +42,7 @@ namespace Ikuji
 
             babyWeight = int.Parse(txbWeight.Text);
 
-            babyTemperature = int.Parse(txbTemperature.Text);
+            babyTemperature = double.Parse(txbTemperature.Text);
 
             babyComment = txbComment.Text;
 
@@ -67,22 +69,34 @@ namespace Ikuji
         private bool GetVaildDataBabyRestore()
         {
             //もしもtxbWeightがnullでtxbTemperatureもnullのとき⇒MessageBoxでエラーを表示しfalseを返す
-
-
+            if(txbWeight.Text == null && txbTemperature.Text == null)
+                {
+                      MessageBox.Show("エラー");
+                      return false;
+                }
 
 
             //もしもtxbWeightのisNullOrEmptyがfalseのとき⇒txbWeightのテキストの空白を消してint変換、babyWeightに代入
-
+            if(String.IsNullOrEmpty(txbWeight.Text) == false)
+            {
+                babyWeight = int.Parse(txbWeight.Text.Trim());
+            }
 
 
 
             //もしもtxbTemperatureのisNullOrEmptyがfalseのとき⇒txbTemperatureのテキストの空白を消してdouble変換、babyTemperatureに代入
-
+            if(String.IsNullOrEmpty(txbTemperature.Text) == false)
+            {
+                babyTemperature = double.Parse(txbTemperature.Text.Trim());
+            }
 
 
 
             //もしもtxbCommentのisNullOrEmptyがfalseのとき⇒txbCommentのテキストの空白を消してbabyCommentに代入
-
+            if (String.IsNullOrEmpty(txbComment.Text) == false)
+            {
+                babyComment = txbComment.Text.Trim();
+            }
 
 
 
