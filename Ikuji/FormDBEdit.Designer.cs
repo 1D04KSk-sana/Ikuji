@@ -52,7 +52,7 @@
             // dtpMonthDay
             // 
             this.dtpMonthDay.Location = new System.Drawing.Point(116, 15);
-            this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(4);
             this.dtpMonthDay.Name = "dtpMonthDay";
             this.dtpMonthDay.Size = new System.Drawing.Size(115, 22);
             this.dtpMonthDay.TabIndex = 3;
@@ -64,10 +64,9 @@
             "全部",
             "ミルク",
             "オムツ",
-            "体重",
-            "体温"});
+            "体重・体温"});
             this.cmbViewChange.Location = new System.Drawing.Point(16, 71);
-            this.cmbViewChange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbViewChange.Margin = new System.Windows.Forms.Padding(4);
             this.cmbViewChange.Name = "cmbViewChange";
             this.cmbViewChange.Size = new System.Drawing.Size(93, 23);
             this.cmbViewChange.TabIndex = 4;
@@ -77,7 +76,7 @@
             // 
             this.dgvRecordEditing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRecordEditing.Location = new System.Drawing.Point(12, 139);
-            this.dgvRecordEditing.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvRecordEditing.Margin = new System.Windows.Forms.Padding(4);
             this.dgvRecordEditing.Name = "dgvRecordEditing";
             this.dgvRecordEditing.RowHeadersWidth = 51;
             this.dgvRecordEditing.RowTemplate.Height = 21;
@@ -88,7 +87,7 @@
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(119, 71);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 25);
             this.btnDelete.TabIndex = 6;
@@ -98,7 +97,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Location = new System.Drawing.Point(227, 71);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 25);
             this.btnUpdate.TabIndex = 7;

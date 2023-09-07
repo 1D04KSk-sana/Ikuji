@@ -26,12 +26,12 @@ namespace Ikuji
         //データグリッドビュー用の赤ちゃんデータ
         private static List<Baby> Baby;
 
+        private static int ControlNumber = 0;
+
         private void FormDBEdit_Load(object sender, EventArgs e)
         {
-            GetdgvRecordEditingView();
-
-            dgvRecordEditing.ClearSelection();
-
+            //cmbViewChangeを"全部"に
+            cmbViewChange.SelectedIndex = 0;
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -41,19 +41,49 @@ namespace Ikuji
 
         private void cmbViewChange_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GenerateDataAtSelect(cmbViewChange.SelectedItem.ToString());
+            //cmbViewChangeが"全部"のとき
+            if (cmbViewChange.SelectedIndex == 0)
+            {
+                GetdgvRecordEditingView();
+            }
+            //cmbViewChangeが"全部"以外のとき
+            if (cmbViewChange.SelectedIndex != 0)
+            {
+                GenerateDataAtSelect(cmbViewChange.SelectedItem.ToString());
+            }
 
             dgvRecordEditing.ClearSelection();
 
+            //動的に生成されたパネルを削除
+            this.Controls.Remove(pnlDynamic);
+
+            ControlNumber = 0;
         }
 
         private void dgvRecordEditing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //動的に生成されたパネル内のコントロールを削除
-            pnlDynamic.Controls.Clear();
+            if (ControlNumber == 0)
+            {
+                ControlCreateCommon();
+                ControlNumber = 1;
+            }
+            if (ControlNumber == 1)
+            {
+                //動的に生成されたパネル内のコントロールを削除
+                pnlDynamic.Controls.Clear();
+            }
 
-            ControlCreateCommon();
+            SelectRowControl();
+        }
 
+        ///////////////////////////////
+        //メソッド名：SelectRowControl()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：選択された行に対してのコントロールの変更
+        ///////////////////////////////
+        private void SelectRowControl()
+        {
             //選択された行の1列目がミルクのとき
             if (dgvRecordEditing[1, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == "ミルク")
             {
@@ -79,7 +109,7 @@ namespace Ikuji
         //メソッド名：GenerateDataAtSelect()
         //引　数   ：なし
         //戻り値   ：なし
-        //機　能   ：赤ちゃん情報の更新
+        //機　能   ：赤ちゃん情報の検索
         ///////////////////////////////
         private void GenerateDataAtSelect(string strBabyMain)
         {
