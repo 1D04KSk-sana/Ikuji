@@ -72,9 +72,9 @@ namespace Ikuji
 
         private void dgvRecordEditing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //クリックされたDataGridViewがヘッダーのとき
             if (dgvRecordEditing.SelectedCells.Count == 0)
             {
-                MessageBox.Show("aaa");
                 return;
             }
 
