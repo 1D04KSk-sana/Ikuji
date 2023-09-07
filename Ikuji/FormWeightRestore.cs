@@ -5,8 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using Microsoft.VisualBasic;
 
 namespace Ikuji
 {
@@ -19,6 +22,7 @@ namespace Ikuji
 
         //クラスの宣言
         BabyDBConnections babyDBConnections = new BabyDBConnections();
+        DataInputCheck dataInputCheck = new DataInputCheck();
 
         //変数の宣言
         int babyWeight = 0;
@@ -32,20 +36,6 @@ namespace Ikuji
 
         private void btnRestore_Click(object sender, EventArgs e)
         {
-            int babyWeight;
-
-            double babyTemperature;
-
-            string babyYearAndMonth,babyComment;
-
-            babyYearAndMonth = dtpMonthDay.Text;
-
-            /*babyWeight = int.Parse(txbWeight.Text);
-
-            babyTemperature = double.Parse(txbTemperature.Text);*/
-
-            babyComment = txbComment.Text;
-
             //GetVaildDataBabyRestoreからの戻り値がfalseのとき、メソッドを終了
             if (!GetVaildDataBabyRestore())
             {
@@ -69,36 +59,55 @@ namespace Ikuji
         private bool GetVaildDataBabyRestore()
         {
             //もしもtxbWeightがnullでtxbTemperatureもnullのとき⇒MessageBoxでエラーを表示しfalseを返す
-            if(txbWeight.Text == String.Empty && txbTemperature.Text == String.Empty)
-                {
+            if (txbWeight.Text == String.Empty && txbTemperature.Text == String.Empty)
+            {
                 MessageBox.Show("体重か体温を入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
-                      return false;
-                }
-
+                return false;
+            }
 
             //もしもtxbWeightのisNullOrEmptyがfalseのとき⇒txbWeightのテキストの空白を消してint変換、babyWeightに代入
-            if(String.IsNullOrEmpty(txbWeight.Text) == false)
+            if (!String.IsNullOrEmpty(txbWeight.Text))
             {
-                babyWeight = int.Parse(txbWeight.Text.Trim());
+                //一旦文字をstringに代入
+                string babyWeightString = txbWeight.Text.Trim();
+
+                //全角数字を半角数字に変換
+                babyWeightString = Regex.Replace(babyWeightString, "[０-９]", p => ((char)(p.Value[0] - '０' + '0')).ToString());
+
+                //数字チェック
+                if (!dataInputCheck.CheckNumeric(babyWeightString))
+                {
+                    MessageBox.Show("体温は数字で入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                babyWeight = int.Parse(babyWeightString);
             }
-
-
 
             //もしもtxbTemperatureのisNullOrEmptyがfalseのとき⇒txbTemperatureのテキストの空白を消してdouble変換、babyTemperatureに代入
-            if(String.IsNullOrEmpty(txbTemperature.Text) == false)
+            if (!String.IsNullOrEmpty(txbTemperature.Text))
             {
-                babyTemperature = double.Parse(txbTemperature.Text.Trim());
+                //一旦文字をstringに代入
+                string babyTemperatureString = txbWeight.Text.Trim();
+
+                //全角数字を半角数字に変換
+                babyTemperatureString = Regex.Replace(babyTemperatureString, "[０-９]", p => ((char)(p.Value[0] - '０' + '0')).ToString());
+
+                //数字チェック
+                if (!dataInputCheck.CheckNumeric(babyTemperatureString))
+                {
+                    MessageBox.Show("体温は数字で入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                
+                babyTemperature = int.Parse(babyTemperatureString);
             }
 
-
-
             //もしもtxbCommentのisNullOrEmptyがfalseのとき⇒txbCommentのテキストの空白を消してbabyCommentに代入
-            if (String.IsNullOrEmpty(txbComment.Text) == false)
+            if (!String.IsNullOrEmpty(txbComment.Text))
             {
                 babyComment = txbComment.Text.Trim();
             }
-
-
 
             return true;
         }
