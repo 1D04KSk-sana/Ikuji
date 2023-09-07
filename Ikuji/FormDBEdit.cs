@@ -52,6 +52,7 @@ namespace Ikuji
                 GenerateDataAtSelect(cmbViewChange.SelectedItem.ToString());
             }
 
+            //DataGridViewのCheckを外す
             dgvRecordEditing.ClearSelection();
 
             //動的に生成されたパネルを削除
@@ -62,11 +63,14 @@ namespace Ikuji
 
         private void dgvRecordEditing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //ControlNumberが0 ＝ Controlが削除された状態のとき
             if (ControlNumber == 0)
             {
+                //動的に共通Controlを設置
                 ControlCreateCommon();
                 ControlNumber = 1;
             }
+            //ControlNumberが1 ＝ Controlが設置された状態のとき
             if (ControlNumber == 1)
             {
                 //動的に生成されたパネル内のコントロールを削除
