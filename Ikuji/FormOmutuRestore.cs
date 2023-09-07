@@ -66,14 +66,17 @@ namespace Ikuji
         private bool GetVaildDataBabyRestore()
         {
             //もしもrdbOsikkoがチェックされてなくて、かつrdbUntiがチェックされてないとき⇒MessageBoxでエラーを表示しfalseを返す
-
-
-
+            if(!rdbOsikko.Checked && !rdbUnti.Checked) 
+            {
+                MessageBox.Show("うんちかおしっこか選択してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
+                return false;
+            }
 
             //もしもtxbCommentのisNullOrEmptyがfalseのとき⇒txbCommentのテキストの空白を消してomutuCommentに代入
-
-
-
+            if(!String.IsNullOrEmpty(txbComment.Text)) 
+            {
+                omutuComment = txbComment.Text.Trim();
+            }
 
             return true;
         }
