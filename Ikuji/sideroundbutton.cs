@@ -16,25 +16,37 @@ namespace Ikuji
             InitializeButton(num);
         }
 
+        // 角丸の半径を定数として定義
+        private const int BorderRadius = 15;
+
         private void InitializeButton(int num)
         {
-            this.Paint += (sender, e) =>
+            Paint += (sender, e) =>
             {
                 using (GraphicsPath path = new GraphicsPath())
                 {
-                    int radius = 15; // 角丸の半径を設定
-                    Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
+                    Rectangle rectA = new Rectangle(0, 0, Width, Height);
 
-                    path.AddArc(rect.X, rect.Y, radius * 2, radius * 2, 180, 90); // 左上の角
-                    path.AddArc(rect.X + rect.Width - 2 * radius, rect.Y, radius * 2, radius * 2, 270, 90); // 右上の角
-                    path.AddArc(rect.X + rect.Width - 2 * radius, rect.Y + rect.Height - 2 * radius, radius * 2, radius * 2, 0, 90); // 右下の角
-                    path.AddArc(rect.X, rect.Y + rect.Height - 2 * radius, radius * 2, radius * 2, 90, 90); // 左下の角
-                    path.CloseAllFigures();
+                    // 角丸のパスを作成
+                    AddRoundedRectangle(path, rectA, 180, 90);
 
-                    this.Region = new Region(path);
+                    Region = new Region(path);
+                }
+
+                using (GraphicsPath borderPath = new GraphicsPath())
+                {
+                    Rectangle rect = new Rectangle(0, 0, Width - 1, Height - 1);
+
+                    // 枠線のパスを作成
+                    AddRoundedRectangle(borderPath, rect, 180, 90);
+
+                    // 枠線を描画
+                    using (Pen borderPen = new Pen(Color.White, 5))
+                    {
+                        e.Graphics.DrawPath(borderPen, borderPath);
+                    }
                 }
             };
-
             Size = new System.Drawing.Size(100, 40);
 
             FlatStyle = FlatStyle.Flat;
@@ -77,6 +89,14 @@ namespace Ikuji
             
         }
 
-        
+        // 角丸のパスを作成するメソッド
+        private void AddRoundedRectangle(GraphicsPath path, Rectangle rect, float startAngle, float sweepAngle)
+        {
+            path.AddArc(rect.X, rect.Y, BorderRadius * 2, BorderRadius * 2, startAngle, sweepAngle); // 左上の角
+            path.AddArc(rect.X + rect.Width - 2 * BorderRadius, rect.Y, BorderRadius * 2, BorderRadius * 2, startAngle + 90, sweepAngle); // 右上の角
+            path.AddArc(rect.X + rect.Width - 2 * BorderRadius, rect.Y + rect.Height - 2 * BorderRadius, BorderRadius * 2, BorderRadius * 2, startAngle + 180, sweepAngle); // 右下の角
+            path.AddArc(rect.X, rect.Y + rect.Height - 2 * BorderRadius, BorderRadius * 2, BorderRadius * 2, startAngle + 270, sweepAngle); // 左下の角
+            path.CloseAllFigures();
+        }
     }
 }
