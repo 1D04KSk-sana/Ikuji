@@ -63,6 +63,16 @@ namespace Ikuji
             GenerateDataAtSelect(dgvRecordEditing[1, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString());
         }
 
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cmbViewChange_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GenerateDataAtSelect(cmbViewChange.SelectedItem.ToString());
+        }
+
         ///////////////////////////////
         //メソッド名：GenerateDataAtSelect()
         //引　数   ：なし
@@ -93,7 +103,6 @@ namespace Ikuji
 
             SettingdgvRecordEditing();
         }
-
 
         ///////////////////////////////
         //メソッド名 : SettingdgvRecordEditing()
@@ -270,16 +279,6 @@ namespace Ikuji
             pnlDynamic.Controls.Add(lblWeight);
             pnlDynamic.Controls.Add(txbTemperature);
             pnlDynamic.Controls.Add(lblTemperature);
-        }
-
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void cmbViewChange_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GenerateDataAtSelect(cmbViewChange.SelectedItem.ToString());
         }
     }
 }

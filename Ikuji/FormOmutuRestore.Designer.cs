@@ -43,10 +43,10 @@
             // btnReturn
             // 
             this.btnReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(201)))), ((int)(((byte)(232)))));
-            this.btnReturn.Location = new System.Drawing.Point(9, 10);
+            this.btnReturn.Location = new System.Drawing.Point(27, 19);
             this.btnReturn.Margin = new System.Windows.Forms.Padding(2);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(56, 18);
+            this.btnReturn.Size = new System.Drawing.Size(63, 30);
             this.btnReturn.TabIndex = 1;
             this.btnReturn.Text = "戻る";
             this.btnReturn.UseVisualStyleBackColor = false;
@@ -54,7 +54,7 @@
             // 
             // dtpMonthDay
             // 
-            this.dtpMonthDay.Location = new System.Drawing.Point(111, 10);
+            this.dtpMonthDay.Location = new System.Drawing.Point(130, 19);
             this.dtpMonthDay.Name = "dtpMonthDay";
             this.dtpMonthDay.Size = new System.Drawing.Size(87, 19);
             this.dtpMonthDay.TabIndex = 3;
@@ -88,7 +88,7 @@
             "21",
             "22",
             "23"});
-            this.cmbHour.Location = new System.Drawing.Point(354, 12);
+            this.cmbHour.Location = new System.Drawing.Point(343, 19);
             this.cmbHour.Margin = new System.Windows.Forms.Padding(4);
             this.cmbHour.Name = "cmbHour";
             this.cmbHour.Size = new System.Drawing.Size(74, 20);
@@ -159,7 +159,7 @@
             "57",
             "58",
             "59"});
-            this.cmbMinit.Location = new System.Drawing.Point(463, 12);
+            this.cmbMinit.Location = new System.Drawing.Point(452, 18);
             this.cmbMinit.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMinit.Name = "cmbMinit";
             this.cmbMinit.Size = new System.Drawing.Size(74, 20);
@@ -177,7 +177,7 @@
             // rdbOsikko
             // 
             this.rdbOsikko.AutoSize = true;
-            this.rdbOsikko.Location = new System.Drawing.Point(47, 145);
+            this.rdbOsikko.Location = new System.Drawing.Point(35, 116);
             this.rdbOsikko.Margin = new System.Windows.Forms.Padding(4);
             this.rdbOsikko.Name = "rdbOsikko";
             this.rdbOsikko.Size = new System.Drawing.Size(85, 16);
@@ -199,17 +199,18 @@
             // 
             // btnRestore
             // 
-            this.btnRestore.Location = new System.Drawing.Point(29, 308);
+            this.btnRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(195)))), ((int)(((byte)(255)))));
+            this.btnRestore.Location = new System.Drawing.Point(27, 293);
             this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(180, 25);
+            this.btnRestore.Size = new System.Drawing.Size(120, 49);
             this.btnRestore.TabIndex = 7;
             this.btnRestore.Text = "登録ボタン";
-            this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.UseVisualStyleBackColor = false;
             this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // txbComment
             // 
-            this.txbComment.Location = new System.Drawing.Point(297, 308);
+            this.txbComment.Location = new System.Drawing.Point(286, 308);
             this.txbComment.Name = "txbComment";
             this.txbComment.Size = new System.Drawing.Size(240, 19);
             this.txbComment.TabIndex = 8;
