@@ -29,6 +29,9 @@ namespace Ikuji
         private void FormDBEdit_Load(object sender, EventArgs e)
         {
             GetdgvRecordEditingView();
+
+            dgvRecordEditing.ClearSelection();
+
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -39,6 +42,9 @@ namespace Ikuji
         private void cmbViewChange_SelectedIndexChanged(object sender, EventArgs e)
         {
             GenerateDataAtSelect(cmbViewChange.SelectedItem.ToString());
+
+            dgvRecordEditing.ClearSelection();
+
         }
 
         private void dgvRecordEditing_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -73,7 +79,7 @@ namespace Ikuji
         //メソッド名：GenerateDataAtSelect()
         //引　数   ：なし
         //戻り値   ：なし
-        //機　能   ：赤ちゃん情報の取得
+        //機　能   ：赤ちゃん情報の更新
         ///////////////////////////////
         private void GenerateDataAtSelect(string strBabyMain)
         {
