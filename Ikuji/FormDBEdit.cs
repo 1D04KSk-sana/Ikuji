@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,14 +20,22 @@ namespace Ikuji
 
         //クラスの宣言
         BabyDBConnections babyDBConnections = new BabyDBConnections();
+        DataInputCheck dataInputCheck = new DataInputCheck();
 
         //コントロールの宣言　※メソッドをまたいで使いたいのでpublic
         public Panel pnlDynamic = new Panel();
-        
+        public TextBox txbWeight = new TextBox();
+        public TextBox txbTemperature = new TextBox();
+        public TextBox txbComment = new TextBox();
+
         //データグリッドビュー用の赤ちゃんデータ
         private static List<Baby> Baby;
 
-        private static int ControlNumber = 0;
+        //変数の宣言
+        int babyWeight = 0;
+        double babyTemperature = 0;
+        string babyComment = "";
+        int ControlNumber = 0;
 
         private void FormDBEdit_Load(object sender, EventArgs e)
         {
@@ -63,6 +72,12 @@ namespace Ikuji
 
         private void dgvRecordEditing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dgvRecordEditing.SelectedCells.Count == 0)
+            {
+                MessageBox.Show("aaa");
+                return;
+            }
+
             //ControlNumberが0 ＝ Controlが削除された状態のとき
             if (ControlNumber == 0)
             {
@@ -78,6 +93,97 @@ namespace Ikuji
             }
 
             SelectRowControl();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            bool flg = GetValidDataBaby();
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetValidDataBaby()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataBaby()
+        {
+            //選択された行の1列目が体重・体温のとき
+            if (dgvRecordEditing[1, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == "体重・体温")
+            {
+                if (!GetValidDataBabyWeight())
+                {
+                    return false;
+                }
+            }
+
+            //もしもtxbCommentのisNullOrEmptyがfalseのとき⇒txbCommentのテキストの空白を消してbabyCommentに代入
+            if (!String.IsNullOrEmpty(txbComment.Text))
+            {
+                babyComment = txbComment.Text.Trim();
+            }
+
+            return true;
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetValidDataBabyWeight()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataBabyWeight()
+        {
+            //もしもtxbWeightがnullでtxbTemperatureもnullのとき⇒MessageBoxでエラーを表示しfalseを返す
+            if (txbWeight.Text == String.Empty && txbTemperature.Text == String.Empty)
+            {
+                MessageBox.Show("体重か体温を入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
+                return false;
+            }
+
+            //もしもtxbWeightのisNullOrEmptyがfalseのとき⇒txbWeightのテキストの空白を消してint変換、babyWeightに代入
+            if (!String.IsNullOrEmpty(txbWeight.Text))
+            {
+                //一旦文字をstringに代入
+                string babyWeightString = txbWeight.Text.Trim();
+
+                //全角数字を半角数字に変換
+                babyWeightString = Regex.Replace(babyWeightString, "[０-９]", p => ((char)(p.Value[0] - '０' + '0')).ToString());
+
+                //数字チェック
+                if (!dataInputCheck.CheckNumeric(babyWeightString))
+                {
+                    MessageBox.Show("体温は数字で入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                babyWeight = int.Parse(babyWeightString);
+            }
+
+            //もしもtxbTemperatureのisNullOrEmptyがfalseのとき⇒txbTemperatureのテキストの空白を消してdouble変換、babyTemperatureに代入
+            if (!String.IsNullOrEmpty(txbTemperature.Text))
+            {
+                //一旦文字をstringに代入
+                string babyTemperatureString = txbWeight.Text.Trim();
+
+                //全角数字を半角数字に変換
+                babyTemperatureString = Regex.Replace(babyTemperatureString, "[０-９]", p => ((char)(p.Value[0] - '０' + '0')).ToString());
+
+                //数字チェック
+                if (!dataInputCheck.CheckNumeric(babyTemperatureString))
+                {
+                    MessageBox.Show("体温は数字で入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                babyTemperature = int.Parse(babyTemperatureString);
+            }
+
+            return true;
         }
 
         ///////////////////////////////
@@ -102,7 +208,7 @@ namespace Ikuji
                 ControlCreateOmutuMilk("うんち", "おしっこ");
             }
 
-            //選択された行の1列目がミルクのとき
+            //選択された行の1列目が体重・体温のとき
             if (dgvRecordEditing[1, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == "体重・体温")
             {
                 ControlCreateWeight();
@@ -199,12 +305,11 @@ namespace Ikuji
             //Addで設置　※this＝このフォームのこと
             this.Controls.Add(pnlDynamic);
 
-            TextBox txbComment = new TextBox();
-
             //配置位置の設定
             txbComment.Location = new Point(10, 80);
             //サイズの設定
             txbComment.Size = new Size(200, 30);
+
             txbComment.Text = dgvRecordEditing[8, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString();
 
             //Addで配置　※pnlDynamicにAddしてるのでパネル内に設置される。
@@ -299,6 +404,7 @@ namespace Ikuji
                 rdbDown.Checked = true;
             }
 
+
             //Addで配置　※pnlMilkにAddしてるのでパネル内に設置される。
             pnlCommon.Controls.Add(rdbUp);
             pnlCommon.Controls.Add(rdbDown);
@@ -312,13 +418,10 @@ namespace Ikuji
         ///////////////////////////////
         private void ControlCreateWeight()
         {
-            TextBox txbWeight = new TextBox();
-            TextBox txbTemperature = new TextBox();
-
             txbWeight.Location = new Point(50, 10);
-            txbWeight.Text = dgvRecordEditing[3, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString();
-
             txbTemperature.Location = new Point(50, 40);
+
+            txbWeight.Text = dgvRecordEditing[3, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString();
             txbTemperature.Text = dgvRecordEditing[4, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString();
 
             Label lblWeight = new Label();
