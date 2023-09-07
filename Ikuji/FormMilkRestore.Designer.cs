@@ -183,7 +183,7 @@
             this.rdbBonyu.Size = new System.Drawing.Size(91, 19);
             this.rdbBonyu.TabIndex = 1;
             this.rdbBonyu.TabStop = true;
-            this.rdbBonyu.Text = "母乳ボタン";
+            this.rdbBonyu.Text = "母乳";
             this.rdbBonyu.UseVisualStyleBackColor = true;
             // 
             // rdbMilk
@@ -195,7 +195,7 @@
             this.rdbMilk.Size = new System.Drawing.Size(107, 19);
             this.rdbMilk.TabIndex = 0;
             this.rdbMilk.TabStop = true;
-            this.rdbMilk.Text = "粉ミルクボタン";
+            this.rdbMilk.Text = "粉ミルク";
             this.rdbMilk.UseVisualStyleBackColor = true;
             // 
             // btnRestore

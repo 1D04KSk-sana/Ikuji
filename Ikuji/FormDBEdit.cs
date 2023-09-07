@@ -20,9 +20,9 @@ namespace Ikuji
         //クラスの宣言
         BabyDBConnections babyDBConnections = new BabyDBConnections();
 
-        //パネルの宣言　※メソッドをまたいで使いたいのでpublic
+        //コントロールの宣言　※メソッドをまたいで使いたいのでpublic
         public Panel pnlDynamic = new Panel();
-
+        
         //データグリッドビュー用の赤ちゃんデータ
         private static List<Baby> Baby;
 
@@ -31,12 +31,20 @@ namespace Ikuji
             GetdgvRecordEditingView();
         }
 
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cmbViewChange_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GenerateDataAtSelect(cmbViewChange.SelectedItem.ToString());
+        }
+
         private void dgvRecordEditing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //動的に生成されたパネル内のコントロールを削除
             pnlDynamic.Controls.Clear();
-            //this＝このフォームからRemoveでパネルを削除
-            //this.Controls.Remove(pnlDynamic);
 
             ControlCreateCommon();
 
@@ -59,8 +67,6 @@ namespace Ikuji
             {
                 ControlCreateWeight();
             }
-
-            GenerateDataAtSelect(dgvRecordEditing[1, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString());
         }
 
         ///////////////////////////////
@@ -93,7 +99,6 @@ namespace Ikuji
 
             SettingdgvRecordEditing();
         }
-
 
         ///////////////////////////////
         //メソッド名 : SettingdgvRecordEditing()
@@ -154,13 +159,13 @@ namespace Ikuji
             //Addで設置　※this＝このフォームのこと
             this.Controls.Add(pnlDynamic);
 
-            //テキストボックスの宣言
             TextBox txbComment = new TextBox();
 
             //配置位置の設定
-            txbComment.Location = new Point(10, 130);
+            txbComment.Location = new Point(10, 80);
             //サイズの設定
             txbComment.Size = new Size(200, 30);
+            txbComment.Text = dgvRecordEditing[8, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString();
 
             //Addで配置　※pnlDynamicにAddしてるのでパネル内に設置される。
             pnlDynamic.Controls.Add(txbComment);
@@ -174,21 +179,36 @@ namespace Ikuji
         ///////////////////////////////
         private void ControlCreateCommonTime()
         {
-            //コンボボックスの宣言
             ComboBox cmbHour = new ComboBox();
+            ComboBox cmbMinit = new ComboBox();
 
             //配置位置の設定
             cmbHour.Location = new Point(10, 10);
             //サイズの設定
             cmbHour.Size = new Size(80, 30);
 
-            //コンボボックスの宣言
-            ComboBox cmbMinit = new ComboBox();
+            string[] arrayHour = new string[24];
+            for (int i = 0; i < arrayHour.Length; i++)
+            {
+                arrayHour[i] = i.ToString();
+            }
+            cmbHour.Items.AddRange(arrayHour);
+
+            cmbHour.SelectedIndex = int.Parse(dgvRecordEditing[6, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString());
 
             //配置位置の設定
             cmbMinit.Location = new Point(100, 10);
             //サイズの設定
             cmbMinit.Size = new Size(80, 30);
+
+            string[] arrayMinit = new string[60];
+            for (int i = 0; i < arrayMinit.Length; i++)
+            {
+                arrayMinit[i] = i.ToString();
+            }
+            cmbMinit.Items.AddRange(arrayMinit);
+
+            cmbMinit.SelectedIndex = int.Parse(dgvRecordEditing[7, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString());
 
             //Addで配置　※pnlDynamicにAddしてるのでパネル内に設置される。
             pnlDynamic.Controls.Add(cmbHour);
@@ -212,26 +232,32 @@ namespace Ikuji
             //配置位置の設定
             pnlCommon.Location = new Point(10, 40);
             //サイズの設定
-            pnlCommon.Size = new Size(150, 80);
+            pnlCommon.Size = new Size(300, 30);
 
             //Addで配置　※pnlDynamicにAddしてるのでパネル内に設置される。
             pnlDynamic.Controls.Add(pnlCommon);
 
-            //ラヂオボタンの宣言
+            RadioButton rdbDown = new RadioButton();
             RadioButton rdbUp = new RadioButton();
 
             //配置位置の設定
-            rdbUp.Location = new Point(10, 10);
+            rdbUp.Location = new Point(10, 5);
             //テキストの設定
             rdbUp.Text = upName;
 
-            //ラヂオボタンの宣言
-            RadioButton rdbDown = new RadioButton();
-
             //配置位置の設定
-            rdbDown.Location = new Point(10, 40);
+            rdbDown.Location = new Point(150, 5);
             //テキストの設定
             rdbDown.Text = downName;
+
+            if (dgvRecordEditing[2, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == upName)
+            {
+                rdbUp.Checked = true;
+            }
+            if (dgvRecordEditing[2, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == downName)
+            {
+                rdbDown.Checked = true;
+            }
 
             //Addで配置　※pnlMilkにAddしてるのでパネル内に設置される。
             pnlCommon.Controls.Add(rdbUp);
@@ -247,39 +273,26 @@ namespace Ikuji
         private void ControlCreateWeight()
         {
             TextBox txbWeight = new TextBox();
-
-            txbWeight.Location = new Point(50, 10);
-
-            Label lblWeight = new Label();
-
-            lblWeight.Text = "体重";
-
-            lblWeight.Location = new Point(10, 13);
-
             TextBox txbTemperature = new TextBox();
 
+            txbWeight.Location = new Point(50, 10);
+            txbWeight.Text = dgvRecordEditing[3, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString();
+
             txbTemperature.Location = new Point(50, 40);
+            txbTemperature.Text = dgvRecordEditing[4, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString();
+
+            Label lblWeight = new Label();
+            lblWeight.Text = "体重";
+            lblWeight.Location = new Point(10, 13);
 
             Label lblTemperature = new Label();
-
             lblTemperature.Text = "体温";
-
             lblTemperature.Location = new Point(10, 43);
 
             pnlDynamic.Controls.Add(txbWeight);
             pnlDynamic.Controls.Add(lblWeight);
             pnlDynamic.Controls.Add(txbTemperature);
             pnlDynamic.Controls.Add(lblTemperature);
-        }
-
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void cmbViewChange_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GenerateDataAtSelect(cmbViewChange.SelectedItem.ToString());
         }
     }
 }

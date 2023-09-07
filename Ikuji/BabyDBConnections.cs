@@ -43,9 +43,16 @@ namespace Ikuji
         {
             List<Baby> baby = new List<Baby>();
 
-            var context = new BabyContext();
-            baby = context.Babys.ToList();
-            context.Dispose();
+            try
+            {
+                var context = new BabyContext();
+                baby = context.Babys.ToList();
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             return baby;
         }
@@ -60,9 +67,16 @@ namespace Ikuji
         {
             List<Baby> baby = new List<Baby>();
 
-            var context = new BabyContext();
-            baby = context.Babys.Where(x => x.BabyMain.Contains(babyCondition.BabyMain)).ToList();
-            context.Dispose();
+            try
+            {
+                var context = new BabyContext();
+                baby = context.Babys.Where(x => x.BabyMain.Contains(babyCondition.BabyMain)).ToList();
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             return baby;
         }
