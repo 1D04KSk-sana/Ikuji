@@ -31,6 +31,16 @@ namespace Ikuji
             GetdgvRecordEditingView();
         }
 
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cmbViewChange_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GenerateDataAtSelect(cmbViewChange.SelectedItem.ToString());
+        }
+
         private void dgvRecordEditing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //動的に生成されたパネル内のコントロールを削除
@@ -93,7 +103,6 @@ namespace Ikuji
 
             SettingdgvRecordEditing();
         }
-
 
         ///////////////////////////////
         //メソッド名 : SettingdgvRecordEditing()
@@ -270,16 +279,6 @@ namespace Ikuji
             pnlDynamic.Controls.Add(lblWeight);
             pnlDynamic.Controls.Add(txbTemperature);
             pnlDynamic.Controls.Add(lblTemperature);
-        }
-
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void cmbViewChange_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GenerateDataAtSelect(cmbViewChange.SelectedItem.ToString());
         }
     }
 }
