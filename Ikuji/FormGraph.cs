@@ -35,15 +35,30 @@ namespace Ikuji
 
         private void cmbGraphChange_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ChartSelect();
+        }
 
+        private void dtpMonthDay_ValueChanged(object sender, EventArgs e)
+        {
+            ChartSelect();
+        }
+
+        ///////////////////////////////
+        //メソッド名：ChartSelect()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：ミルクグラフの設定
+        ///////////////////////////////
+        private void ChartSelect()
+        {
             //授乳が選択されているとき
-            if(cmbGraphChange.SelectedIndex == 1)
+            if (cmbGraphChange.SelectedIndex == 1)
             {
                 ChartMilk();
             }
 
             //オムツが選択されているとき
-            if(cmbGraphChange.SelectedIndex == 2)            
+            if (cmbGraphChange.SelectedIndex == 2)
             {
                 ChartOmatu();
             }
@@ -52,7 +67,7 @@ namespace Ikuji
             if (cmbGraphChange.SelectedIndex == 3)
             {
                 ChartWeight();
- 
+
             }
 
             //体温が選択されているとき
@@ -119,7 +134,7 @@ namespace Ikuji
 
             List<Baby> babyList = new List<Baby>();
 
-            babyList = babyDBConnections.GetBabyDataMilkOmutu("ミルク");
+            babyList = babyDBConnections.GetBabyDataMilkOmutu("ミルク", dtpMonthDay.Value);
 
             //表示するためのデータがないとき
             if (babyList.Count == 0)
@@ -197,7 +212,7 @@ namespace Ikuji
 
             List<Baby> babyList = new List<Baby>();
 
-            babyList = babyDBConnections.GetBabyDataMilkOmutu("オムツ");
+            babyList = babyDBConnections.GetBabyDataMilkOmutu("オムツ", dtpMonthDay.Value);
 
             //表示するためのデータがないとき
             if (babyList.Count == 0)
@@ -248,7 +263,7 @@ namespace Ikuji
             series.XValueType = ChartValueType.DateTime;         //横軸を日付に
             grfHistory.Series.Add(series);
 
-            DateTime currentDate = DateTime.Now;
+            DateTime currentDate = dtpMonthDay.Value.Date;
             DateTime startDate = currentDate.AddDays(-10);
 
             //凡例
