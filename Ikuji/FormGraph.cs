@@ -350,7 +350,7 @@ namespace Ikuji
             axisY.TitleForeColor = Color.DarkGray;       //Y軸のタイトルの色
             axisY.Minimum = 34;                           //Y軸の最小値
             axisY.Maximum = 38;                         //Y軸の最大値
-            axisY.Interval = 8;                         //Y軸の間隔
+            axisY.Interval = 2;                         //Y軸の間隔
             axisY.MajorGrid.Interval = 100;              //主軸グリッド線の間隔
             axisY.MinorGrid.Interval = 20;               //補助軸グリッド線の間隔
             axisY.MinorGrid.Enabled = true;              //補助軸グリッド線の有効・無効の設定
