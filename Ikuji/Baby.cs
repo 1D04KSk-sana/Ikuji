@@ -18,7 +18,7 @@ namespace Ikuji
         //体温
         public double? BabyTemperature { get; set; }
         //日付
-        public string BabyDate { get; set; }
+        public DateTime BabyDate { get; set; }
         //時間
         public int? BabyHour { get; set; }
         //分

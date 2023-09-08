@@ -79,7 +79,7 @@ namespace Ikuji
             // タイトル
             Title title = new Title("授乳記録", Docking.Top, new Font("Meiryo", 12, FontStyle.Bold), Color.DarkGray);
             grfHistory.Titles.Add(title);
-            
+
             // グラフ
             Series series = new Series();
             series.ChartType = SeriesChartType.Bubble;   //グラフの種類を選択
@@ -117,19 +117,26 @@ namespace Ikuji
             axisY.MinorGrid.LineColor = Color.LightGray; //補助軸グリッド線の色
             grfHistory.ChartAreas[0].AxisY = axisY;
 
-            List<Baby> babyMilkList = new List<Baby>();
+            List<Baby> babyList = new List<Baby>();
 
-            babyMilkList = babyDBConnections.GetBabyDataMilk();
+            babyList = babyDBConnections.GetBabyDataMilkOmutu("ミルク");
 
-            List<int?> babyHourList = babyMilkList.Select(x => x.BabyHour).ToList();
-            List<int?> babyMinitList = babyMilkList.Select(x => x.BabyMinit).ToList();
+            //表示するためのデータがないとき
+            if (babyList.Count == 0)
+            {
+                series.Points.Add(-1, -1);
+                return;
+            }
 
-            double? doubleMilkCount = 0;
+            List<int?> babyHourList = babyList.Select(x => x.BabyHour).ToList();
+            List<int?> babyMinitList = babyList.Select(x => x.BabyMinit).ToList();
+
+            double? doubleCount = 0;
 
             for (int i = 0; i < babyHourList.Count; i++)
             {
-                doubleMilkCount = (double)babyHourList[i] + (double)babyMinitList[i] / 60;
-                series.Points.AddXY(doubleMilkCount, 30);
+                doubleCount = (double)babyHourList[i] + (double)babyMinitList[i] / 60;
+                series.Points.AddXY(doubleCount, 30);
             }
         }
         
@@ -188,16 +195,26 @@ namespace Ikuji
             axisY.MinorGrid.LineColor = Color.LightGray; //補助軸グリッド線の色
             grfHistory.ChartAreas[0].AxisY = axisY;
 
-            // データ追加
-            var hist = new Point[] {
-                new Point(1, 3),
-                new Point(2, 5)
-                };
+            List<Baby> babyList = new List<Baby>();
 
-            // データ設定
-            for (int i = 0; i < hist.Length; i++)
+            babyList = babyDBConnections.GetBabyDataMilkOmutu("オムツ");
+
+            //表示するためのデータがないとき
+            if (babyList.Count == 0)
             {
-                series.Points.AddXY(hist[i].X, hist[i].Y);
+                series.Points.Add(-1, -1);
+                return;
+            }
+
+            List<int?> babyHourList = babyList.Select(x => x.BabyHour).ToList();
+            List<int?> babyMinitList = babyList.Select(x => x.BabyMinit).ToList();
+
+            double? doubleCount = 0;
+
+            for (int i = 0; i < babyHourList.Count; i++)
+            {
+                doubleCount = (double)babyHourList[i] + (double)babyMinitList[i] / 60;
+                series.Points.AddXY(doubleCount, 30);
             }
         }
 
@@ -228,15 +245,19 @@ namespace Ikuji
             series.MarkerColor = Color.Blue;                     //マーカーの背景色
             series.MarkerBorderColor = Color.Black;              //マーカーの枠の色
             series.MarkerStyle = MarkerStyle.Circle;             //マーカーの形状
+            series.XValueType = ChartValueType.DateTime;         //横軸を日付に
             grfHistory.Series.Add(series);
+
+            DateTime currentDate = DateTime.Now;
+            DateTime startDate = currentDate.AddDays(-10);
 
             //凡例
             grfHistory.ChartAreas.Add("");
             Axis axisX = new Axis();
-            axisX.Title = "時間";                                       //X軸のタイトル
+            axisX.Title = "日";                                       //X軸のタイトル
             axisX.TitleForeColor = Color.DarkGray;                     //X軸のタイトルの色
-            axisX.Minimum = 0;  //X軸の最小値
-            axisX.Maximum = 24;   //X軸の最大値
+            axisX.Minimum = startDate.ToOADate(); ;  //X軸の最小値
+            axisX.Maximum = currentDate.ToOADate(); ;   //X軸の最大値
             axisX.Interval = 1;                                        //X軸の間隔 
             axisX.MinorTickMark.Enabled = false;                       //X軸に沿った目盛りの有効・無効の設定
             axisX.MajorTickMark.Enabled = false;                       //X軸に沿った目盛りの有効・無効の設定
@@ -254,25 +275,27 @@ namespace Ikuji
             axisY.MajorTickMark.Enabled = false;         //Y軸に沿った目盛りの有効・無効の設定
             axisY.MinorTickMark.Enabled = false;         //Y軸に沿った目盛りの有効・無効の設定
             axisY.MinorGrid.LineColor = Color.LightGray; //補助軸グリッド線の色
+            
             grfHistory.ChartAreas[0].AxisY = axisY;
+            grfHistory.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy.MM.dd";
 
-            // データ追加
-            var hist = new Point[] {
-                new Point(1, 3000),
-                new Point(2, 2000),
-                new Point(3, 1500),
-                new Point(4, 8000),
-                new Point(5, 1800),
-                new Point(6, 1000),
-                new Point(7, 4000),
-                new Point(8, 1300),
-                new Point(9, 5000),
-                };
+            List<Baby> babyList = new List<Baby>();
 
-            // データ設定
-            for (int i = 0; i < hist.Length; i++)
+            babyList = babyDBConnections.GetBabyDataWeight();
+
+            //表示するためのデータがないとき
+            if (babyList.Count == 0)
             {
-                series.Points.AddXY(hist[i].X, hist[i].Y);
+                series.Points.Add(-1, -1);
+                return;
+            }
+
+            List<int?> babyWeightList = babyList.Select(x => x.BabyWeight).ToList();
+            List<DateTime> babyDateList = babyList.Select(x => x.BabyDate).ToList();
+
+            for (int i = 0; i < babyWeightList.Count; i++)
+            {
+                series.Points.AddXY(babyDateList[i].ToOADate(), babyWeightList[i]);
             }
         }
 
@@ -303,16 +326,20 @@ namespace Ikuji
             series.MarkerColor = Color.Blue;                     //マーカーの背景色
             series.MarkerBorderColor = Color.Black;              //マーカーの枠の色
             series.MarkerStyle = MarkerStyle.Square;             //マーカーの形状
+            series.XValueType = ChartValueType.DateTime;         //横軸を日付に
             grfHistory.Series.Add(series);
+
+            DateTime currentDate = DateTime.Now;
+            DateTime startDate = currentDate.AddDays(-10);
 
             //凡例
             grfHistory.ChartAreas.Add("");
             Axis axisX = new Axis();
             axisX.LabelStyle.Angle = 90;                               //90度回転
-            axisX.Title = "時間";                                       //X軸のタイトル
+            axisX.Title = "日";                                       //X軸のタイトル
             axisX.TitleForeColor = Color.DarkGray;                     //X軸のタイトルの色
-            axisX.Minimum = 0;  //X軸の最小値
-            axisX.Maximum = 24;   //X軸の最大値
+            axisX.Minimum = startDate.ToOADate();  //X軸の最小値
+            axisX.Maximum = currentDate.ToOADate();   //X軸の最大値
             axisX.Interval = 1;                                        //X軸の間隔 
             axisX.MinorTickMark.Enabled = false;                       //X軸に沿った目盛りの有効・無効の設定
             axisX.MajorTickMark.Enabled = false;                       //X軸に沿った目盛りの有効・無効の設定
@@ -323,7 +350,7 @@ namespace Ikuji
             axisY.TitleForeColor = Color.DarkGray;       //Y軸のタイトルの色
             axisY.Minimum = 34;                           //Y軸の最小値
             axisY.Maximum = 38;                         //Y軸の最大値
-            axisY.Interval = 0.5;                         //Y軸の間隔
+            axisY.Interval = 8;                         //Y軸の間隔
             axisY.MajorGrid.Interval = 100;              //主軸グリッド線の間隔
             axisY.MinorGrid.Interval = 20;               //補助軸グリッド線の間隔
             axisY.MinorGrid.Enabled = true;              //補助軸グリッド線の有効・無効の設定
@@ -343,19 +370,26 @@ namespace Ikuji
             grfHistory.Series[legend1].MarkerSize = 20;                     // マークサイズを指定
             grfHistory.Series[legend1].MarkerStyle = MarkerStyle.Circle;    // マークスタイル(形状)を指定
 
+            grfHistory.ChartAreas[0].AxisY = axisY;
+            grfHistory.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy.MM.dd";
 
-            // データを用意します
-            double[] x_values = new double[4] { 1.0, 2.0, 3.0, 5 };
-            double[] y_values = new double[4] { 36.0, 37.0, 36.5, 37.0 };
-            //double[] bubble_values = new double[4] { 10.0, 10.0, 10.0,10.0 };  // バブルチャートのZ軸(ポイントの大きさを決めるデータ)
+            List<Baby> babyList = new List<Baby>();
 
-            // データをシリーズにセットします
-            for (int i = 0; i < y_values.Length; i++)
+            babyList = babyDBConnections.GetBabyDataTemperature();
+
+            //表示するためのデータがないとき
+            if (babyList.Count == 0)
             {
-                //DataPoint dp = new DataPoint((double)x_values[i], y_values[i]);
-                double[] y_vals = new double[2] { y_values[i], 10 };
-                DataPoint dp = new DataPoint((double)x_values[i], y_vals);
-                grfHistory.Series[legend1].Points.Add(dp);
+                series.Points.Add(-1, -1);
+                return;
+            }
+
+            List<int?> babyWeightList = babyList.Select(x => x.BabyWeight).ToList();
+            List<DateTime> babyDateList = babyList.Select(x => x.BabyDate).ToList();
+
+            for (int i = 0; i < babyWeightList.Count; i++)
+            {
+                series.Points.AddXY(babyDateList[i].ToOADate(), babyWeightList[i]);
             }
         }
     }

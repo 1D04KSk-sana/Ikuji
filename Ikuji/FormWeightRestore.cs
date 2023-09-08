@@ -154,7 +154,7 @@ namespace Ikuji
                 BabySub = String.Empty,
                 BabyWeight = babyWeight,
                 BabyTemperature = babyTemperature,
-                BabyDate = dtpMonthDay.Value.ToShortDateString(),
+                BabyDate = dtpMonthDay.Value,
                 BabyHour = null,
                 BabyMinit = null,
                 BabyComment = babyComment,
