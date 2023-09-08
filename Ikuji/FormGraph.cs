@@ -19,24 +19,18 @@ namespace Ikuji
         {
             InitializeComponent();
         }
+        
+        //クラスの宣言
+        BabyDBConnections babyDBConnections = new BabyDBConnections();
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void grfHistory_Click(object sender, EventArgs e)
-        { 
-
-        }
-
         private void FormGraph_Load(object sender, EventArgs e)
         {
-            cmbGraphChange.Items.Add("–選択されていません–");
-            cmbGraphChange.Items.Add("授乳");
-            cmbGraphChange.Items.Add("オムツ");
-            cmbGraphChange.Items.Add("体重");
-            cmbGraphChange.Items.Add("体温");
+            cmbGraphChange.SelectedIndex = 0;
         }
 
         private void cmbGraphChange_SelectedIndexChanged(object sender, EventArgs e)
@@ -68,6 +62,12 @@ namespace Ikuji
             }
         }
 
+        ///////////////////////////////
+        //メソッド名：ChartMilk()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：ミルクグラフの設定
+        ///////////////////////////////
         private void ChartMilk()
         {
             // 初期化
@@ -79,7 +79,7 @@ namespace Ikuji
             // タイトル
             Title title = new Title("授乳記録", Docking.Top, new Font("Meiryo", 12, FontStyle.Bold), Color.DarkGray);
             grfHistory.Titles.Add(title);
-
+            
             // グラフ
             Series series = new Series();
             series.ChartType = SeriesChartType.Bubble;   //グラフの種類を選択
@@ -117,19 +117,28 @@ namespace Ikuji
             axisY.MinorGrid.LineColor = Color.LightGray; //補助軸グリッド線の色
             grfHistory.ChartAreas[0].AxisY = axisY;
 
-            // データ追加
-            var hist = new Point[] {
-                new Point(1, 30),
-                new Point(2, 30)
-                };
+            List<Baby> babyMilkList = new List<Baby>();
 
-            // データ設定
-            for (int i = 0; i < hist.Length; i++)
+            babyMilkList = babyDBConnections.GetBabyDataMilk();
+
+            List<int?> babyHourList = babyMilkList.Select(x => x.BabyHour).ToList();
+            List<int?> babyMinitList = babyMilkList.Select(x => x.BabyMinit).ToList();
+
+            double? count = 0;
+
+            for (int i = 0; i < babyHourList.Count; i++)
             {
-                series.Points.AddXY(hist[i].X, hist[i].Y);
+                count = (double)babyHourList[i] + (double)babyMinitList[i] / 60;
+                series.Points.AddXY(count ,30);
             }
         }
-
+        
+        ///////////////////////////////
+        //メソッド名：ChartOmutu()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：オムツグラフの設定
+        ///////////////////////////////
         private void ChartOmatu()
         {
             // 初期化
@@ -192,6 +201,12 @@ namespace Ikuji
             }
         }
 
+        ///////////////////////////////
+        //メソッド名：ChartWeight()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：体重グラフの設定
+        ///////////////////////////////
         private void ChartWeight()
         {
             // 初期化
@@ -261,6 +276,12 @@ namespace Ikuji
             }
         }
 
+        ///////////////////////////////
+        //メソッド名：ChartTemperature()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：体温グラフの設定
+        ///////////////////////////////
         private void ChartTemperature()
         {
             // 初期化
