@@ -124,12 +124,12 @@ namespace Ikuji
             List<int?> babyHourList = babyMilkList.Select(x => x.BabyHour).ToList();
             List<int?> babyMinitList = babyMilkList.Select(x => x.BabyMinit).ToList();
 
-            double? count = 0;
+            double? doubleMilkCount = 0;
 
             for (int i = 0; i < babyHourList.Count; i++)
             {
-                count = (double)babyHourList[i] + (double)babyMinitList[i] / 60;
-                series.Points.AddXY(count ,30);
+                doubleMilkCount = (double)babyHourList[i] + (double)babyMinitList[i] / 60;
+                series.Points.AddXY(doubleMilkCount, 30);
             }
         }
         
