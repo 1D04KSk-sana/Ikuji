@@ -295,7 +295,6 @@ namespace Ikuji
             grfHistory.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy.MM.dd";
 
             List<Baby> babyList = new List<Baby>();
-
             babyList = babyDBConnections.GetBabyDataWeight();
 
             //表示するためのデータがないとき
@@ -305,8 +304,10 @@ namespace Ikuji
                 return;
             }
 
-            List<int?> babyWeightList = babyList.Select(x => x.BabyWeight).ToList();
-            List<DateTime> babyDateList = babyList.Select(x => x.BabyDate).ToList();
+            var babySortList = babyList.OrderBy(x => x.BabyDate);
+
+            List<int?> babyWeightList = babySortList.Select(x => x.BabyWeight).ToList();
+            List<DateTime> babyDateList = babySortList.Select(x => x.BabyDate).ToList();
 
             for (int i = 0; i < babyWeightList.Count; i++)
             {
@@ -389,7 +390,6 @@ namespace Ikuji
             grfHistory.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy.MM.dd";
 
             List<Baby> babyList = new List<Baby>();
-
             babyList = babyDBConnections.GetBabyDataTemperature();
 
             //表示するためのデータがないとき
@@ -399,12 +399,14 @@ namespace Ikuji
                 return;
             }
 
-            List<int?> babyWeightList = babyList.Select(x => x.BabyWeight).ToList();
-            List<DateTime> babyDateList = babyList.Select(x => x.BabyDate).ToList();
+            var babySortList = babyList.OrderBy(x => x.BabyDate);
 
-            for (int i = 0; i < babyWeightList.Count; i++)
+            List<double?> babyTemperaturetList = babySortList.Select(x => x.BabyTemperature).ToList();
+            List<DateTime> babyDateList = babySortList.Select(x => x.BabyDate).ToList();
+
+            for (int i = 0; i < babyTemperaturetList.Count; i++)
             {
-                series.Points.AddXY(babyDateList[i].ToOADate(), babyWeightList[i]);
+                series.Points.AddXY(babyDateList[i].ToOADate(), babyTemperaturetList[i]);
             }
         }
     }
