@@ -27,6 +27,10 @@ namespace Ikuji
         public TextBox txbWeight = new TextBox();
         public TextBox txbTemperature = new TextBox();
         public TextBox txbComment = new TextBox();
+        public RadioButton rdbDown = new RadioButton();
+        public RadioButton rdbUp = new RadioButton();
+        public ComboBox cmbHour = new ComboBox();
+        public ComboBox cmbMinit = new ComboBox();
 
         //データグリッドビュー用の赤ちゃんデータ
         private static List<Baby> Baby;
@@ -36,6 +40,7 @@ namespace Ikuji
         double babyTemperature = 0;
         string babyComment = "";
         int ControlNumber = 0;
+        string othersKind = "";
 
         private void FormDBEdit_Load(object sender, EventArgs e)
         {
@@ -72,7 +77,7 @@ namespace Ikuji
 
         private void dgvRecordEditing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //クリックされたDataGridViewがヘッダーのとき
+            //クリックされたDataGridViewがヘッダーのとき⇒何もしない
             if (dgvRecordEditing.SelectedCells.Count == 0)
             {
                 return;
@@ -97,7 +102,88 @@ namespace Ikuji
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            bool flg = GetValidDataBaby();
+            string dgv1Others = dgvRecordEditing[1, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString();
+            bool flg;
+
+            //GetVaildDataBabyからの戻り値がfalseのとき、メソッドを終了
+            if (!GetValidDataBaby())
+            {
+                return;
+            }
+
+            //登録確認メッセージ
+            DialogResult result = MessageBox.Show("更新しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+            if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            if (dgv1Others == "体重・体温")
+            {
+                //体重・体温データの更新　失敗時flgにfalseを代入
+                var resBaby = GenerateDataBabyWeight();
+                flg = babyDBConnections.UpdateBabyDataWeight(resBaby);                
+            }
+            else
+            {
+                //ミルクorオムツデータの更新　失敗時flgにfalseを代入
+                var resBaby = GenerateDataBabyMilkOmutu(othersKind);
+                flg = babyDBConnections.UpdateBabyDataMilkOmutu(resBaby);
+            }
+
+            //cmbViewChangeのSelectesIndexを0に
+
+
+
+
+
+            if (flg)
+            {
+                MessageBox.Show("データを更新しました", "確認", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("データを更新できませんでした", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        ///////////////////////////////
+        //メソッド名：GenerateDataBabyWeight()
+        //引　数   ：otherKinds = ラヂオボタンの種類
+        //戻り値   ：赤ちゃん体重・体温データ
+        //機　能   ：赤ちゃん体重・体温データのセット
+        ///////////////////////////////
+        private Baby GenerateDataBabyWeight()
+        {
+            return new Baby
+            {
+                //Id、体重、体温、日付、コメントをデータにセット
+
+
+
+
+
+            };
+        }
+
+        ///////////////////////////////
+        //メソッド名：GenerateDataBabyMilkOmutu()
+        //引　数   ：otherKinds = ラヂオボタンの種類
+        //戻り値   ：赤ちゃんミルク・オムツデータ
+        //機　能   ：赤ちゃんミルク・オムツデータのセット
+        ///////////////////////////////
+        private Baby GenerateDataBabyMilkOmutu(string otherKinds)
+        {
+            return new Baby
+            {
+                //Id、種類、日付、時間、分、コメントをデータにセット
+
+
+
+
+
+            };
         }
 
         ///////////////////////////////
@@ -118,7 +204,22 @@ namespace Ikuji
                     return false;
                 }
             }
+            else
+            {
+                //rdbUpがチェックされているとき⇒rdbUpのテキストをothesKindに代入
+                
 
+
+
+
+                //rdbDownがチェックされているとき⇒rdbDownのテキストをothesKindに代入
+                
+
+
+
+
+            }
+            
             //もしもtxbCommentのisNullOrEmptyがfalseのとき⇒txbCommentのテキストの空白を消してbabyCommentに代入
             if (!String.IsNullOrEmpty(txbComment.Text))
             {
@@ -139,11 +240,11 @@ namespace Ikuji
         private bool GetValidDataBabyWeight()
         {
             //もしもtxbWeightがnullでtxbTemperatureもnullのとき⇒MessageBoxでエラーを表示しfalseを返す
-            if (txbWeight.Text == String.Empty && txbTemperature.Text == String.Empty)
-            {
-                MessageBox.Show("体重か体温を入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
-                return false;
-            }
+            
+
+
+
+
 
             //もしもtxbWeightのisNullOrEmptyがfalseのとき⇒txbWeightのテキストの空白を消してint変換、babyWeightに代入
             if (!String.IsNullOrEmpty(txbWeight.Text))
@@ -154,12 +255,13 @@ namespace Ikuji
                 //全角数字を半角数字に変換
                 babyWeightString = Regex.Replace(babyWeightString, "[０-９]", p => ((char)(p.Value[0] - '０' + '0')).ToString());
 
-                //数字チェック
-                if (!dataInputCheck.CheckNumeric(babyWeightString))
-                {
-                    MessageBox.Show("体温は数字で入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
+                //babyWeightStringの数字チェックがfalseのとき⇒MessageBoxでエラーを表示してfalseを返す
+
+
+
+
+
+
 
                 babyWeight = int.Parse(babyWeightString);
             }
@@ -168,19 +270,19 @@ namespace Ikuji
             if (!String.IsNullOrEmpty(txbTemperature.Text))
             {
                 //一旦文字をstringに代入
-                string babyTemperatureString = txbWeight.Text.Trim();
+                string babyTemperatureString = txbTemperature.Text.Trim();
 
                 //全角数字を半角数字に変換
                 babyTemperatureString = Regex.Replace(babyTemperatureString, "[０-９]", p => ((char)(p.Value[0] - '０' + '0')).ToString());
 
-                //数字チェック
-                if (!dataInputCheck.CheckNumeric(babyTemperatureString))
-                {
-                    MessageBox.Show("体温は数字で入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
+                //babyTemperatureStringの数字チェックがfalseのとき⇒MessageBoxでエラーを表示してfalseを返す
 
-                babyTemperature = int.Parse(babyTemperatureString);
+
+
+
+
+
+                babyTemperature = double.Parse(babyTemperatureString);
             }
 
             return true;
@@ -324,9 +426,6 @@ namespace Ikuji
         ///////////////////////////////
         private void ControlCreateCommonTime()
         {
-            ComboBox cmbHour = new ComboBox();
-            ComboBox cmbMinit = new ComboBox();
-
             //配置位置の設定
             cmbHour.Location = new Point(10, 10);
             //サイズの設定
@@ -381,9 +480,6 @@ namespace Ikuji
 
             //Addで配置　※pnlDynamicにAddしてるのでパネル内に設置される。
             pnlDynamic.Controls.Add(pnlCommon);
-
-            RadioButton rdbDown = new RadioButton();
-            RadioButton rdbUp = new RadioButton();
 
             //配置位置の設定
             rdbUp.Location = new Point(10, 5);

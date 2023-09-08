@@ -21,7 +21,7 @@ namespace Ikuji
         {
             bool flg;
 
-            Regex regex = new Regex("^[0-9]+$");
+            Regex regex = new Regex(@"^[0-9]+(\.[0-9]+)?$");
             if (!regex.IsMatch(text))
                 flg = false;
             else
