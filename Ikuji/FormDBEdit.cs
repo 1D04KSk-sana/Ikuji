@@ -109,16 +109,6 @@ namespace Ikuji
             }
         }
 
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void cmbViewChange_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GenerateDataAtSelect(cmbViewChange.SelectedItem.ToString());
-        }
-
         ///////////////////////////////
         //メソッド名：GenerateDataAtSelect()
         //引　数   ：なし
