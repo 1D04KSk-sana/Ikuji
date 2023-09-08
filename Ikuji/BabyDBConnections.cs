@@ -131,10 +131,10 @@ namespace Ikuji
                 var division = context.Babys.Single(x => x.BabyId == updBaby.BabyId);
 
                 //体重、体温、日付、コメントを更新する
-
-
-
-
+                division = context.Babys.Single(x => x.BabyWeight == updBaby.BabyWeight);
+                division = context.Babys.Single(x => x.BabyTemperature == updBaby.BabyTemperature);
+                division = context.Babys.Single(x => x.BabyDate == updBaby.BabyDate);
+                division = context.Babys.Single(x => x.BabyComment == updBaby.BabyComment);
 
 
 

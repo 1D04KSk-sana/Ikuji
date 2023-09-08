@@ -88,7 +88,7 @@ namespace Ikuji
             if (!String.IsNullOrEmpty(txbTemperature.Text))
             {
                 //一旦文字をstringに代入
-                string babyTemperatureString = txbWeight.Text.Trim();
+                string babyTemperatureString = txbTemperature.Text.Trim();
 
                 //全角数字を半角数字に変換
                 babyTemperatureString = Regex.Replace(babyTemperatureString, "[０-９]", p => ((char)(p.Value[0] - '０' + '0')).ToString());

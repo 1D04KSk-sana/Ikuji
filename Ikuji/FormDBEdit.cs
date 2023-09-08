@@ -159,11 +159,11 @@ namespace Ikuji
             return new Baby
             {
                 //Id、体重、体温、日付、コメントをデータにセット
-
-
-
-
-
+                BabyId = int.Parse(dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString()),
+                BabyWeight = babyWeight,
+                BabyTemperature = babyTemperature,
+                BabyDate = dtpMonthDay.Value.ToShortDateString(),
+                BabyComment = babyComment,
             };
         }
 
@@ -178,7 +178,7 @@ namespace Ikuji
             return new Baby
             {
                 //Id、種類、日付、時間、分、コメントをデータにセット
-
+                
 
 
 
