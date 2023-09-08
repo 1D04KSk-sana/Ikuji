@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnReturn = new System.Windows.Forms.Button();
             this.dtpMonthDay = new System.Windows.Forms.DateTimePicker();
             this.cmbGraphChange = new System.Windows.Forms.ComboBox();
@@ -76,8 +76,8 @@
             // 
             // grfHistory
             // 
-            chartArea1.Name = "ChartArea1";
-            this.grfHistory.ChartAreas.Add(chartArea1);
+            chartArea4.Name = "ChartArea1";
+            this.grfHistory.ChartAreas.Add(chartArea4);
             this.grfHistory.Cursor = System.Windows.Forms.Cursors.AppStarting;
             legend1.Name = "Legend1";
             this.grfHistory.Legends.Add(legend1);

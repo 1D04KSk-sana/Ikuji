@@ -106,6 +106,25 @@ namespace Ikuji
 
             //作成した変数を削除
             context.Dispose();
+
+            //ボタンの宣言
+            //btnBabyRestore
+            SideRoundButton btnBabyRestore = new SideRoundButton(0);
+            btnBabyRestore.Text = "赤ちゃん情報編集";
+            btnBabyRestore.Size = new System.Drawing.Size(117, 33);
+            btnBabyRestore.Location = new System.Drawing.Point(62, 24);
+            btnBabyRestore.Click += new System.EventHandler(this.btnBabyRestore_Click);
+            
+
+            //btnDBEdit
+            SideRoundButton btnDBEdit = new SideRoundButton(1);
+            btnDBEdit.Text = "記録編集";
+            btnDBEdit.Size = new System.Drawing.Size(117, 33);
+            btnDBEdit.Location = new System.Drawing.Point(404, 24);
+            btnDBEdit.Click += new System.EventHandler(this.btnDBEdit_Click);
+            this.Controls.Add(btnBabyRestore);
+            this.Controls.Add(btnDBEdit);
+
         }
     }
 }
