@@ -334,5 +334,12 @@ namespace Ikuji
             pnlDynamic.Controls.Add(txbTemperature);
             pnlDynamic.Controls.Add(lblTemperature);
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            babyDBConnections.DeleteBabyData(int.Parse(dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString()));
+            GetdgvRecordEditingView();
+            SettingdgvRecordEditing();
+        }
     }
 }
