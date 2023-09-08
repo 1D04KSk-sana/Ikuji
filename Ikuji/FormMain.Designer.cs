@@ -28,25 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnBabyRestore = new System.Windows.Forms.Button();
             this.btnGraph = new System.Windows.Forms.Button();
-            this.btnDBEdit = new System.Windows.Forms.Button();
             this.btnMilkRestore = new System.Windows.Forms.Button();
             this.btnOmutuRestore = new System.Windows.Forms.Button();
             this.btnWeightRestore = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // btnBabyRestore
-            // 
-            this.btnBabyRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(201)))), ((int)(((byte)(129)))));
-            this.btnBabyRestore.Location = new System.Drawing.Point(62, 24);
-            this.btnBabyRestore.Margin = new System.Windows.Forms.Padding(2);
-            this.btnBabyRestore.Name = "btnBabyRestore";
-            this.btnBabyRestore.Size = new System.Drawing.Size(117, 33);
-            this.btnBabyRestore.TabIndex = 1;
-            this.btnBabyRestore.Text = "赤ちゃん情報編集";
-            this.btnBabyRestore.UseVisualStyleBackColor = false;
-            this.btnBabyRestore.Click += new System.EventHandler(this.btnBabyRestore_Click);
             // 
             // btnGraph
             // 
@@ -59,18 +45,6 @@
             this.btnGraph.Text = "グラフ表示";
             this.btnGraph.UseVisualStyleBackColor = false;
             this.btnGraph.Click += new System.EventHandler(this.btnGraph_Click);
-            // 
-            // btnDBEdit
-            // 
-            this.btnDBEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(201)))), ((int)(((byte)(129)))));
-            this.btnDBEdit.Location = new System.Drawing.Point(404, 24);
-            this.btnDBEdit.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDBEdit.Name = "btnDBEdit";
-            this.btnDBEdit.Size = new System.Drawing.Size(117, 33);
-            this.btnDBEdit.TabIndex = 3;
-            this.btnDBEdit.Text = "記録編集";
-            this.btnDBEdit.UseVisualStyleBackColor = false;
-            this.btnDBEdit.Click += new System.EventHandler(this.btnDBEdit_Click);
             // 
             // btnMilkRestore
             // 
@@ -117,9 +91,7 @@
             this.Controls.Add(this.btnWeightRestore);
             this.Controls.Add(this.btnOmutuRestore);
             this.Controls.Add(this.btnMilkRestore);
-            this.Controls.Add(this.btnDBEdit);
             this.Controls.Add(this.btnGraph);
-            this.Controls.Add(this.btnBabyRestore);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMain";
             this.Text = "Form1";
@@ -130,10 +102,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnBabyRestore;
         private System.Windows.Forms.Button btnGraph;
-        private System.Windows.Forms.Button btnDBEdit;
         private System.Windows.Forms.Button btnMilkRestore;
         private System.Windows.Forms.Button btnOmutuRestore;
         private System.Windows.Forms.Button btnWeightRestore;

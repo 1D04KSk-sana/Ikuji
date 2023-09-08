@@ -37,42 +37,44 @@
             // 
             // btnReturn
             // 
-            this.btnReturn.Location = new System.Drawing.Point(9, 9);
+            this.btnReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(201)))), ((int)(((byte)(232)))));
+            this.btnReturn.Location = new System.Drawing.Point(27, 19);
             this.btnReturn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(56, 19);
+            this.btnReturn.Size = new System.Drawing.Size(63, 30);
             this.btnReturn.TabIndex = 1;
             this.btnReturn.Text = "戻る";
-            this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.UseVisualStyleBackColor = false;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // btnRestore
             // 
+            this.btnRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(195)))), ((int)(((byte)(255)))));
             this.btnRestore.Location = new System.Drawing.Point(33, 291);
             this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(180, 25);
+            this.btnRestore.Size = new System.Drawing.Size(120, 49);
             this.btnRestore.TabIndex = 7;
             this.btnRestore.Text = "登録ボタン";
-            this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.UseVisualStyleBackColor = false;
             this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // txbNameRestore
             // 
-            this.txbNameRestore.Location = new System.Drawing.Point(39, 39);
+            this.txbNameRestore.Location = new System.Drawing.Point(27, 76);
             this.txbNameRestore.Name = "txbNameRestore";
             this.txbNameRestore.Size = new System.Drawing.Size(173, 19);
             this.txbNameRestore.TabIndex = 8;
             // 
             // txbYearRestore
             // 
-            this.txbYearRestore.Location = new System.Drawing.Point(40, 76);
+            this.txbYearRestore.Location = new System.Drawing.Point(27, 118);
             this.txbYearRestore.Name = "txbYearRestore";
             this.txbYearRestore.Size = new System.Drawing.Size(173, 19);
             this.txbYearRestore.TabIndex = 9;
             // 
             // txbMonthRestore
             // 
-            this.txbMonthRestore.Location = new System.Drawing.Point(309, 76);
+            this.txbMonthRestore.Location = new System.Drawing.Point(304, 76);
             this.txbMonthRestore.Name = "txbMonthRestore";
             this.txbMonthRestore.Size = new System.Drawing.Size(173, 19);
             this.txbMonthRestore.TabIndex = 10;
