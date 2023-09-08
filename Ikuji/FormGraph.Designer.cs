@@ -41,10 +41,10 @@
             // btnReturn
             // 
             this.btnReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(201)))), ((int)(((byte)(232)))));
-            this.btnReturn.Location = new System.Drawing.Point(27, 19);
-            this.btnReturn.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReturn.Location = new System.Drawing.Point(12, 12);
+            this.btnReturn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(63, 30);
+            this.btnReturn.Size = new System.Drawing.Size(75, 22);
             this.btnReturn.TabIndex = 1;
             this.btnReturn.Text = "戻る";
             this.btnReturn.UseVisualStyleBackColor = false;
@@ -52,17 +52,25 @@
             // 
             // dtpMonthDay
             // 
-            this.dtpMonthDay.Location = new System.Drawing.Point(130, 19);
+            this.dtpMonthDay.Location = new System.Drawing.Point(121, 15);
+            this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(4);
             this.dtpMonthDay.Name = "dtpMonthDay";
-            this.dtpMonthDay.Size = new System.Drawing.Size(87, 19);
+            this.dtpMonthDay.Size = new System.Drawing.Size(115, 22);
             this.dtpMonthDay.TabIndex = 4;
             // 
             // cmbGraphChange
             // 
             this.cmbGraphChange.FormattingEnabled = true;
-            this.cmbGraphChange.Location = new System.Drawing.Point(239, 18);
+            this.cmbGraphChange.Items.AddRange(new object[] {
+            "-選択されていません-",
+            "ミルク",
+            "オムツ",
+            "体重",
+            "体温"});
+            this.cmbGraphChange.Location = new System.Drawing.Point(284, 12);
+            this.cmbGraphChange.Margin = new System.Windows.Forms.Padding(4);
             this.cmbGraphChange.Name = "cmbGraphChange";
-            this.cmbGraphChange.Size = new System.Drawing.Size(71, 20);
+            this.cmbGraphChange.Size = new System.Drawing.Size(93, 23);
             this.cmbGraphChange.TabIndex = 5;
             this.cmbGraphChange.SelectedIndexChanged += new System.EventHandler(this.cmbGraphChange_SelectedIndexChanged);
             // 
@@ -71,31 +79,30 @@
             chartArea4.Name = "ChartArea1";
             this.grfHistory.ChartAreas.Add(chartArea4);
             this.grfHistory.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            legend4.Name = "Legend1";
-            this.grfHistory.Legends.Add(legend4);
-            this.grfHistory.Location = new System.Drawing.Point(39, 102);
-            this.grfHistory.Margin = new System.Windows.Forms.Padding(5);
+            legend1.Name = "Legend1";
+            this.grfHistory.Legends.Add(legend1);
+            this.grfHistory.Location = new System.Drawing.Point(16, 47);
+            this.grfHistory.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.grfHistory.Name = "grfHistory";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.grfHistory.Series.Add(series4);
-            this.grfHistory.Size = new System.Drawing.Size(894, 450);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.grfHistory.Series.Add(series1);
+            this.grfHistory.Size = new System.Drawing.Size(992, 388);
             this.grfHistory.TabIndex = 6;
             this.grfHistory.Text = "chart1";
-            this.grfHistory.Click += new System.EventHandler(this.grfHistory_Click);
             // 
             // FormGraph
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(600, 360);
+            this.ClientSize = new System.Drawing.Size(1024, 450);
             this.Controls.Add(this.grfHistory);
             this.Controls.Add(this.cmbGraphChange);
             this.Controls.Add(this.dtpMonthDay);
             this.Controls.Add(this.btnReturn);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormGraph";
             this.Text = "FormGraph";
             this.Load += new System.EventHandler(this.FormGraph_Load);

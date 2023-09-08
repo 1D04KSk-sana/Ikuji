@@ -123,7 +123,7 @@ namespace Ikuji
                 BabySub = omutuKinds,
                 BabyWeight = null,
                 BabyTemperature = null,
-                BabyDate = dtpMonthDay.Value.ToShortDateString(),
+                BabyDate = dtpMonthDay.Value,
                 BabyHour = cmbHour.SelectedIndex,
                 BabyMinit = cmbMinit.SelectedIndex,
                 BabyComment = omutuComment,

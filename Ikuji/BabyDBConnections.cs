@@ -41,12 +41,12 @@ namespace Ikuji
         ///////////////////////////////
         public List<Baby> GetBabyData()
         {
-            List<Baby> baby = new List<Baby>();
+            List<Baby> babyList = new List<Baby>();
 
             try
             {
                 var context = new BabyContext();
-                baby = context.Babys.ToList();
+                babyList = context.Babys.ToList();
                 context.Dispose();
             }
             catch (Exception ex)
@@ -54,7 +54,7 @@ namespace Ikuji
                 MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            return baby;
+            return babyList;
         }
 
         ///////////////////////////////
@@ -65,12 +65,12 @@ namespace Ikuji
         ///////////////////////////////
         public List<Baby> GetBabyData(Baby babyCondition)
         {
-            List<Baby> baby = new List<Baby>();
+            List<Baby> babyList = new List<Baby>();
 
             try
             {
                 var context = new BabyContext();
-                baby = context.Babys.Where(x => x.BabyMain.Contains(babyCondition.BabyMain)).ToList();
+                babyList = context.Babys.Where(x => x.BabyMain.Contains(babyCondition.BabyMain)).ToList();
                 context.Dispose();
             }
             catch (Exception ex)
@@ -78,7 +78,79 @@ namespace Ikuji
                 MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            return baby;
+            return babyList;
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetBabyDataMilk()
+        //引　数   ：なし
+        //戻り値   ：赤ちゃんミルクデータリスト
+        //機　能   ：赤ちゃんミルクデータの取得
+        ///////////////////////////////
+        public List<Baby> GetBabyDataMilkOmutu(string babyMainName)
+        {
+            List<Baby> babyList = new List<Baby>();
+
+            try
+            {
+                var context = new BabyContext();
+                babyList = context.Babys.Where((x) => x.BabyMain == babyMainName).ToList();
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return babyList;
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetBabyDataWeight()
+        //引　数   ：なし
+        //戻り値   ：赤ちゃん体重データリスト
+        //機　能   ：赤ちゃん体重データの取得
+        ///////////////////////////////
+        public List<Baby> GetBabyDataWeight()
+        {
+            List<Baby> babyList = new List<Baby>();
+
+            try
+            {
+                var context = new BabyContext();
+                babyList = context.Babys.Where((x) => x.BabyWeight != null).ToList();
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return babyList;
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetBabyDataTemperature()
+        //引　数   ：なし
+        //戻り値   ：赤ちゃん体温データリスト
+        //機　能   ：赤ちゃん体温データの取得
+        ///////////////////////////////
+        public List<Baby> GetBabyDataTemperature()
+        {
+            List<Baby> babyList = new List<Baby>();
+
+            try
+            {
+                var context = new BabyContext();
+                babyList = context.Babys.Where((x) => x.BabyTemperature != null).ToList();
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return babyList;
         }
     }
 }
