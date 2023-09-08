@@ -133,7 +133,7 @@ namespace Ikuji
             }
 
             //cmbViewChangeのSelectesIndexを0に
-
+            cmbViewChange.SelectedIndex = 0;
 
 
 
@@ -178,11 +178,12 @@ namespace Ikuji
             return new Baby
             {
                 //Id、種類、日付、時間、分、コメントをデータにセット
-                
-
-
-
-
+                BabyId = int.Parse(dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString()),
+                BabySub = otherKinds,
+                BabyDate = dtpMonthDay.Value.ToShortDateString(),
+                BabyHour = cmbHour.SelectedIndex,
+                BabyMinit = cmbMinit.SelectedIndex,
+                BabyComment = babyComment
             };
         }
 
@@ -207,13 +208,19 @@ namespace Ikuji
             else
             {
                 //rdbUpがチェックされているとき⇒rdbUpのテキストをothesKindに代入
-                
+                if(rdbUp.Checked) 
+                {
+                    othersKind = rdbUp.Text;
+                }
 
 
 
 
                 //rdbDownがチェックされているとき⇒rdbDownのテキストをothesKindに代入
-                
+                if(rdbDown.Checked)
+                {
+                    othersKind = rdbDown.Text;
+                }
 
 
 
@@ -240,7 +247,10 @@ namespace Ikuji
         private bool GetValidDataBabyWeight()
         {
             //もしもtxbWeightがnullでtxbTemperatureもnullのとき⇒MessageBoxでエラーを表示しfalseを返す
-            
+            if(txbWeight.Text == String.Empty && txbTemperature.Text == String.Empty)
+            {
+                MessageBox.Show("エラー", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
 
 
@@ -256,7 +266,11 @@ namespace Ikuji
                 babyWeightString = Regex.Replace(babyWeightString, "[０-９]", p => ((char)(p.Value[0] - '０' + '0')).ToString());
 
                 //babyWeightStringの数字チェックがfalseのとき⇒MessageBoxでエラーを表示してfalseを返す
-
+                if (!dataInputCheck.CheckNumeric(babyWeightString)) 
+                {
+                    MessageBox.Show("体重は数字で入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
 
 
 
@@ -276,7 +290,11 @@ namespace Ikuji
                 babyTemperatureString = Regex.Replace(babyTemperatureString, "[０-９]", p => ((char)(p.Value[0] - '０' + '0')).ToString());
 
                 //babyTemperatureStringの数字チェックがfalseのとき⇒MessageBoxでエラーを表示してfalseを返す
-
+                if (!dataInputCheck.CheckNumeric(babyTemperatureString))
+                {
+                    MessageBox.Show("体重は数字で入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
 
 
 

@@ -97,10 +97,11 @@ namespace Ikuji
                 var division = context.Babys.Single(x => x.BabyId == updBaby.BabyId);
 
                 //種類、日付、時間、分、コメントを更新する
-
-
-
-
+                division.BabySub = updBaby.BabySub;
+                division.BabyDate = updBaby.BabyDate;
+                division.BabyHour = updBaby.BabyHour;
+                division.BabyMinit = updBaby.BabyMinit;
+                division.BabyComment = updBaby.BabyComment;
 
 
                 context.SaveChanges();
@@ -131,10 +132,10 @@ namespace Ikuji
                 var division = context.Babys.Single(x => x.BabyId == updBaby.BabyId);
 
                 //体重、体温、日付、コメントを更新する
-                division = context.Babys.Single(x => x.BabyWeight == updBaby.BabyWeight);
-                division = context.Babys.Single(x => x.BabyTemperature == updBaby.BabyTemperature);
-                division = context.Babys.Single(x => x.BabyDate == updBaby.BabyDate);
-                division = context.Babys.Single(x => x.BabyComment == updBaby.BabyComment);
+                division.BabyWeight = updBaby.BabyWeight;
+                division.BabyTemperature = updBaby.BabyTemperature;
+                division.BabyDate = updBaby.BabyDate;
+                division.BabyComment = updBaby.BabyComment;
 
 
 
