@@ -82,8 +82,10 @@
             this.Controls.Add(this.grfHistory);
             this.Controls.Add(this.cmbGraphChange);
             this.Controls.Add(this.dtpMonthDay);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "FormGraph";
             this.Text = "FormGraph";
             this.Load += new System.EventHandler(this.FormGraph_Load);

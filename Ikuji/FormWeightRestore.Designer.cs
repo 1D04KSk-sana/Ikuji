@@ -37,10 +37,11 @@
             // 
             // dtpMonthDay
             // 
+            this.dtpMonthDay.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.dtpMonthDay.Location = new System.Drawing.Point(173, 24);
             this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(4);
             this.dtpMonthDay.Name = "dtpMonthDay";
-            this.dtpMonthDay.Size = new System.Drawing.Size(115, 22);
+            this.dtpMonthDay.Size = new System.Drawing.Size(223, 32);
             this.dtpMonthDay.TabIndex = 4;
             // 
             // txbWeight
@@ -77,8 +78,10 @@
             this.Controls.Add(this.txbTemperature);
             this.Controls.Add(this.txbWeight);
             this.Controls.Add(this.dtpMonthDay);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "FormWeightRestore";
             this.Text = "FormWeightRestore";
             this.Load += new System.EventHandler(this.FormWeightRestore_Load);

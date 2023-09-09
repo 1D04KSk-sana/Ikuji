@@ -67,8 +67,10 @@
             this.Controls.Add(this.txbMonthRestore);
             this.Controls.Add(this.txbYearRestore);
             this.Controls.Add(this.txbNameRestore);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
             this.Name = "FormBabyRestore";
             this.Text = "FormBabyRestore";
             this.Load += new System.EventHandler(this.FormBabyRestore_Load);
