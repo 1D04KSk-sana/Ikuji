@@ -54,7 +54,7 @@ namespace Ikuji
             ChartCommon();
 
             //授乳が選択されているとき
-            if (cmbGraphChange.SelectedIndex == 1)
+            if (cmbGraphChange.SelectedIndex == 1 || cmbGraphChange.SelectedIndex == 2)
             {
                 ChartCommonOmutuMilk(cmbGraphChange.SelectedIndex);
             }
@@ -116,7 +116,7 @@ namespace Ikuji
             series.ChartType = SeriesChartType.Bubble;   //グラフの種類を選択
             series.MarkerSize = 5;                    //マーカーのサイズ
             series.MarkerColor = Color.Blue;          //マーカーの背景色
-            series.MarkerBorderColor = Color.Black;   //マーカーの枠の色
+            //series.MarkerBorderColor = Color.Black;   //マーカーの枠の色
             series.MarkerStyle = MarkerStyle.Circle;  //マーカーの形状 
             grfHistory.Series.Add(series);
 
@@ -137,6 +137,10 @@ namespace Ikuji
             {
                 ChartMilk(series);
             }
+            if (chartViewVhange == 2)
+            {
+                ChartOmutu(series);
+            }
         }
 
         ///////////////////////////////
@@ -147,6 +151,15 @@ namespace Ikuji
         ///////////////////////////////
         private void ChartMilk(Series chartSeries)
         {
+            // グラフ
+            Series seriesOther = new Series();
+            seriesOther.ChartType = SeriesChartType.Bubble;   //グラフの種類を選択
+            seriesOther.MarkerSize = 5;                    //マーカーのサイズ
+            seriesOther.MarkerColor = Color.Pink;          //マーカーの背景色
+            //series.MarkerBorderColor = Color.Black;   //マーカーの枠の色
+            seriesOther.MarkerStyle = MarkerStyle.Circle;  //マーカーの形状 
+            grfHistory.Series.Add(seriesOther);
+
             //Y軸のカスタマイズ
             Axis axisY = new Axis();
             axisY.Title = "粉ミルク消費量";                         //Y軸のタイトル
@@ -175,13 +188,21 @@ namespace Ikuji
 
             List<int?> babyHourList = babyList.Select(x => x.BabyHour).ToList();
             List<int?> babyMinitList = babyList.Select(x => x.BabyMinit).ToList();
+            List<string> babySubList = babyList.Select(x => x.BabySub).ToList();
 
             double? doubleCount = 0;
 
             for (int i = 0; i < babyHourList.Count; i++)
             {
                 doubleCount = (double)babyHourList[i] + (double)babyMinitList[i] / 60;
-                chartSeries.Points.AddXY(doubleCount, 30);
+                if (babySubList[i] == "粉ミルク")
+                {
+                    chartSeries.Points.AddXY(doubleCount, 30);
+                }
+                if (babySubList[i] == "母乳")
+                {
+                    seriesOther.Points.AddXY(doubleCount, 30);
+                }
             }
         }
         
@@ -191,44 +212,26 @@ namespace Ikuji
         //戻り値   ：なし
         //機　能   ：オムツグラフの設定
         ///////////////////////////////
-        private void ChartOmatu()
+        private void ChartOmutu(Series chartSeries)
         {
-            // グラフ
-            Series series = new Series();
-            series.ChartType = SeriesChartType.Bubble;   //グラフの種類を選択
-            series.MarkerSize = 5;                    //マーカーのサイズ
-            series.MarkerColor = Color.Blue;          //マーカーの背景色
-            series.MarkerBorderColor = Color.Black;   //マーカーの枠の色
-            series.MarkerStyle = MarkerStyle.Circle;  //マーカーの形状 
-            grfHistory.Series.Add(series);
-
-            //凡例
-            grfHistory.ChartAreas.Add("");
-            Axis axisX = new Axis();
-            axisX.LabelStyle.Angle = 90;                               //90度回転
-            axisX.Title = "時間";                                       //X軸のタイトル
-            axisX.TitleForeColor = Color.DarkGray;                     //X軸のタイトルの色
-            axisX.Minimum = 0;  //X軸の最小値
-            axisX.Maximum = 24;   //X軸の最大値
-            axisX.Interval = 1;                                        //X軸の間隔 
-            axisX.MinorTickMark.Enabled = false;                       //X軸に沿った目盛りの有効・無効の設定
-            axisX.MajorTickMark.Enabled = false;                       //X軸に沿った目盛りの有効・無効の設定
-            grfHistory.ChartAreas[0].AxisX = axisX;
-
             //Y軸のカスタマイズ
             Axis axisY = new Axis();
-            axisY.Title = "オムツの消費量";                         //Y軸のタイトル
-            axisY.TitleForeColor = Color.DarkGray;       //Y軸のタイトルの色
+            //axisY.Title = "オムツの消費量";                         //Y軸のタイトル
+            //axisY.TitleForeColor = Color.DarkGray;       //Y軸のタイトルの色
             axisY.Minimum = 0;                           //Y軸の最小値
-            axisY.Maximum = 10;                         //Y軸の最大値
-            axisY.Interval = 1;                         //Y軸の間隔
-            axisY.MajorGrid.Interval = 100;              //主軸グリッド線の間隔
-            axisY.MinorGrid.Interval = 20;               //補助軸グリッド線の間隔
+            axisY.Maximum = 2;                         //Y軸の最大値
+            axisY.Interval = 0.5;                         //Y軸の間隔
+            axisY.MajorGrid.Interval = 1;              //主軸グリッド線の間隔
+            axisY.MinorGrid.Interval = 0.5;               //補助軸グリッド線の間隔
             axisY.MinorGrid.Enabled = true;              //補助軸グリッド線の有効・無効の設定
             axisY.MajorTickMark.Enabled = false;         //Y軸に沿った目盛りの有効・無効の設定
             axisY.MinorTickMark.Enabled = false;         //Y軸に沿った目盛りの有効・無効の設定
-            axisY.MinorGrid.LineColor = Color.LightGray; //補助軸グリッド線の色
+            axisY.MajorGrid.LineColor = Color.White; //補助軸グリッド線の色
+            axisY.MinorGrid.LineColor = Color.LightGray;
             grfHistory.ChartAreas[0].AxisY = axisY;
+
+            grfHistory.ChartAreas[0].AxisY.CustomLabels.Add(new CustomLabel(0.5, 0.6, "うんち", 0, LabelMarkStyle.None));
+            grfHistory.ChartAreas[0].AxisY.CustomLabels.Add(new CustomLabel(0.5, 2.5, "おしっこ", 0, LabelMarkStyle.None));
 
             List<Baby> babyList = new List<Baby>();
 
@@ -237,19 +240,30 @@ namespace Ikuji
             //表示するためのデータがないとき
             if (babyList.Count == 0)
             {
-                series.Points.Add(-1, -1);
+                chartSeries.Points.Add(-1, -1);
                 return;
             }
 
             List<int?> babyHourList = babyList.Select(x => x.BabyHour).ToList();
             List<int?> babyMinitList = babyList.Select(x => x.BabyMinit).ToList();
+            List<string> babySubList = babyList.Select(x => x.BabySub).ToList();
 
             double? doubleCount = 0;
+            double intUntiOsikko = 0;
 
             for (int i = 0; i < babyHourList.Count; i++)
             {
                 doubleCount = (double)babyHourList[i] + (double)babyMinitList[i] / 60;
-                series.Points.AddXY(doubleCount, 30);
+                
+                if (babySubList[i] == "うんち")
+                {
+                    intUntiOsikko = 0.5;
+                }
+                if (babySubList[i] == "おしっこ")
+                {
+                    intUntiOsikko = 1.5;
+                }
+                chartSeries.Points.AddXY(doubleCount, intUntiOsikko);
             }
         }
 
