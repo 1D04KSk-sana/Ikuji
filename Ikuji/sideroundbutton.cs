@@ -52,7 +52,7 @@ namespace Ikuji
             FlatStyle = FlatStyle.Flat;
             FlatAppearance.BorderSize = 0;
 
-            //情報編集
+            //情報編集・削除(オレンジ)
             if (num == 0)
             {
                 BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(201)))), ((int)(((byte)(129)))));
@@ -60,21 +60,21 @@ namespace Ikuji
                 FlatAppearance.MouseDownBackColor = System.Drawing.Color.Pink;
             }
 
-            //登録
+            //グラフ表示(赤)
             if (num == 1)
             {
                 BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(195)))), ((int)(((byte)(255)))));
                 FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
             }
 
-            //グラフ表示
+            //登録・更新(青)
             if (num == 2)
             {
                 BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
                 FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
             }
 
-            //戻る
+            //戻る(ピンク)
             if (num == 3)
             {
                 BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(201)))), ((int)(((byte)(232)))));
