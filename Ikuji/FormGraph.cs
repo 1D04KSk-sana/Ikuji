@@ -31,6 +31,8 @@ namespace Ikuji
         private void FormGraph_Load(object sender, EventArgs e)
         {
             cmbGraphChange.SelectedIndex = 0;
+            
+            SetButton();
         }
 
         private void cmbGraphChange_SelectedIndexChanged(object sender, EventArgs e)
@@ -41,6 +43,24 @@ namespace Ikuji
         private void dtpMonthDay_ValueChanged(object sender, EventArgs e)
         {
             ChartSelect();
+        }
+
+        ///////////////////////////////
+        //メソッド名：SetButton()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：ボタンのセット
+        ///////////////////////////////
+        private void SetButton()
+        {
+            SideRoundButton btnReturn = new SideRoundButton(3)
+            {
+                Text = "戻る",
+                Size = new System.Drawing.Size(60, 30),
+                Location = new System.Drawing.Point(20, 15)
+            };
+            btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            this.Controls.Add(btnReturn);
         }
 
         ///////////////////////////////

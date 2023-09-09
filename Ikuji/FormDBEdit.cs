@@ -36,7 +36,7 @@ namespace Ikuji
             //btnReturn
             SideRoundButton btnReturn = new SideRoundButton(3);
             btnReturn.Text = "戻る";
-            btnReturn.Size = new System.Drawing.Size(47, 24);
+            btnReturn.Size = new System.Drawing.Size(60, 30);
             btnReturn.Location = new System.Drawing.Point(20, 15);
             btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             this.Controls.Add(btnReturn);

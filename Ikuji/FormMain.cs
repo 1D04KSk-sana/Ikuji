@@ -170,7 +170,7 @@ namespace Ikuji
                 Size = new System.Drawing.Size(117, 33),
                 Location = new System.Drawing.Point(327, 250),
             };
-            btnGraph.Click += new System.EventHandler(this.btnWeightRestore_Click);
+            btnGraph.Click += new System.EventHandler(this.btnGraph_Click);
             this.Controls.Add(btnGraph);
         }
     }

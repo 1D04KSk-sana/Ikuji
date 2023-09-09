@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnReturn = new System.Windows.Forms.Button();
             this.dtpMonthDay = new System.Windows.Forms.DateTimePicker();
             this.cmbHour = new System.Windows.Forms.ComboBox();
             this.cmbMinit = new System.Windows.Forms.ComboBox();
@@ -39,18 +38,6 @@
             this.txbComment = new System.Windows.Forms.TextBox();
             this.pnlMilkBonyu.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnReturn
-            // 
-            this.btnReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(201)))), ((int)(((byte)(232)))));
-            this.btnReturn.Location = new System.Drawing.Point(27, 19);
-            this.btnReturn.Margin = new System.Windows.Forms.Padding(2);
-            this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(63, 30);
-            this.btnReturn.TabIndex = 1;
-            this.btnReturn.Text = "戻る";
-            this.btnReturn.UseVisualStyleBackColor = false;
-            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // dtpMonthDay
             // 
@@ -176,9 +163,9 @@
             // 
             this.rdbBonyu.AutoSize = true;
             this.rdbBonyu.Location = new System.Drawing.Point(47, 145);
-            this.rdbBonyu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbBonyu.Margin = new System.Windows.Forms.Padding(4);
             this.rdbBonyu.Name = "rdbBonyu";
-            this.rdbBonyu.Size = new System.Drawing.Size(91, 19);
+            this.rdbBonyu.Size = new System.Drawing.Size(58, 19);
             this.rdbBonyu.TabIndex = 1;
             this.rdbBonyu.TabStop = true;
             this.rdbBonyu.Text = "母乳";
@@ -188,9 +175,9 @@
             // 
             this.rdbMilk.AutoSize = true;
             this.rdbMilk.Location = new System.Drawing.Point(47, 68);
-            this.rdbMilk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbMilk.Margin = new System.Windows.Forms.Padding(4);
             this.rdbMilk.Name = "rdbMilk";
-            this.rdbMilk.Size = new System.Drawing.Size(107, 19);
+            this.rdbMilk.Size = new System.Drawing.Size(74, 19);
             this.rdbMilk.TabIndex = 0;
             this.rdbMilk.TabStop = true;
             this.rdbMilk.Text = "粉ミルク";
@@ -226,7 +213,6 @@
             this.Controls.Add(this.cmbMinit);
             this.Controls.Add(this.cmbHour);
             this.Controls.Add(this.dtpMonthDay);
-            this.Controls.Add(this.btnReturn);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormMilkRestore";
             this.Text = "FormMilk";
@@ -239,8 +225,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.DateTimePicker dtpMonthDay;
         private System.Windows.Forms.ComboBox cmbHour;
         private System.Windows.Forms.ComboBox cmbMinit;

@@ -29,6 +29,11 @@ namespace Ikuji
         double? babyTemperature = 0;
         string babyComment = "";
 
+        private void FormWeightRestore_Load(object sender, EventArgs e)
+        {
+            SetButton();
+        }
+
         private void btnReturn_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -167,6 +172,24 @@ namespace Ikuji
                 BabyMinit = null,
                 BabyComment = babyComment,
             };
+        }
+
+        ///////////////////////////////
+        //メソッド名：SetButton()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：ボタンのセット
+        ///////////////////////////////
+        private void SetButton()
+        {
+            SideRoundButton btnReturn = new SideRoundButton(3)
+            {
+                Text = "戻る",
+                Size = new System.Drawing.Size(60, 30),
+                Location = new System.Drawing.Point(20, 15)
+            };
+            btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            this.Controls.Add(btnReturn);
         }
     }
 }

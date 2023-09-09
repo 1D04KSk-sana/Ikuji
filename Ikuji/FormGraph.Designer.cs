@@ -29,24 +29,11 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            this.btnReturn = new System.Windows.Forms.Button();
             this.dtpMonthDay = new System.Windows.Forms.DateTimePicker();
             this.cmbGraphChange = new System.Windows.Forms.ComboBox();
             this.grfHistory = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.grfHistory)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnReturn
-            // 
-            this.btnReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(201)))), ((int)(((byte)(232)))));
-            this.btnReturn.Location = new System.Drawing.Point(12, 12);
-            this.btnReturn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(75, 22);
-            this.btnReturn.TabIndex = 1;
-            this.btnReturn.Text = "戻る";
-            this.btnReturn.UseVisualStyleBackColor = false;
-            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // dtpMonthDay
             // 
@@ -78,10 +65,10 @@
             chartArea1.Name = "ChartArea1";
             this.grfHistory.ChartAreas.Add(chartArea1);
             this.grfHistory.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            this.grfHistory.Location = new System.Drawing.Point(16, 47);
+            this.grfHistory.Location = new System.Drawing.Point(16, 79);
             this.grfHistory.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.grfHistory.Name = "grfHistory";
-            this.grfHistory.Size = new System.Drawing.Size(992, 388);
+            this.grfHistory.Size = new System.Drawing.Size(992, 393);
             this.grfHistory.TabIndex = 6;
             this.grfHistory.Text = "chart1";
             // 
@@ -90,11 +77,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(1024, 450);
+            this.ClientSize = new System.Drawing.Size(1024, 487);
             this.Controls.Add(this.grfHistory);
             this.Controls.Add(this.cmbGraphChange);
             this.Controls.Add(this.dtpMonthDay);
-            this.Controls.Add(this.btnReturn);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormGraph";
             this.Text = "FormGraph";
@@ -105,8 +91,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.DateTimePicker dtpMonthDay;
         private System.Windows.Forms.ComboBox cmbGraphChange;
         private System.Windows.Forms.DataVisualization.Charting.Chart grfHistory;
