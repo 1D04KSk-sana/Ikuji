@@ -141,7 +141,7 @@ namespace Ikuji
             {
                 Text = "授乳記録",
                 Size = new System.Drawing.Size(117, 33),
-                Location = new System.Drawing.Point(127, 199),
+                Location = new System.Drawing.Point(127, 220),
             };
             btnMilkRestore.Click += new System.EventHandler(this.btnMilkRestore_Click);
             this.Controls.Add(btnMilkRestore);
@@ -150,7 +150,7 @@ namespace Ikuji
             {
                 Text = "オムツ記録",
                 Size = new System.Drawing.Size(117, 33),
-                Location = new System.Drawing.Point(127, 250)
+                Location = new System.Drawing.Point(127, 280)
             };
             btnOmutuRestore.Click += new System.EventHandler(this.btnOmutuRestore_Click);
             this.Controls.Add(btnOmutuRestore);
@@ -159,7 +159,7 @@ namespace Ikuji
             {
                 Text = "体重・体温記録",
                 Size = new System.Drawing.Size(117, 33),
-                Location = new System.Drawing.Point(327, 199),
+                Location = new System.Drawing.Point(327, 220),
             };
             btnWeightRestore.Click += new System.EventHandler(this.btnWeightRestore_Click);
             this.Controls.Add(btnWeightRestore);
@@ -168,7 +168,7 @@ namespace Ikuji
             {
                 Text = "グラフ表示",
                 Size = new System.Drawing.Size(117, 33),
-                Location = new System.Drawing.Point(327, 250),
+                Location = new System.Drawing.Point(327, 280),
             };
             btnGraph.Click += new System.EventHandler(this.btnGraph_Click);
             this.Controls.Add(btnGraph);
