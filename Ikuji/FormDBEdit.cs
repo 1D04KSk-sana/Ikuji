@@ -32,6 +32,14 @@ namespace Ikuji
         {
             //cmbViewChangeを"全部"に
             cmbViewChange.SelectedIndex = 0;
+
+            //btnReturn
+            SideRoundButton btnReturn = new SideRoundButton(3);
+            btnReturn.Text = "戻る";
+            btnReturn.Size = new System.Drawing.Size(47, 24);
+            btnReturn.Location = new System.Drawing.Point(20, 15);
+            btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            this.Controls.Add(btnReturn);
         }
 
         private void btnReturn_Click(object sender, EventArgs e)

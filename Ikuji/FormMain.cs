@@ -117,7 +117,7 @@ namespace Ikuji
             
 
             //btnDBEdit
-            SideRoundButton btnDBEdit = new SideRoundButton(1);
+            SideRoundButton btnDBEdit = new SideRoundButton(0);
             btnDBEdit.Text = "記録編集";
             btnDBEdit.Size = new System.Drawing.Size(117, 33);
             btnDBEdit.Location = new System.Drawing.Point(404, 24);
@@ -125,6 +125,41 @@ namespace Ikuji
             this.Controls.Add(btnBabyRestore);
             this.Controls.Add(btnDBEdit);
 
+            //btnMilkRestore
+            SideRoundButton btnMilkRestore = new SideRoundButton(1);
+            btnMilkRestore.Text = "授乳記録";
+            btnMilkRestore.Size = new System.Drawing.Size(117, 33);
+            btnMilkRestore.Location = new System.Drawing.Point(127, 199);
+            btnMilkRestore.Click += new System.EventHandler(this.btnMilkRestore_Click);
+            this.Controls.Add(btnMilkRestore);
+            this.Controls.Add(btnDBEdit);
+
+            //btnOmutuRestore
+            SideRoundButton btnOmutuRestore = new SideRoundButton(1);
+            btnOmutuRestore.Text = "オムツ記録";
+            btnOmutuRestore.Size = new System.Drawing.Size(117, 33);
+            btnOmutuRestore.Location = new System.Drawing.Point(127, 250);
+            btnOmutuRestore.Click += new System.EventHandler(this.btnOmutuRestore_Click);
+            this.Controls.Add(btnOmutuRestore);
+            this.Controls.Add(btnDBEdit);
+
+            //btnWeightRestore
+            SideRoundButton btnWeightRestore = new SideRoundButton(1);
+            btnWeightRestore.Text = "体重・体温記録";
+            btnWeightRestore.Size = new System.Drawing.Size(117, 33);
+            btnWeightRestore.Location = new System.Drawing.Point(327, 199);
+            btnWeightRestore.Click += new System.EventHandler(this.btnWeightRestore_Click);
+            this.Controls.Add(btnWeightRestore);
+            this.Controls.Add(btnDBEdit);
+
+            //btnGraph
+            SideRoundButton btnGraph = new SideRoundButton(2);
+            btnGraph.Text = "グラフ表示";
+            btnGraph.Size = new System.Drawing.Size(117, 33);
+            btnGraph.Location = new System.Drawing.Point(327, 250);
+            btnGraph.Click += new System.EventHandler(this.btnGraph_Click);
+            this.Controls.Add(btnGraph);
+            this.Controls.Add(btnDBEdit);
         }
     }
 }
