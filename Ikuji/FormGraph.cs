@@ -51,16 +51,12 @@ namespace Ikuji
         ///////////////////////////////
         private void ChartSelect()
         {
+            ChartCommon();
+
             //授乳が選択されているとき
             if (cmbGraphChange.SelectedIndex == 1)
             {
-                ChartMilk();
-            }
-
-            //オムツが選択されているとき
-            if (cmbGraphChange.SelectedIndex == 2)
-            {
-                ChartOmatu();
+                ChartCommonOmutuMilk(cmbGraphChange.SelectedIndex);
             }
 
             //体重が選択されているとき
@@ -78,13 +74,24 @@ namespace Ikuji
         }
 
         ///////////////////////////////
-        //メソッド名：ChartMilk()
+        //メソッド名：ChartCommon()
         //引　数   ：なし
         //戻り値   ：なし
-        //機　能   ：ミルクグラフの設定
+        //機　能   ：グラフの共通設定
         ///////////////////////////////
-        private void ChartMilk()
+        private void ChartCommon()
         {
+            string chartTitle = cmbGraphChange.SelectedItem.ToString() + "記録";
+
+            if (cmbGraphChange.SelectedIndex == 0)
+            {
+                chartTitle = cmbGraphChange.SelectedItem.ToString();
+            }
+            else
+            {
+                chartTitle = cmbGraphChange.SelectedItem.ToString() + "記録";
+            }
+
             // 初期化
             grfHistory.Series.Clear();      //グラフをクリア
             grfHistory.Titles.Clear();      //タイトルをクリア
@@ -92,9 +99,18 @@ namespace Ikuji
             grfHistory.ChartAreas.Clear();  //目盛り領域をクリア
 
             // タイトル
-            Title title = new Title("授乳記録", Docking.Top, new Font("Meiryo", 12, FontStyle.Bold), Color.DarkGray);
+            Title title = new Title(chartTitle, Docking.Top, new Font("Meiryo", 12, FontStyle.Bold), Color.DarkGray);
             grfHistory.Titles.Add(title);
+        }
 
+        ///////////////////////////////
+        //メソッド名：ChartCommonOmutuMilk()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：ミルクグラフの設定
+        ///////////////////////////////
+        private void ChartCommonOmutuMilk(int chartViewVhange)
+        {
             // グラフ
             Series series = new Series();
             series.ChartType = SeriesChartType.Bubble;   //グラフの種類を選択
@@ -117,6 +133,20 @@ namespace Ikuji
             axisX.MajorTickMark.Enabled = false;                       //X軸に沿った目盛りの有効・無効の設定
             grfHistory.ChartAreas[0].AxisX = axisX;
 
+            if (chartViewVhange == 1)
+            {
+                ChartMilk(series);
+            }
+        }
+
+        ///////////////////////////////
+        //メソッド名：ChartMilk()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：ミルクグラフの設定
+        ///////////////////////////////
+        private void ChartMilk(Series chartSeries)
+        {
             //Y軸のカスタマイズ
             Axis axisY = new Axis();
             axisY.Title = "粉ミルク消費量";                         //Y軸のタイトル
@@ -134,12 +164,12 @@ namespace Ikuji
 
             List<Baby> babyList = new List<Baby>();
 
-            babyList = babyDBConnections.GetBabyDataMilkOmutu("ミルク", dtpMonthDay.Value);
+            babyList = babyDBConnections.GetBabyDataMilkOmutu("ミルク", dtpMonthDay.Value.Date);
 
             //表示するためのデータがないとき
             if (babyList.Count == 0)
             {
-                series.Points.Add(-1, -1);
+                chartSeries.Points.Add(-1, -1);
                 return;
             }
 
@@ -151,7 +181,7 @@ namespace Ikuji
             for (int i = 0; i < babyHourList.Count; i++)
             {
                 doubleCount = (double)babyHourList[i] + (double)babyMinitList[i] / 60;
-                series.Points.AddXY(doubleCount, 30);
+                chartSeries.Points.AddXY(doubleCount, 30);
             }
         }
         
@@ -163,16 +193,6 @@ namespace Ikuji
         ///////////////////////////////
         private void ChartOmatu()
         {
-            // 初期化
-            grfHistory.Series.Clear();      //グラフをクリア
-            grfHistory.Titles.Clear();      //タイトルをクリア
-            grfHistory.Legends.Clear();     //凡例をクリア
-            grfHistory.ChartAreas.Clear();  //目盛り領域をクリア
-
-            // タイトル
-            Title title = new Title("オムツ記録", Docking.Top, new Font("Meiryo", 12, FontStyle.Bold), Color.DarkGray);
-            grfHistory.Titles.Add(title);
-
             // グラフ
             Series series = new Series();
             series.ChartType = SeriesChartType.Bubble;   //グラフの種類を選択
@@ -212,7 +232,7 @@ namespace Ikuji
 
             List<Baby> babyList = new List<Baby>();
 
-            babyList = babyDBConnections.GetBabyDataMilkOmutu("オムツ", dtpMonthDay.Value);
+            babyList = babyDBConnections.GetBabyDataMilkOmutu("オムツ", dtpMonthDay.Value.Date);
 
             //表示するためのデータがないとき
             if (babyList.Count == 0)
@@ -241,16 +261,6 @@ namespace Ikuji
         ///////////////////////////////
         private void ChartWeight()
         {
-            // 初期化
-            grfHistory.Series.Clear();      //グラフをクリア
-            grfHistory.Titles.Clear();      //タイトルをクリア
-            grfHistory.Legends.Clear();     //凡例をクリア
-            grfHistory.ChartAreas.Clear();  //目盛り領域をクリア
-
-            // タイトル
-            Title title = new Title("体重記録", Docking.Top, new Font("Meiryo", 12, FontStyle.Bold), Color.DarkGray);
-            grfHistory.Titles.Add(title);
-
             // グラフ
             Series series = new Series();
             series.ChartType = SeriesChartType.Line;             //グラフの種類を選択
@@ -323,16 +333,6 @@ namespace Ikuji
         ///////////////////////////////
         private void ChartTemperature()
         {
-            // 初期化
-            grfHistory.Series.Clear();      //グラフをクリア
-            grfHistory.Titles.Clear();      //タイトルをクリア
-            grfHistory.Legends.Clear();     //凡例をクリア
-            grfHistory.ChartAreas.Clear();  //目盛り領域をクリア
-
-            // タイトル
-            Title title = new Title("体温記録", Docking.Top, new Font("Meiryo", 12, FontStyle.Bold), Color.DarkGray);
-            grfHistory.Titles.Add(title);
-
             // グラフ
             Series series = new Series();
             series.ChartType = SeriesChartType.Line;             //グラフの種類を選択
