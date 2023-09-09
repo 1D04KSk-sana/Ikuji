@@ -33,13 +33,7 @@ namespace Ikuji
             //cmbViewChangeを"全部"に
             cmbViewChange.SelectedIndex = 0;
 
-            //btnReturn
-            SideRoundButton btnReturn = new SideRoundButton(3);
-            btnReturn.Text = "戻る";
-            btnReturn.Size = new System.Drawing.Size(60, 30);
-            btnReturn.Location = new System.Drawing.Point(20, 15);
-            btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
-            this.Controls.Add(btnReturn);
+            SetButton();
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -341,6 +335,24 @@ namespace Ikuji
             pnlDynamic.Controls.Add(lblWeight);
             pnlDynamic.Controls.Add(txbTemperature);
             pnlDynamic.Controls.Add(lblTemperature);
+        }
+        
+        ///////////////////////////////
+        //メソッド名：SetButton()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：ボタンのセット
+        ///////////////////////////////
+        private void SetButton()
+        {
+            SideRoundButton btnReturn = new SideRoundButton(3)
+            {
+                Text = "戻る",
+                Size = new System.Drawing.Size(60, 30),
+                Location = new System.Drawing.Point(20, 15)
+            };
+            btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            this.Controls.Add(btnReturn);
         }
     }
 }
