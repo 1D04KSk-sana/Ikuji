@@ -86,7 +86,6 @@ namespace Ikuji
             //FlatAppearance.MouseDownBackColor = System.Drawing.Color.Pink;
             //マウスを乗せたときの色
             //FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(232)))), ((int)(((byte)(197)))));
-            
         }
 
         // 角丸のパスを作成するメソッド
