@@ -31,14 +31,13 @@
             this.dtpMonthDay = new System.Windows.Forms.DateTimePicker();
             this.txbWeight = new System.Windows.Forms.TextBox();
             this.txbTemperature = new System.Windows.Forms.TextBox();
-            this.btnRestore = new System.Windows.Forms.Button();
             this.txbComment = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // dtpMonthDay
             // 
             this.dtpMonthDay.Location = new System.Drawing.Point(173, 24);
-            this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(4);
             this.dtpMonthDay.Name = "dtpMonthDay";
             this.dtpMonthDay.Size = new System.Drawing.Size(115, 22);
             this.dtpMonthDay.TabIndex = 4;
@@ -46,7 +45,7 @@
             // txbWeight
             // 
             this.txbWeight.Location = new System.Drawing.Point(36, 135);
-            this.txbWeight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbWeight.Margin = new System.Windows.Forms.Padding(4);
             this.txbWeight.Name = "txbWeight";
             this.txbWeight.Size = new System.Drawing.Size(187, 22);
             this.txbWeight.TabIndex = 5;
@@ -54,27 +53,15 @@
             // txbTemperature
             // 
             this.txbTemperature.Location = new System.Drawing.Point(36, 209);
-            this.txbTemperature.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbTemperature.Margin = new System.Windows.Forms.Padding(4);
             this.txbTemperature.Name = "txbTemperature";
             this.txbTemperature.Size = new System.Drawing.Size(187, 22);
             this.txbTemperature.TabIndex = 6;
             // 
-            // btnRestore
-            // 
-            this.btnRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(195)))), ((int)(((byte)(255)))));
-            this.btnRestore.Location = new System.Drawing.Point(36, 366);
-            this.btnRestore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(160, 61);
-            this.btnRestore.TabIndex = 8;
-            this.btnRestore.Text = "登録ボタン";
-            this.btnRestore.UseVisualStyleBackColor = false;
-            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
-            // 
             // txbComment
             // 
             this.txbComment.Location = new System.Drawing.Point(396, 366);
-            this.txbComment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbComment.Margin = new System.Windows.Forms.Padding(4);
             this.txbComment.Name = "txbComment";
             this.txbComment.Size = new System.Drawing.Size(319, 22);
             this.txbComment.TabIndex = 9;
@@ -86,7 +73,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txbComment);
-            this.Controls.Add(this.btnRestore);
             this.Controls.Add(this.txbTemperature);
             this.Controls.Add(this.txbWeight);
             this.Controls.Add(this.dtpMonthDay);
@@ -103,7 +89,6 @@
         private System.Windows.Forms.DateTimePicker dtpMonthDay;
         private System.Windows.Forms.TextBox txbWeight;
         private System.Windows.Forms.TextBox txbTemperature;
-        private System.Windows.Forms.Button btnRestore;
         private System.Windows.Forms.TextBox txbComment;
     }
 }

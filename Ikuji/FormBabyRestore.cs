@@ -59,8 +59,8 @@ namespace Ikuji
             SideRoundButton btnRestore = new SideRoundButton(1)
             {
                 Text = "登録ボタン",
-                Size = new System.Drawing.Size(150, 50),
-                Location = new System.Drawing.Point(88, 260),
+                Size = new System.Drawing.Size(150, 40),
+                Location = new System.Drawing.Point(20, 260),
             };
             btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             this.Controls.Add(btnRestore);

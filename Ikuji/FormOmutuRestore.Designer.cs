@@ -34,7 +34,6 @@
             this.pnlUntiOsikko = new System.Windows.Forms.Panel();
             this.rdbOsikko = new System.Windows.Forms.RadioButton();
             this.rdbUnti = new System.Windows.Forms.RadioButton();
-            this.btnRestore = new System.Windows.Forms.Button();
             this.txbComment = new System.Windows.Forms.TextBox();
             this.pnlUntiOsikko.SuspendLayout();
             this.SuspendLayout();
@@ -160,7 +159,7 @@
             this.pnlUntiOsikko.Location = new System.Drawing.Point(39, 102);
             this.pnlUntiOsikko.Margin = new System.Windows.Forms.Padding(4);
             this.pnlUntiOsikko.Name = "pnlUntiOsikko";
-            this.pnlUntiOsikko.Size = new System.Drawing.Size(251, 244);
+            this.pnlUntiOsikko.Size = new System.Drawing.Size(251, 183);
             this.pnlUntiOsikko.TabIndex = 6;
             // 
             // rdbOsikko
@@ -187,18 +186,6 @@
             this.rdbUnti.Text = "うんち";
             this.rdbUnti.UseVisualStyleBackColor = true;
             // 
-            // btnRestore
-            // 
-            this.btnRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(195)))), ((int)(((byte)(255)))));
-            this.btnRestore.Location = new System.Drawing.Point(36, 366);
-            this.btnRestore.Margin = new System.Windows.Forms.Padding(4);
-            this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(160, 61);
-            this.btnRestore.TabIndex = 7;
-            this.btnRestore.Text = "登録ボタン";
-            this.btnRestore.UseVisualStyleBackColor = false;
-            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
-            // 
             // txbComment
             // 
             this.txbComment.Location = new System.Drawing.Point(381, 385);
@@ -214,7 +201,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txbComment);
-            this.Controls.Add(this.btnRestore);
             this.Controls.Add(this.pnlUntiOsikko);
             this.Controls.Add(this.cmbMinit);
             this.Controls.Add(this.cmbHour);
@@ -237,7 +223,6 @@
         private System.Windows.Forms.Panel pnlUntiOsikko;
         private System.Windows.Forms.RadioButton rdbOsikko;
         private System.Windows.Forms.RadioButton rdbUnti;
-        private System.Windows.Forms.Button btnRestore;
         private System.Windows.Forms.TextBox txbComment;
     }
 }

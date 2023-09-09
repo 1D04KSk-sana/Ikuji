@@ -34,7 +34,6 @@
             this.pnlMilkBonyu = new System.Windows.Forms.Panel();
             this.rdbBonyu = new System.Windows.Forms.RadioButton();
             this.rdbMilk = new System.Windows.Forms.RadioButton();
-            this.btnRestore = new System.Windows.Forms.Button();
             this.txbComment = new System.Windows.Forms.TextBox();
             this.pnlMilkBonyu.SuspendLayout();
             this.SuspendLayout();
@@ -156,7 +155,7 @@
             this.pnlMilkBonyu.Controls.Add(this.rdbMilk);
             this.pnlMilkBonyu.Location = new System.Drawing.Point(29, 82);
             this.pnlMilkBonyu.Name = "pnlMilkBonyu";
-            this.pnlMilkBonyu.Size = new System.Drawing.Size(251, 244);
+            this.pnlMilkBonyu.Size = new System.Drawing.Size(251, 191);
             this.pnlMilkBonyu.TabIndex = 5;
             // 
             // rdbBonyu
@@ -183,17 +182,6 @@
             this.rdbMilk.Text = "粉ミルク";
             this.rdbMilk.UseVisualStyleBackColor = true;
             // 
-            // btnRestore
-            // 
-            this.btnRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(195)))), ((int)(((byte)(255)))));
-            this.btnRestore.Location = new System.Drawing.Point(27, 293);
-            this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(120, 49);
-            this.btnRestore.TabIndex = 6;
-            this.btnRestore.Text = "登録ボタン";
-            this.btnRestore.UseVisualStyleBackColor = false;
-            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
-            // 
             // txbComment
             // 
             this.txbComment.Location = new System.Drawing.Point(286, 308);
@@ -208,7 +196,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txbComment);
-            this.Controls.Add(this.btnRestore);
             this.Controls.Add(this.pnlMilkBonyu);
             this.Controls.Add(this.cmbMinit);
             this.Controls.Add(this.cmbHour);
@@ -231,7 +218,6 @@
         private System.Windows.Forms.Panel pnlMilkBonyu;
         private System.Windows.Forms.RadioButton rdbBonyu;
         private System.Windows.Forms.RadioButton rdbMilk;
-        private System.Windows.Forms.Button btnRestore;
         private System.Windows.Forms.TextBox txbComment;
     }
 }
