@@ -110,7 +110,7 @@ namespace Ikuji
             Series series = new Series();
             series.ChartType = SeriesChartType.Bubble;   //グラフの種類を選択
             series.MarkerSize = 5;                    //マーカーのサイズ
-            series.MarkerColor = Color.Blue;          //マーカーの背景色
+            series.MarkerColor = Color.SkyBlue;          //マーカーの背景色
             //series.MarkerBorderColor = Color.Black;   //マーカーの枠の色
             series.MarkerStyle = MarkerStyle.Circle;  //マーカーの形状 
             grfHistory.Series.Add(series);
@@ -149,11 +149,11 @@ namespace Ikuji
             // グラフ
             Series series = new Series();
             series.ChartType = SeriesChartType.Line;             //グラフの種類を選択
-            series.Color = ColorTranslator.FromHtml("#32aed4");  //グラフ色の設定
+            series.Color = Color.Pink;  //グラフ色の設定
             series.BorderWidth = 3;                              //ボーダーの幅
             series.MarkerSize = 10;                              //マーカーのサイズ
-            series.MarkerColor = Color.Blue;                     //マーカーの背景色
-            series.MarkerBorderColor = Color.Black;              //マーカーの枠の色
+            series.MarkerColor = Color.DeepPink;                     //マーカーの背景色
+            //series.MarkerBorderColor = Color.Black;              //マーカーの枠の色
             series.MarkerStyle = MarkerStyle.Circle;             //マーカーの形状
             series.XValueType = ChartValueType.DateTime;         //横軸を日付に
             grfHistory.Series.Add(series);
@@ -172,7 +172,7 @@ namespace Ikuji
             axisX.MinorTickMark.Enabled = false;                       //X軸に沿った目盛りの有効・無効の設定
             axisX.MajorTickMark.Enabled = false;                       //X軸に沿った目盛りの有効・無効の設定
             grfHistory.ChartAreas[0].AxisX = axisX;
-            grfHistory.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy.MM.dd";
+            grfHistory.ChartAreas[0].AxisX.LabelStyle.Format = "yy/MM/dd";
 
             if (chartViewVhange == 3)
             {
@@ -319,14 +319,15 @@ namespace Ikuji
             Axis axisY = new Axis();
             axisY.Title = "体重";                         //Y軸のタイトル
             axisY.TitleForeColor = Color.DarkGray;       //Y軸のタイトルの色
-            axisY.Minimum = 0;                           //Y軸の最小値
+            axisY.Minimum = 2000;                           //Y軸の最小値
             axisY.Maximum = 10000;                         //Y軸の最大値
             axisY.Interval = 2000;                         //Y軸の間隔
             axisY.MajorGrid.Interval = 1000;              //主軸グリッド線の間隔
-            axisY.MinorGrid.Interval = 200;               //補助軸グリッド線の間隔
+            axisY.MinorGrid.Interval = 500;               //補助軸グリッド線の間隔
             axisY.MinorGrid.Enabled = true;              //補助軸グリッド線の有効・無効の設定
             axisY.MajorTickMark.Enabled = false;         //Y軸に沿った目盛りの有効・無効の設定
             axisY.MinorTickMark.Enabled = false;         //Y軸に沿った目盛りの有効・無効の設定
+            axisY.MajorGrid.LineColor = Color.DarkGray;
             axisY.MinorGrid.LineColor = Color.LightGray; //補助軸グリッド線の色
             
             grfHistory.ChartAreas[0].AxisY = axisY;
@@ -364,29 +365,16 @@ namespace Ikuji
             axisY.Title = "体温";                         //Y軸のタイトル
             axisY.TitleForeColor = Color.DarkGray;       //Y軸のタイトルの色
             axisY.Minimum = 34;                           //Y軸の最小値
-            axisY.Maximum = 38;                         //Y軸の最大値
+            axisY.Maximum = 40;                         //Y軸の最大値
             axisY.Interval = 2;                         //Y軸の間隔
-            axisY.MajorGrid.Interval = 100;              //主軸グリッド線の間隔
-            axisY.MinorGrid.Interval = 20;               //補助軸グリッド線の間隔
+            axisY.MajorGrid.Interval = 6;              //主軸グリッド線の間隔
+            axisY.MinorGrid.Interval = 2;               //補助軸グリッド線の間隔
             axisY.MinorGrid.Enabled = true;              //補助軸グリッド線の有効・無効の設定
             axisY.MajorTickMark.Enabled = false;         //Y軸に沿った目盛りの有効・無効の設定
             axisY.MinorTickMark.Enabled = false;         //Y軸に沿った目盛りの有効・無効の設定
+            axisY.MajorGrid.LineColor = Color.White;
             axisY.MinorGrid.LineColor = Color.LightGray; //補助軸グリッド線の色
             grfHistory.ChartAreas[0].AxisY = axisY;
-
-            // ChartにChartAreaを追加します
-            string chart_area1 = "Area1";
-            grfHistory.ChartAreas.Add(new ChartArea(chart_area1));
-            // ChartにSeriesを追加します
-            string legend1 = "Graph1";
-            grfHistory.Series.Add(legend1);
-            // グラフの種別を指定
-            grfHistory.Series[legend1].ChartType = SeriesChartType.Line;  // 折れ線グラフを指定
-            grfHistory.Series[legend1].MarkerSize = 20;                     // マークサイズを指定
-            grfHistory.Series[legend1].MarkerStyle = MarkerStyle.Circle;    // マークスタイル(形状)を指定
-
-            grfHistory.ChartAreas[0].AxisY = axisY;
-            grfHistory.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy.MM.dd";
 
             List<Baby> babyList = new List<Baby>();
             babyList = babyDBConnections.GetBabyDataTemperature();
