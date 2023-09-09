@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBabyRestore));
             this.txbNameRestore = new System.Windows.Forms.TextBox();
             this.txbYearRestore = new System.Windows.Forms.TextBox();
             this.txbMonthRestore = new System.Windows.Forms.TextBox();
@@ -66,6 +67,7 @@
             this.Controls.Add(this.txbMonthRestore);
             this.Controls.Add(this.txbYearRestore);
             this.Controls.Add(this.txbNameRestore);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormBabyRestore";
             this.Text = "FormBabyRestore";

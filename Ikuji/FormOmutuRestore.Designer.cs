@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOmutuRestore));
             this.dtpMonthDay = new System.Windows.Forms.DateTimePicker();
             this.cmbHour = new System.Windows.Forms.ComboBox();
             this.cmbMinit = new System.Windows.Forms.ComboBox();
@@ -205,6 +206,7 @@
             this.Controls.Add(this.cmbMinit);
             this.Controls.Add(this.cmbHour);
             this.Controls.Add(this.dtpMonthDay);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormOmutuRestore";
             this.Text = "FormOmutuRestore";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormWeightRestore));
             this.dtpMonthDay = new System.Windows.Forms.DateTimePicker();
             this.txbWeight = new System.Windows.Forms.TextBox();
             this.txbTemperature = new System.Windows.Forms.TextBox();
@@ -76,6 +77,7 @@
             this.Controls.Add(this.txbTemperature);
             this.Controls.Add(this.txbWeight);
             this.Controls.Add(this.dtpMonthDay);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormWeightRestore";
             this.Text = "FormWeightRestore";

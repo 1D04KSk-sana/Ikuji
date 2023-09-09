@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGraph));
             this.dtpMonthDay = new System.Windows.Forms.DateTimePicker();
             this.cmbGraphChange = new System.Windows.Forms.ComboBox();
             this.grfHistory = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -81,6 +82,7 @@
             this.Controls.Add(this.grfHistory);
             this.Controls.Add(this.cmbGraphChange);
             this.Controls.Add(this.dtpMonthDay);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormGraph";
             this.Text = "FormGraph";
