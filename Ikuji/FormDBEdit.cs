@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,14 +20,67 @@ namespace Ikuji
 
         //クラスの宣言
         BabyDBConnections babyDBConnections = new BabyDBConnections();
+        DataInputCheck dataInputCheck = new DataInputCheck();
 
         //コントロールの宣言　※メソッドをまたいで使いたいのでpublic
         public Panel pnlDynamic = new Panel();
-        
+
+        public TextBox txbComment = new TextBox()
+        {
+            Location = new Point(20, 70),
+            Size = new Size(200, 30),
+            Text = string.Empty,
+            Font = new System.Drawing.Font("MS UI Gothic", 10F)
+        };
+
+        public ComboBox cmbHour = new ComboBox()
+        {
+            Location = new Point(20, 10),
+            Size = new Size(80, 30),
+            Font = new System.Drawing.Font("MS UI Gothic", 10F)
+        };
+        public ComboBox cmbMinit = new ComboBox()
+        {
+            Location = new Point(110, 10),
+            Size = new Size(80, 30),
+            Font = new System.Drawing.Font("MS UI Gothic", 10F)
+        };
+
+        public TextBox txbWeight = new TextBox()
+        {
+            Location = new Point(60, 10),
+            Text = String.Empty,
+            Font = new System.Drawing.Font("MS UI Gothic", 10F)
+        };
+        public TextBox txbTemperature = new TextBox()
+        {
+            Location = new Point(60, 40),
+            Text = String.Empty,
+            Font = new System.Drawing.Font("MS UI Gothic", 10F)
+        };
+
+        public RadioButton rdbUp = new RadioButton()
+        {
+            Location = new Point(10, 5),
+            Text = String.Empty,
+            Font = new System.Drawing.Font("MS UI Gothic", 10F)
+        };
+        public RadioButton rdbDown = new RadioButton()
+        {
+            Location = new Point(150, 5),
+            Text = string.Empty,
+            Font = new System.Drawing.Font("MS UI Gothic", 10F)
+        };
+
         //データグリッドビュー用の赤ちゃんデータ
         private static List<Baby> Baby;
 
-        private static int ControlNumber = 0;
+        //変数の宣言
+        int babyWeight = 0;
+        double babyTemperature = 0;
+        string babyComment = "";
+        int ControlNumber = 0;
+        string othersKind = "";
 
         private void FormDBEdit_Load(object sender, EventArgs e)
         {
@@ -65,21 +119,218 @@ namespace Ikuji
 
         private void dgvRecordEditing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //ControlNumberが1 ＝ Controlが設置された状態のとき
-            if (ControlNumber == 1)
+            //クリックされたDataGridViewがヘッダーのとき⇒何もしない
+            if (dgvRecordEditing.SelectedCells.Count == 0)
             {
-                //動的に生成されたパネル内のコントロールを削除
-                pnlDynamic.Controls.Clear();
-            }
-            //ControlNumberが0 ＝ Controlが削除された状態のとき
-            if (ControlNumber == 0)
-            {
-                //動的に共通Controlを設置
-                ControlCreateCommon();
-                ControlNumber = 1;
+                return;
             }
 
+            pnlDynamic.Controls.Clear();
+            ControlCreateCommon();
             SelectRowControl();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (dgvRecordEditing.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("データが選択されていません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //MessageBox.Show(cmbHour.SelectedIndex.ToString());
+            //return;
+
+            string dgv1Others = dgvRecordEditing[1, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString();
+            bool flg;
+
+            //GetVaildDataBabyからの戻り値がfalseのとき、メソッドを終了
+            if (!GetValidDataBaby())
+            {
+                return;
+            }
+            
+            //もしもtxbCommentのisNullOrEmptyがfalseのとき⇒txbCommentのテキストの空白を消してbabyCommentに代入
+            if (!String.IsNullOrEmpty(txbComment.Text))
+            {
+                babyComment = txbComment.Text.Trim();
+            }
+
+            //登録確認メッセージ
+            DialogResult result = MessageBox.Show("更新しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+            if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            if (dgv1Others == "体重・体温")
+            {
+                //体重・体温データの更新　失敗時flgにfalseを代入
+                var resBaby = GenerateDataBabyWeight();
+                flg = babyDBConnections.UpdateBabyDataWeight(resBaby);                
+            }
+            else
+            {
+                //ミルクorオムツデータの更新　失敗時flgにfalseを代入
+                var resBaby = GenerateDataBabyMilkOmutu();
+                flg = babyDBConnections.UpdateBabyDataMilkOmutu(resBaby);
+            }
+
+            cmbViewChange_SelectedIndexChanged(e, null);
+
+            if (flg)
+            {
+                MessageBox.Show("データを更新しました", "確認", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("データを更新できませんでした", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvRecordEditing.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("データが選択されていません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            babyDBConnections.DeleteBabyData(int.Parse(dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString()));
+            GetdgvRecordEditingView();
+            SettingdgvRecordEditing();
+        }
+
+        ///////////////////////////////
+        //メソッド名：GenerateDataBabyWeight()
+        //引　数   ：otherKinds = ラヂオボタンの種類
+        //戻り値   ：赤ちゃん体重・体温データ
+        //機　能   ：赤ちゃん体重・体温データのセット
+        ///////////////////////////////
+        private Baby GenerateDataBabyWeight()
+        {
+            return new Baby
+            {
+                //Id、体重、体温、日付、コメントをデータにセット
+                BabyId = int.Parse(dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString()),
+                BabyWeight = babyWeight,
+                BabyTemperature = babyTemperature,
+                BabyDate = dtpMonthDay.Value.Date,
+                BabyComment = babyComment,
+            };
+        }
+
+        ///////////////////////////////
+        //メソッド名：GenerateDataBabyMilkOmutu()
+        //引　数   ：otherKinds = ラヂオボタンの種類
+        //戻り値   ：赤ちゃんミルク・オムツデータ
+        //機　能   ：赤ちゃんミルク・オムツデータのセット
+        ///////////////////////////////
+        private Baby GenerateDataBabyMilkOmutu()
+        {
+            return new Baby
+            {
+                //Id、種類、日付、時間、分、コメントをデータにセット
+                BabyId = int.Parse(dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString()),
+                BabySub = othersKind,
+                BabyDate = dtpMonthDay.Value.Date,
+                BabyHour = cmbHour.SelectedIndex,
+                BabyMinit = cmbMinit.SelectedIndex,
+                BabyComment = babyComment
+            };
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetValidDataBaby()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataBaby()
+        {
+            //選択された行の1列目が体重・体温のとき
+            if (dgvRecordEditing[1, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == "体重・体温")
+            {
+                if (!GetValidDataBabyWeight())
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                //rdbUpがチェックされているとき⇒rdbUpのテキストをothesKindに代入
+                if(rdbUp.Checked) 
+                {
+                    othersKind = rdbUp.Text;
+                }
+
+                //rdbDownがチェックされているとき⇒rdbDownのテキストをothesKindに代入
+                if(rdbDown.Checked)
+                {
+                    othersKind = rdbDown.Text;
+                }
+            }
+            
+            return true;
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetValidDataBabyWeight()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataBabyWeight()
+        {
+            //もしもtxbWeightがnullでtxbTemperatureもnullのとき⇒MessageBoxでエラーを表示しfalseを返す
+            if(txbWeight.Text == String.Empty && txbTemperature.Text == String.Empty)
+            {
+                MessageBox.Show("体重か体温を入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+            //もしもtxbWeightのisNullOrEmptyがfalseのとき⇒txbWeightのテキストの空白を消してint変換、babyWeightに代入
+            if (!String.IsNullOrEmpty(txbWeight.Text))
+            {
+                //一旦文字をstringに代入
+                string babyWeightString = txbWeight.Text.Trim();
+
+                //全角数字を半角数字に変換
+                babyWeightString = Regex.Replace(babyWeightString, "[０-９]", p => ((char)(p.Value[0] - '０' + '0')).ToString());
+
+                //babyWeightStringの数字チェックがfalseのとき⇒MessageBoxでエラーを表示してfalseを返す
+                if (!dataInputCheck.CheckNumeric(babyWeightString)) 
+                {
+                    MessageBox.Show("体重は数字で入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                babyWeight = int.Parse(babyWeightString);
+            }
+
+            //もしもtxbTemperatureのisNullOrEmptyがfalseのとき⇒txbTemperatureのテキストの空白を消してdouble変換、babyTemperatureに代入
+            if (!String.IsNullOrEmpty(txbTemperature.Text))
+            {
+                //一旦文字をstringに代入
+                string babyTemperatureString = txbTemperature.Text.Trim();
+
+                //全角数字を半角数字に変換
+                babyTemperatureString = Regex.Replace(babyTemperatureString, "[０-９]", p => ((char)(p.Value[0] - '０' + '0')).ToString());
+
+                //babyTemperatureStringの数字チェックがfalseのとき⇒MessageBoxでエラーを表示してfalseを返す
+                if (!dataInputCheck.CheckNumeric(babyTemperatureString))
+                {
+                    MessageBox.Show("体重は数字で入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                babyTemperature = double.Parse(babyTemperatureString);
+            }
+
+            return true;
         }
 
         ///////////////////////////////
@@ -90,16 +341,7 @@ namespace Ikuji
         ///////////////////////////////
         private void SelectRowControl()
         {
-            TextBox txbComment = new TextBox()
-            {
-                //配置位置の設定
-                Location = new Point(20, 70),
-                //サイズの設定
-                Size = new Size(200, 30),
-                Text = dgvRecordEditing[8, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString(),
-                Font = new System.Drawing.Font("MS UI Gothic", 10F)
-            };
-
+            txbComment.Text = dgvRecordEditing[8, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString();
             //Addで配置　※pnlDynamicにAddしてるのでパネル内に設置される。
             pnlDynamic.Controls.Add(txbComment);
 
@@ -117,7 +359,7 @@ namespace Ikuji
                 ControlCreateOmutuMilk("うんち", "おしっこ");
             }
 
-            //選択された行の1列目がミルクのとき
+            //選択された行の1列目が体重・体温のとき
             if (dgvRecordEditing[1, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == "体重・体温")
             {
                 ControlCreateWeight();
@@ -223,19 +465,6 @@ namespace Ikuji
         ///////////////////////////////
         private void ControlCreateCommonTime()
         {
-            ComboBox cmbHour = new ComboBox()
-            {
-                Location = new Point(20, 10),
-                Size = new Size(80, 30),
-                Font = new System.Drawing.Font("MS UI Gothic", 10F)
-            };
-            ComboBox cmbMinit = new ComboBox()
-            {
-                Location = new Point(110, 10),
-                Size = new Size(80, 30),
-                Font = new System.Drawing.Font("MS UI Gothic", 10F)
-            };
-
             string[] arrayHour = new string[24];
             for (int i = 0; i < arrayHour.Length; i++)
             {
@@ -278,18 +507,8 @@ namespace Ikuji
             //Addで配置　※pnlDynamicにAddしてるのでパネル内に設置される。
             pnlDynamic.Controls.Add(pnlCommon);
 
-            RadioButton rdbDown = new RadioButton()
-            {
-                Location = new Point(10, 5),
-                Text = upName,
-                Font = new System.Drawing.Font("MS UI Gothic", 10F)
-            };
-            RadioButton rdbUp = new RadioButton()
-            {
-                Location = new Point(150, 5),
-                Text = downName,
-                Font = new System.Drawing.Font("MS UI Gothic", 10F)
-            };
+            rdbUp.Text = upName;
+            rdbDown.Text = downName;
 
             if (dgvRecordEditing[2, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == upName)
             {
@@ -313,19 +532,6 @@ namespace Ikuji
         ///////////////////////////////
         private void ControlCreateWeight()
         {
-            TextBox txbWeight = new TextBox()
-            {
-                Location = new Point(60, 10),
-                Text = dgvRecordEditing[3, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString(),
-                Font = new System.Drawing.Font("MS UI Gothic", 10F)
-            };
-            TextBox txbTemperature = new TextBox()
-            {
-                Location = new Point(60, 40),
-                Text = dgvRecordEditing[4, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString(),
-                Font = new System.Drawing.Font("MS UI Gothic", 10F)
-            };
-
             Label lblWeight = new Label()
             {
                 Location = new Point(20, 13),
@@ -340,27 +546,13 @@ namespace Ikuji
                 Font = new System.Drawing.Font("MS UI Gothic", 10F)
             };
 
+            txbWeight.Text = dgvRecordEditing[3, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString();
+            txbTemperature.Text = dgvRecordEditing[4, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString();
+
             pnlDynamic.Controls.Add(txbWeight);
             pnlDynamic.Controls.Add(lblWeight);
             pnlDynamic.Controls.Add(txbTemperature);
             pnlDynamic.Controls.Add(lblTemperature);
-        }
-
-        /// <summary>
-        /// Deleteボタン
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (dgvRecordEditing.SelectedRows.Count <= 0)
-            {
-                MessageBox.Show("データが選択されていません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            babyDBConnections.DeleteBabyData(int.Parse(dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString()));
-            GetdgvRecordEditingView();
-            SettingdgvRecordEditing();
         }
 
         ///////////////////////////////
@@ -380,5 +572,6 @@ namespace Ikuji
             btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             this.Controls.Add(btnReturn);
         }
+
     }
 }
