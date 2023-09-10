@@ -25,7 +25,7 @@ namespace Ikuji
             formBabyRestore.FormClosed += ChildForm_FormClosed;
             formBabyRestore.Show();
 
-            this.Hide();
+            this.Opacity = 0;
         }
 
         private void btnGraph_Click(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace Ikuji
             formGraph.FormClosed += ChildForm_FormClosed;
             formGraph.Show();
 
-            this.Hide();
+            this.Opacity = 0;
         }
 
         private void btnDBEdit_Click(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace Ikuji
             formDBEdit.FormClosed += ChildForm_FormClosed;
             formDBEdit.Show();
 
-            this.Hide();
+            this.Opacity = 0;
         }
 
         private void btnMilkRestore_Click(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace Ikuji
             formMilkRestore.FormClosed += ChildForm_FormClosed;
             formMilkRestore.Show();
 
-            this.Hide();
+            this.Opacity = 0;
         }
 
         private void btnOmutuRestore_Click(object sender, EventArgs e)
@@ -69,7 +69,7 @@ namespace Ikuji
             formOmutuRestore.FormClosed += ChildForm_FormClosed;
             formOmutuRestore.Show();
 
-            this.Hide();
+            this.Opacity = 0;
         }
 
         private void btnWeightRestore_Click(object sender, EventArgs e)
@@ -80,12 +80,12 @@ namespace Ikuji
             formWeightRestore.FormClosed += ChildForm_FormClosed;
             formWeightRestore.Show();
 
-            this.Hide();
+            this.Opacity = 0;
         }
 
         private void ChildForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Show();
+            this.Opacity = 1;
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)

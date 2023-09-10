@@ -205,7 +205,6 @@ namespace Ikuji
                 division.BabyMinit = updBaby.BabyMinit;
                 division.BabyComment = updBaby.BabyComment;
 
-
                 context.SaveChanges();
                 context.Dispose();
 

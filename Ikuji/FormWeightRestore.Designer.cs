@@ -122,7 +122,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "FormWeightRestore";
-            this.Text = "FormWeightRestore";
+            this.Text = "体重・体温登録画面";
             this.Load += new System.EventHandler(this.FormWeightRestore_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
