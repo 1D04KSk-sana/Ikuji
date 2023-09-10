@@ -47,7 +47,7 @@ namespace Ikuji
             formDBEdit.FormClosed += ChildForm_FormClosed;
             formDBEdit.Show();
 
-            this.Hide();
+            this.Opacity = 0;
         }
 
         private void btnMilkRestore_Click(object sender, EventArgs e)
@@ -85,7 +85,7 @@ namespace Ikuji
 
         private void ChildForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Show();
+            this.Opacity = 1;
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)

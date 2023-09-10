@@ -65,18 +65,18 @@ namespace Ikuji
 
         private void dgvRecordEditing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //ControlNumberが1 ＝ Controlが設置された状態のとき
+            if (ControlNumber == 1)
+            {
+                //動的に生成されたパネル内のコントロールを削除
+                pnlDynamic.Controls.Clear();
+            }
             //ControlNumberが0 ＝ Controlが削除された状態のとき
             if (ControlNumber == 0)
             {
                 //動的に共通Controlを設置
                 ControlCreateCommon();
                 ControlNumber = 1;
-            }
-            //ControlNumberが1 ＝ Controlが設置された状態のとき
-            if (ControlNumber == 1)
-            {
-                //動的に生成されたパネル内のコントロールを削除
-                pnlDynamic.Controls.Clear();
             }
 
             SelectRowControl();
@@ -90,6 +90,19 @@ namespace Ikuji
         ///////////////////////////////
         private void SelectRowControl()
         {
+            TextBox txbComment = new TextBox()
+            {
+                //配置位置の設定
+                Location = new Point(20, 70),
+                //サイズの設定
+                Size = new Size(200, 30),
+                Text = dgvRecordEditing[8, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString(),
+                Font = new System.Drawing.Font("MS UI Gothic", 10F)
+            };
+
+            //Addで配置　※pnlDynamicにAddしてるのでパネル内に設置される。
+            pnlDynamic.Controls.Add(txbComment);
+
             //選択された行の1列目がミルクのとき
             if (dgvRecordEditing[1, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == "ミルク")
             {
@@ -192,25 +205,14 @@ namespace Ikuji
         private void ControlCreateCommon()
         {
             //背景色の設定　※枠線がないので色を背景に合わせると目立たない
-            pnlDynamic.BackColor = Color.Gray;
+            pnlDynamic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
             //配置位置の設定
-            pnlDynamic.Location = new Point(200, 10);
+            pnlDynamic.Location = new Point(220, 7);
             //サイズの設定
             pnlDynamic.Size = new Size(350, 150);
 
             //Addで設置　※this＝このフォームのこと
             this.Controls.Add(pnlDynamic);
-
-            TextBox txbComment = new TextBox();
-
-            //配置位置の設定
-            txbComment.Location = new Point(10, 80);
-            //サイズの設定
-            txbComment.Size = new Size(200, 30);
-            txbComment.Text = dgvRecordEditing[8, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString();
-
-            //Addで配置　※pnlDynamicにAddしてるのでパネル内に設置される。
-            pnlDynamic.Controls.Add(txbComment);
         }
 
         ///////////////////////////////
@@ -221,13 +223,18 @@ namespace Ikuji
         ///////////////////////////////
         private void ControlCreateCommonTime()
         {
-            ComboBox cmbHour = new ComboBox();
-            ComboBox cmbMinit = new ComboBox();
-
-            //配置位置の設定
-            cmbHour.Location = new Point(10, 10);
-            //サイズの設定
-            cmbHour.Size = new Size(80, 30);
+            ComboBox cmbHour = new ComboBox()
+            {
+                Location = new Point(20, 10),
+                Size = new Size(80, 30),
+                Font = new System.Drawing.Font("MS UI Gothic", 10F)
+            };
+            ComboBox cmbMinit = new ComboBox()
+            {
+                Location = new Point(110, 10),
+                Size = new Size(80, 30),
+                Font = new System.Drawing.Font("MS UI Gothic", 10F)
+            };
 
             string[] arrayHour = new string[24];
             for (int i = 0; i < arrayHour.Length; i++)
@@ -236,13 +243,6 @@ namespace Ikuji
             }
             cmbHour.Items.AddRange(arrayHour);
 
-            cmbHour.SelectedIndex = int.Parse(dgvRecordEditing[6, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString());
-
-            //配置位置の設定
-            cmbMinit.Location = new Point(100, 10);
-            //サイズの設定
-            cmbMinit.Size = new Size(80, 30);
-
             string[] arrayMinit = new string[60];
             for (int i = 0; i < arrayMinit.Length; i++)
             {
@@ -250,6 +250,7 @@ namespace Ikuji
             }
             cmbMinit.Items.AddRange(arrayMinit);
 
+            cmbHour.SelectedIndex = int.Parse(dgvRecordEditing[6, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString());
             cmbMinit.SelectedIndex = int.Parse(dgvRecordEditing[7, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString());
 
             //Addで配置　※pnlDynamicにAddしてるのでパネル内に設置される。
@@ -267,30 +268,28 @@ namespace Ikuji
         private void ControlCreateOmutuMilk(string upName, string downName)
         {
             //パネルの宣言
-            Panel pnlCommon = new Panel();
-
-            //背景色の設定　※枠線がないので色を背景に合わせると目立たない
-            pnlCommon.BackColor = Color.DarkGray;
-            //配置位置の設定
-            pnlCommon.Location = new Point(10, 40);
-            //サイズの設定
-            pnlCommon.Size = new Size(300, 30);
+            Panel pnlCommon = new Panel()
+            {
+                BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185))))),
+                Location = new Point(10, 35),
+                Size = new Size(300, 30)
+            };
 
             //Addで配置　※pnlDynamicにAddしてるのでパネル内に設置される。
             pnlDynamic.Controls.Add(pnlCommon);
 
-            RadioButton rdbDown = new RadioButton();
-            RadioButton rdbUp = new RadioButton();
-
-            //配置位置の設定
-            rdbUp.Location = new Point(10, 5);
-            //テキストの設定
-            rdbUp.Text = upName;
-
-            //配置位置の設定
-            rdbDown.Location = new Point(150, 5);
-            //テキストの設定
-            rdbDown.Text = downName;
+            RadioButton rdbDown = new RadioButton()
+            {
+                Location = new Point(10, 5),
+                Text = upName,
+                Font = new System.Drawing.Font("MS UI Gothic", 10F)
+            };
+            RadioButton rdbUp = new RadioButton()
+            {
+                Location = new Point(150, 5),
+                Text = downName,
+                Font = new System.Drawing.Font("MS UI Gothic", 10F)
+            };
 
             if (dgvRecordEditing[2, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString() == upName)
             {
@@ -314,22 +313,32 @@ namespace Ikuji
         ///////////////////////////////
         private void ControlCreateWeight()
         {
-            TextBox txbWeight = new TextBox();
-            TextBox txbTemperature = new TextBox();
+            TextBox txbWeight = new TextBox()
+            {
+                Location = new Point(60, 10),
+                Text = dgvRecordEditing[3, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString(),
+                Font = new System.Drawing.Font("MS UI Gothic", 10F)
+            };
+            TextBox txbTemperature = new TextBox()
+            {
+                Location = new Point(60, 40),
+                Text = dgvRecordEditing[4, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString(),
+                Font = new System.Drawing.Font("MS UI Gothic", 10F)
+            };
 
-            txbWeight.Location = new Point(50, 10);
-            txbWeight.Text = dgvRecordEditing[3, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString();
+            Label lblWeight = new Label()
+            {
+                Location = new Point(20, 13),
+                Text = "体重",
+                Font = new System.Drawing.Font("MS UI Gothic", 10F)
+            };
 
-            txbTemperature.Location = new Point(50, 40);
-            txbTemperature.Text = dgvRecordEditing[4, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString();
-
-            Label lblWeight = new Label();
-            lblWeight.Text = "体重";
-            lblWeight.Location = new Point(10, 13);
-
-            Label lblTemperature = new Label();
-            lblTemperature.Text = "体温";
-            lblTemperature.Location = new Point(10, 43);
+            Label lblTemperature = new Label()
+            {
+                Text = "体温",
+                Location = new Point(20, 43),
+                Font = new System.Drawing.Font("MS UI Gothic", 10F)
+            };
 
             pnlDynamic.Controls.Add(txbWeight);
             pnlDynamic.Controls.Add(lblWeight);
