@@ -25,8 +25,8 @@ namespace Ikuji
         DataInputCheck dataInputCheck = new DataInputCheck();
 
         //変数の宣言
-        int babyWeight = 0;
-        double babyTemperature = 0;
+        int? babyWeight = 0;
+        double? babyTemperature = 0;
         string babyComment = "";
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -83,12 +83,16 @@ namespace Ikuji
 
                 babyWeight = int.Parse(babyWeightString);
             }
+            else
+            {
+                babyWeight = null;
+            }
 
             //もしもtxbTemperatureのisNullOrEmptyがfalseのとき⇒txbTemperatureのテキストの空白を消してdouble変換、babyTemperatureに代入
             if (!String.IsNullOrEmpty(txbTemperature.Text))
             {
                 //一旦文字をstringに代入
-                string babyTemperatureString = txbWeight.Text.Trim();
+                string babyTemperatureString = txbTemperature.Text.Trim();
 
                 //全角数字を半角数字に変換
                 babyTemperatureString = Regex.Replace(babyTemperatureString, "[０-９]", p => ((char)(p.Value[0] - '０' + '0')).ToString());
@@ -100,7 +104,11 @@ namespace Ikuji
                     return false;
                 }
                 
-                babyTemperature = int.Parse(babyTemperatureString);
+                babyTemperature = double.Parse(babyTemperatureString);
+            }
+            else
+            {
+                babyTemperature = null;
             }
 
             //もしもtxbCommentのisNullOrEmptyがfalseのとき⇒txbCommentのテキストの空白を消してbabyCommentに代入
@@ -154,7 +162,7 @@ namespace Ikuji
                 BabySub = String.Empty,
                 BabyWeight = babyWeight,
                 BabyTemperature = babyTemperature,
-                BabyDate = dtpMonthDay.Value,
+                BabyDate = dtpMonthDay.Value.Date,
                 BabyHour = null,
                 BabyMinit = null,
                 BabyComment = babyComment,

@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.btnReturn = new System.Windows.Forms.Button();
             this.dtpMonthDay = new System.Windows.Forms.DateTimePicker();
             this.cmbGraphChange = new System.Windows.Forms.ComboBox();
@@ -57,6 +55,7 @@
             this.dtpMonthDay.Name = "dtpMonthDay";
             this.dtpMonthDay.Size = new System.Drawing.Size(115, 22);
             this.dtpMonthDay.TabIndex = 4;
+            this.dtpMonthDay.ValueChanged += new System.EventHandler(this.dtpMonthDay_ValueChanged);
             // 
             // cmbGraphChange
             // 
@@ -76,8 +75,8 @@
             // 
             // grfHistory
             // 
-            chartArea4.Name = "ChartArea1";
-            this.grfHistory.ChartAreas.Add(chartArea4);
+            chartArea1.Name = "ChartArea1";
+            this.grfHistory.ChartAreas.Add(chartArea1);
             this.grfHistory.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.grfHistory.Location = new System.Drawing.Point(16, 47);
             this.grfHistory.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);

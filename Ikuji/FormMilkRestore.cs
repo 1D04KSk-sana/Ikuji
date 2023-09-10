@@ -123,7 +123,7 @@ namespace Ikuji
                 BabySub = milkKinds,
                 BabyWeight = null,
                 BabyTemperature = null,
-                BabyDate = dtpMonthDay.Value,
+                BabyDate = dtpMonthDay.Value.Date,
                 BabyHour = cmbHour.SelectedIndex,
                 BabyMinit = cmbMinit.SelectedIndex,
                 BabyComment = milkComment,
