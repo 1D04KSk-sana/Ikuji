@@ -265,7 +265,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "FormOmutuRestore";
-            this.Text = "FormOmutuRestore";
+            this.Text = "オムツ登録画面";
             this.Load += new System.EventHandler(this.FormOmutuRestore_Load);
             this.pnlUntiOsikko.ResumeLayout(false);
             this.pnlUntiOsikko.PerformLayout();

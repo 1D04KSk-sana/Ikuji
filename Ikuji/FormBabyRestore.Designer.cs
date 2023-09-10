@@ -72,7 +72,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "FormBabyRestore";
-            this.Text = "FormBabyRestore";
+            this.Text = "赤ちゃん登録画面";
             this.Load += new System.EventHandler(this.FormBabyRestore_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

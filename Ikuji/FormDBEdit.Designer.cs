@@ -40,7 +40,7 @@
             // dtpMonthDay
             // 
             this.dtpMonthDay.Location = new System.Drawing.Point(138, 21);
-            this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(2);
             this.dtpMonthDay.Name = "dtpMonthDay";
             this.dtpMonthDay.Size = new System.Drawing.Size(141, 22);
             this.dtpMonthDay.TabIndex = 3;
@@ -83,7 +83,7 @@
             // 
             this.dgvRecordEditing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRecordEditing.Location = new System.Drawing.Point(10, 139);
-            this.dgvRecordEditing.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvRecordEditing.Margin = new System.Windows.Forms.Padding(4);
             this.dgvRecordEditing.Name = "dgvRecordEditing";
             this.dgvRecordEditing.RowHeadersWidth = 51;
             this.dgvRecordEditing.RowTemplate.Height = 21;
@@ -104,10 +104,10 @@
             this.Controls.Add(this.dtpMonthDay);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "FormDBEdit";
-            this.Text = "FormDBEdit";
+            this.Text = "記録編集画面";
             this.Load += new System.EventHandler(this.FormDBEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecordEditing)).EndInit();
             this.ResumeLayout(false);

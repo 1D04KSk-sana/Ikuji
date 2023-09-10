@@ -260,7 +260,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "FormMilkRestore";
-            this.Text = "FormMilk";
+            this.Text = "ミルク登録画面";
             this.Load += new System.EventHandler(this.FormMilkRestore_Load);
             this.pnlMilkBonyu.ResumeLayout(false);
             this.pnlMilkBonyu.PerformLayout();

@@ -101,7 +101,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "FormGraph";
-            this.Text = "FormGraph";
+            this.Text = "グラフ表示画面";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.FormGraph_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grfHistory)).EndInit();
