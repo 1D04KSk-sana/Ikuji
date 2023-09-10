@@ -336,7 +336,24 @@ namespace Ikuji
             pnlDynamic.Controls.Add(txbTemperature);
             pnlDynamic.Controls.Add(lblTemperature);
         }
-        
+
+        /// <summary>
+        /// Deleteボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvRecordEditing.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("データが選択されていません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            babyDBConnections.DeleteBabyData(int.Parse(dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString()));
+            GetdgvRecordEditingView();
+            SettingdgvRecordEditing();
+        }
+
         ///////////////////////////////
         //メソッド名：SetButton()
         //引　数   ：なし

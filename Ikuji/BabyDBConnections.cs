@@ -153,5 +153,34 @@ namespace Ikuji
 
             return babyList;
         }
+
+        ///////////////////////////////
+        //メソッド名：DeleteBabyData()
+        //引　数   ：なし
+        //戻り値   ：赤ちゃんデータ削除完了フラグ
+        //機　能   ：赤ちゃんデータの削除
+        ///////////////////////////////
+        public void DeleteBabyData(int babynumber)
+        {
+            try
+            {
+                DialogResult dr = MessageBox.Show("データを削除してもよろしいですか？", "確認", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+
+                if (dr == System.Windows.Forms.DialogResult.Yes)
+                {
+                    var context = new BabyContext();
+                    var babyInfo = context.Babys.Single(x => x.BabyId == babynumber);
+                    context.Babys.Remove(babyInfo);
+                    context.SaveChanges();
+                    context.Dispose();
+                    MessageBox.Show("データを削除しました。");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }
