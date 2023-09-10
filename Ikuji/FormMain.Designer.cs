@@ -28,115 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnBabyRestore = new System.Windows.Forms.Button();
-            this.btnGraph = new System.Windows.Forms.Button();
-            this.btnDBEdit = new System.Windows.Forms.Button();
-            this.btnMilkRestore = new System.Windows.Forms.Button();
-            this.btnOmutuRestore = new System.Windows.Forms.Button();
-            this.btnWeightRestore = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
+            this.pctLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnBabyRestore
+            // pctLogo
             // 
-            this.btnBabyRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(201)))), ((int)(((byte)(129)))));
-            this.btnBabyRestore.Location = new System.Drawing.Point(62, 24);
-            this.btnBabyRestore.Margin = new System.Windows.Forms.Padding(2);
-            this.btnBabyRestore.Name = "btnBabyRestore";
-            this.btnBabyRestore.Size = new System.Drawing.Size(117, 33);
-            this.btnBabyRestore.TabIndex = 1;
-            this.btnBabyRestore.Text = "赤ちゃん情報編集";
-            this.btnBabyRestore.UseVisualStyleBackColor = false;
-            this.btnBabyRestore.Click += new System.EventHandler(this.btnBabyRestore_Click);
-            // 
-            // btnGraph
-            // 
-            this.btnGraph.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
-            this.btnGraph.Location = new System.Drawing.Point(327, 257);
-            this.btnGraph.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGraph.Name = "btnGraph";
-            this.btnGraph.Size = new System.Drawing.Size(117, 33);
-            this.btnGraph.TabIndex = 2;
-            this.btnGraph.Text = "グラフ表示";
-            this.btnGraph.UseVisualStyleBackColor = false;
-            this.btnGraph.Click += new System.EventHandler(this.btnGraph_Click);
-            // 
-            // btnDBEdit
-            // 
-            this.btnDBEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(201)))), ((int)(((byte)(129)))));
-            this.btnDBEdit.Location = new System.Drawing.Point(404, 24);
-            this.btnDBEdit.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDBEdit.Name = "btnDBEdit";
-            this.btnDBEdit.Size = new System.Drawing.Size(117, 33);
-            this.btnDBEdit.TabIndex = 3;
-            this.btnDBEdit.Text = "記録編集";
-            this.btnDBEdit.UseVisualStyleBackColor = false;
-            this.btnDBEdit.Click += new System.EventHandler(this.btnDBEdit_Click);
-            // 
-            // btnMilkRestore
-            // 
-            this.btnMilkRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(195)))), ((int)(((byte)(255)))));
-            this.btnMilkRestore.Location = new System.Drawing.Point(127, 199);
-            this.btnMilkRestore.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMilkRestore.Name = "btnMilkRestore";
-            this.btnMilkRestore.Size = new System.Drawing.Size(117, 33);
-            this.btnMilkRestore.TabIndex = 4;
-            this.btnMilkRestore.Text = "授乳記録";
-            this.btnMilkRestore.UseVisualStyleBackColor = false;
-            this.btnMilkRestore.Click += new System.EventHandler(this.btnMilkRestore_Click);
-            // 
-            // btnOmutuRestore
-            // 
-            this.btnOmutuRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(195)))), ((int)(((byte)(255)))));
-            this.btnOmutuRestore.Location = new System.Drawing.Point(127, 250);
-            this.btnOmutuRestore.Margin = new System.Windows.Forms.Padding(2);
-            this.btnOmutuRestore.Name = "btnOmutuRestore";
-            this.btnOmutuRestore.Size = new System.Drawing.Size(117, 33);
-            this.btnOmutuRestore.TabIndex = 5;
-            this.btnOmutuRestore.Text = "オムツ記録";
-            this.btnOmutuRestore.UseVisualStyleBackColor = false;
-            this.btnOmutuRestore.Click += new System.EventHandler(this.btnOmutuRestore_Click);
-            // 
-            // btnWeightRestore
-            // 
-            this.btnWeightRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(195)))), ((int)(((byte)(255)))));
-            this.btnWeightRestore.Location = new System.Drawing.Point(327, 199);
-            this.btnWeightRestore.Margin = new System.Windows.Forms.Padding(2);
-            this.btnWeightRestore.Name = "btnWeightRestore";
-            this.btnWeightRestore.Size = new System.Drawing.Size(117, 33);
-            this.btnWeightRestore.TabIndex = 6;
-            this.btnWeightRestore.Text = "体重体温記録";
-            this.btnWeightRestore.UseVisualStyleBackColor = false;
-            this.btnWeightRestore.Click += new System.EventHandler(this.btnWeightRestore_Click);
+            this.pctLogo.Image = global::Ikuji.Properties.Resources.Icon_Touka_Mini;
+            this.pctLogo.Location = new System.Drawing.Point(278, 54);
+            this.pctLogo.Name = "pctLogo";
+            this.pctLogo.Size = new System.Drawing.Size(200, 200);
+            this.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctLogo.TabIndex = 0;
+            this.pctLogo.TabStop = false;
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(600, 360);
-            this.Controls.Add(this.btnWeightRestore);
-            this.Controls.Add(this.btnOmutuRestore);
-            this.Controls.Add(this.btnMilkRestore);
-            this.Controls.Add(this.btnDBEdit);
-            this.Controls.Add(this.btnGraph);
-            this.Controls.Add(this.btnBabyRestore);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pctLogo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "FormMain";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnBabyRestore;
-        private System.Windows.Forms.Button btnGraph;
-        private System.Windows.Forms.Button btnDBEdit;
-        private System.Windows.Forms.Button btnMilkRestore;
-        private System.Windows.Forms.Button btnOmutuRestore;
-        private System.Windows.Forms.Button btnWeightRestore;
+        private System.Windows.Forms.PictureBox pctLogo;
     }
 }
 

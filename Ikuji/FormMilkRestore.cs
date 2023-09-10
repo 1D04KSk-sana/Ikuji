@@ -28,6 +28,15 @@ namespace Ikuji
             this.Close();
         }
 
+        private void FormMilkRestore_Load(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            cmbHour.Text = dt.Hour.ToString();
+            cmbMinit.Text = dt.Minute.ToString();
+
+            SetButton();
+        }
+
         private void btnRestore_Click(object sender, EventArgs e)
         {
             string milkKind = "";
@@ -123,18 +132,38 @@ namespace Ikuji
                 BabySub = milkKinds,
                 BabyWeight = null,
                 BabyTemperature = null,
-                BabyDate = dtpMonthDay.Value.ToShortDateString(),
+                BabyDate = dtpMonthDay.Value.Date,
                 BabyHour = cmbHour.SelectedIndex,
                 BabyMinit = cmbMinit.SelectedIndex,
                 BabyComment = milkComment,
             };
         }
 
-        private void FormMilkRestore_Load(object sender, EventArgs e)
+        ///////////////////////////////
+        //メソッド名：SetButton()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：ボタンのセット
+        ///////////////////////////////
+        private void SetButton()
         {
-            DateTime dt = DateTime.Now;
-            cmbHour.Text = dt.Hour.ToString();
-            cmbMinit.Text = dt.Minute.ToString();
+            SideRoundButton btnReturn = new SideRoundButton(3)
+            {
+                Text = "戻る",
+                Size = new System.Drawing.Size(60, 30),
+                Location = new System.Drawing.Point(20, 15)
+            };
+            btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            this.Controls.Add(btnReturn);
+
+            SideRoundButton btnRestore = new SideRoundButton(1)
+            {
+                Text = "登録ボタン",
+                Size = new System.Drawing.Size(150, 40),
+                Location = new System.Drawing.Point(20, 260),
+            };
+            btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
+            this.Controls.Add(btnRestore);
         }
     }
 }
