@@ -44,7 +44,7 @@
             this.dtpMonthDay.Location = new System.Drawing.Point(173, 24);
             this.dtpMonthDay.Margin = new System.Windows.Forms.Padding(4);
             this.dtpMonthDay.Name = "dtpMonthDay";
-            this.dtpMonthDay.Size = new System.Drawing.Size(223, 32);
+            this.dtpMonthDay.Size = new System.Drawing.Size(223, 24);
             this.dtpMonthDay.TabIndex = 4;
             // 
             // txbWeight
@@ -53,7 +53,7 @@
             this.txbWeight.Location = new System.Drawing.Point(36, 143);
             this.txbWeight.Margin = new System.Windows.Forms.Padding(4);
             this.txbWeight.Name = "txbWeight";
-            this.txbWeight.Size = new System.Drawing.Size(187, 32);
+            this.txbWeight.Size = new System.Drawing.Size(187, 24);
             this.txbWeight.TabIndex = 5;
             // 
             // txbTemperature
@@ -62,7 +62,7 @@
             this.txbTemperature.Location = new System.Drawing.Point(396, 143);
             this.txbTemperature.Margin = new System.Windows.Forms.Padding(4);
             this.txbTemperature.Name = "txbTemperature";
-            this.txbTemperature.Size = new System.Drawing.Size(187, 32);
+            this.txbTemperature.Size = new System.Drawing.Size(187, 24);
             this.txbTemperature.TabIndex = 6;
             // 
             // txbComment
@@ -71,7 +71,7 @@
             this.txbComment.Location = new System.Drawing.Point(36, 243);
             this.txbComment.Margin = new System.Windows.Forms.Padding(4);
             this.txbComment.Name = "txbComment";
-            this.txbComment.Size = new System.Drawing.Size(319, 32);
+            this.txbComment.Size = new System.Drawing.Size(319, 24);
             this.txbComment.TabIndex = 9;
             // 
             // lblWeight
@@ -80,7 +80,7 @@
             this.lblWeight.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.lblWeight.Location = new System.Drawing.Point(40, 114);
             this.lblWeight.Name = "lblWeight";
-            this.lblWeight.Size = new System.Drawing.Size(62, 25);
+            this.lblWeight.Size = new System.Drawing.Size(42, 17);
             this.lblWeight.TabIndex = 10;
             this.lblWeight.Text = "体重";
             // 
@@ -90,7 +90,7 @@
             this.lblTemperature.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.lblTemperature.Location = new System.Drawing.Point(403, 114);
             this.lblTemperature.Name = "lblTemperature";
-            this.lblTemperature.Size = new System.Drawing.Size(62, 25);
+            this.lblTemperature.Size = new System.Drawing.Size(42, 17);
             this.lblTemperature.TabIndex = 11;
             this.lblTemperature.Text = "体温";
             // 
@@ -100,7 +100,7 @@
             this.lblComment.Font = new System.Drawing.Font("MS UI Gothic", 10F);
             this.lblComment.Location = new System.Drawing.Point(40, 214);
             this.lblComment.Name = "lblComment";
-            this.lblComment.Size = new System.Drawing.Size(83, 25);
+            this.lblComment.Size = new System.Drawing.Size(57, 17);
             this.lblComment.TabIndex = 12;
             this.lblComment.Text = "コメント";
             // 

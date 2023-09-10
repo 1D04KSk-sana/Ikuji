@@ -33,13 +33,13 @@
             this.cmbHour = new System.Windows.Forms.ComboBox();
             this.cmbMinit = new System.Windows.Forms.ComboBox();
             this.pnlMilkBonyu = new System.Windows.Forms.Panel();
+            this.lblBabySub = new System.Windows.Forms.Label();
             this.rdbBonyu = new System.Windows.Forms.RadioButton();
             this.rdbMilk = new System.Windows.Forms.RadioButton();
             this.txbComment = new System.Windows.Forms.TextBox();
             this.lblComment = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblMinit = new System.Windows.Forms.Label();
-            this.lblBabySub = new System.Windows.Forms.Label();
             this.pnlMilkBonyu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -167,6 +167,16 @@
             this.pnlMilkBonyu.Size = new System.Drawing.Size(251, 191);
             this.pnlMilkBonyu.TabIndex = 5;
             // 
+            // lblBabySub
+            // 
+            this.lblBabySub.AutoSize = true;
+            this.lblBabySub.Font = new System.Drawing.Font("MS UI Gothic", 10F);
+            this.lblBabySub.Location = new System.Drawing.Point(13, 36);
+            this.lblBabySub.Name = "lblBabySub";
+            this.lblBabySub.Size = new System.Drawing.Size(92, 17);
+            this.lblBabySub.TabIndex = 17;
+            this.lblBabySub.Text = "ミルクの種類";
+            // 
             // rdbBonyu
             // 
             this.rdbBonyu.AutoSize = true;
@@ -230,16 +240,6 @@
             this.lblMinit.Size = new System.Drawing.Size(25, 17);
             this.lblMinit.TabIndex = 16;
             this.lblMinit.Text = "分";
-            // 
-            // lblBabySub
-            // 
-            this.lblBabySub.AutoSize = true;
-            this.lblBabySub.Font = new System.Drawing.Font("MS UI Gothic", 10F);
-            this.lblBabySub.Location = new System.Drawing.Point(13, 36);
-            this.lblBabySub.Name = "lblBabySub";
-            this.lblBabySub.Size = new System.Drawing.Size(92, 17);
-            this.lblBabySub.TabIndex = 17;
-            this.lblBabySub.Text = "ミルクの種類";
             // 
             // FormMilkRestore
             // 

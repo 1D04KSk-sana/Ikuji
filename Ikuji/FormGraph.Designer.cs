@@ -102,6 +102,7 @@
             this.MaximizeBox = false;
             this.Name = "FormGraph";
             this.Text = "FormGraph";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.FormGraph_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grfHistory)).EndInit();
             this.ResumeLayout(false);
