@@ -17,11 +17,13 @@ namespace Ikuji
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //スプラッシュウィンドウの設定
-            FormLoad formLoad = new FormLoad();
-            formLoad.ShowDialog();
+            FormMain mainForm = new FormMain();
 
-            Application.Run(new FormMain());
+            //スプラッシュウィンドウを表示
+            FormLoad.ShowSplash(mainForm);
+
+            //メインウィンドウを表示
+            Application.Run(mainForm);
         }
     }
 }
