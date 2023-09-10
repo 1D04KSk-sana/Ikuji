@@ -28,80 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnReturn = new System.Windows.Forms.Button();
-            this.btnRestore = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBabyRestore));
             this.txbNameRestore = new System.Windows.Forms.TextBox();
             this.txbYearRestore = new System.Windows.Forms.TextBox();
             this.txbMonthRestore = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // btnReturn
-            // 
-            this.btnReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(201)))), ((int)(((byte)(232)))));
-            this.btnReturn.Location = new System.Drawing.Point(27, 19);
-            this.btnReturn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(63, 30);
-            this.btnReturn.TabIndex = 1;
-            this.btnReturn.Text = "戻る";
-            this.btnReturn.UseVisualStyleBackColor = false;
-            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
-            // 
-            // btnRestore
-            // 
-            this.btnRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(195)))), ((int)(((byte)(255)))));
-            this.btnRestore.Location = new System.Drawing.Point(33, 291);
-            this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(120, 49);
-            this.btnRestore.TabIndex = 7;
-            this.btnRestore.Text = "登録ボタン";
-            this.btnRestore.UseVisualStyleBackColor = false;
-            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
-            // 
             // txbNameRestore
             // 
-            this.txbNameRestore.Location = new System.Drawing.Point(27, 76);
+            this.txbNameRestore.Location = new System.Drawing.Point(36, 95);
+            this.txbNameRestore.Margin = new System.Windows.Forms.Padding(4);
             this.txbNameRestore.Name = "txbNameRestore";
-            this.txbNameRestore.Size = new System.Drawing.Size(173, 19);
+            this.txbNameRestore.Size = new System.Drawing.Size(229, 22);
             this.txbNameRestore.TabIndex = 8;
             // 
             // txbYearRestore
             // 
-            this.txbYearRestore.Location = new System.Drawing.Point(27, 118);
+            this.txbYearRestore.Location = new System.Drawing.Point(36, 148);
+            this.txbYearRestore.Margin = new System.Windows.Forms.Padding(4);
             this.txbYearRestore.Name = "txbYearRestore";
-            this.txbYearRestore.Size = new System.Drawing.Size(173, 19);
+            this.txbYearRestore.Size = new System.Drawing.Size(229, 22);
             this.txbYearRestore.TabIndex = 9;
             // 
             // txbMonthRestore
             // 
-            this.txbMonthRestore.Location = new System.Drawing.Point(304, 76);
+            this.txbMonthRestore.Location = new System.Drawing.Point(405, 95);
+            this.txbMonthRestore.Margin = new System.Windows.Forms.Padding(4);
             this.txbMonthRestore.Name = "txbMonthRestore";
-            this.txbMonthRestore.Size = new System.Drawing.Size(173, 19);
+            this.txbMonthRestore.Size = new System.Drawing.Size(229, 22);
             this.txbMonthRestore.TabIndex = 10;
             // 
             // FormBabyRestore
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(600, 360);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txbMonthRestore);
             this.Controls.Add(this.txbYearRestore);
             this.Controls.Add(this.txbNameRestore);
-            this.Controls.Add(this.btnRestore);
-            this.Controls.Add(this.btnReturn);
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
             this.Name = "FormBabyRestore";
             this.Text = "FormBabyRestore";
+            this.Load += new System.EventHandler(this.FormBabyRestore_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnReturn;
-        private System.Windows.Forms.Button btnRestore;
         private System.Windows.Forms.TextBox txbNameRestore;
         private System.Windows.Forms.TextBox txbYearRestore;
         private System.Windows.Forms.TextBox txbMonthRestore;

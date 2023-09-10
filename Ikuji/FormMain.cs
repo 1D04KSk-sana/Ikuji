@@ -108,23 +108,70 @@ namespace Ikuji
             context.Dispose();
 
             //ボタンの宣言
-            //btnBabyRestore
-            SideRoundButton btnBabyRestore = new SideRoundButton(0);
-            btnBabyRestore.Text = "赤ちゃん情報編集";
-            btnBabyRestore.Size = new System.Drawing.Size(117, 33);
-            btnBabyRestore.Location = new System.Drawing.Point(62, 24);
-            btnBabyRestore.Click += new System.EventHandler(this.btnBabyRestore_Click);
-            
+            SetButton();
+        }
 
-            //btnDBEdit
-            SideRoundButton btnDBEdit = new SideRoundButton(1);
-            btnDBEdit.Text = "記録編集";
-            btnDBEdit.Size = new System.Drawing.Size(117, 33);
-            btnDBEdit.Location = new System.Drawing.Point(404, 24);
-            btnDBEdit.Click += new System.EventHandler(this.btnDBEdit_Click);
+        ///////////////////////////////
+        //メソッド名：SetButton()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：ボタンのセット
+        ///////////////////////////////
+        private void SetButton()
+        {
+            SideRoundButton btnBabyRestore = new SideRoundButton(0)
+            {
+                Text = "赤ちゃん情報編集",
+                Size = new System.Drawing.Size(117, 33),
+                Location = new System.Drawing.Point(62, 24)
+            };
+            btnBabyRestore.Click += new System.EventHandler(this.btnBabyRestore_Click);
             this.Controls.Add(btnBabyRestore);
+
+            SideRoundButton btnDBEdit = new SideRoundButton(0)
+            {
+                Text = "記録編集",
+                Size = new System.Drawing.Size(117, 33),
+                Location = new System.Drawing.Point(404, 24)
+            };
+            btnDBEdit.Click += new System.EventHandler(this.btnDBEdit_Click);
             this.Controls.Add(btnDBEdit);
 
+            SideRoundButton btnMilkRestore = new SideRoundButton(1)
+            {
+                Text = "授乳記録",
+                Size = new System.Drawing.Size(117, 33),
+                Location = new System.Drawing.Point(127, 220),
+            };
+            btnMilkRestore.Click += new System.EventHandler(this.btnMilkRestore_Click);
+            this.Controls.Add(btnMilkRestore);
+
+            SideRoundButton btnOmutuRestore = new SideRoundButton(1)
+            {
+                Text = "オムツ記録",
+                Size = new System.Drawing.Size(117, 33),
+                Location = new System.Drawing.Point(127, 280)
+            };
+            btnOmutuRestore.Click += new System.EventHandler(this.btnOmutuRestore_Click);
+            this.Controls.Add(btnOmutuRestore);
+
+            SideRoundButton btnWeightRestore = new SideRoundButton(1)
+            {
+                Text = "体重・体温記録",
+                Size = new System.Drawing.Size(117, 33),
+                Location = new System.Drawing.Point(327, 220),
+            };
+            btnWeightRestore.Click += new System.EventHandler(this.btnWeightRestore_Click);
+            this.Controls.Add(btnWeightRestore);
+
+            SideRoundButton btnGraph = new SideRoundButton(2)
+            {
+                Text = "グラフ表示",
+                Size = new System.Drawing.Size(117, 33),
+                Location = new System.Drawing.Point(327, 280),
+            };
+            btnGraph.Click += new System.EventHandler(this.btnGraph_Click);
+            this.Controls.Add(btnGraph);
         }
     }
 }
