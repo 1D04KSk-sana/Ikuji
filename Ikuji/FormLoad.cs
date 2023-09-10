@@ -26,7 +26,8 @@ namespace Ikuji
             this.BackColor = Color.Black;
 
             // フォームの不透明度を設定（半透明化）
-            this.Opacity = 0.8;
+            //this.Opacity = 0.8;
+
             // 丸み値
             int radius = 50;
             int diameter = radius * 2;
