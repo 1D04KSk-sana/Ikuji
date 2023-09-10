@@ -182,5 +182,75 @@ namespace Ikuji
             }
 
         }
+
+        ///////////////////////////////
+        //メソッド名：UpdateBabyDataMilkOmutu()
+        //引　数   ：赤ちゃんミルク・オムツデータ
+        //戻り値   ：True or False
+        //機　能   ：赤ちゃんミルク・オムツデータの更新
+        //          ：更新成功の場合True
+        //          ：更新失敗の場合False
+        ///////////////////////////////
+        public bool UpdateBabyDataMilkOmutu(Baby updBaby)
+        {
+            try
+            {
+                var context = new BabyContext();
+                var division = context.Babys.Single(x => x.BabyId == updBaby.BabyId);
+
+                //種類、日付、時間、分、コメントを更新する
+                division.BabySub = updBaby.BabySub;
+                division.BabyDate = updBaby.BabyDate;
+                division.BabyHour = updBaby.BabyHour;
+                division.BabyMinit = updBaby.BabyMinit;
+                division.BabyComment = updBaby.BabyComment;
+
+
+                context.SaveChanges();
+                context.Dispose();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        ///////////////////////////////
+        //メソッド名：UpdateBabyDataWeight()
+        //引　数   ：赤ちゃん体重・体温データ
+        //戻り値   ：True or False
+        //機　能   ：赤ちゃん体重・体温データの更新
+        //          ：更新成功の場合True
+        //          ：更新失敗の場合False
+        ///////////////////////////////
+        public bool UpdateBabyDataWeight(Baby updBaby)
+        {
+            try
+            {
+                var context = new BabyContext();
+                var division = context.Babys.Single(x => x.BabyId == updBaby.BabyId);
+
+                //体重、体温、日付、コメントを更新する
+                division.BabyWeight = updBaby.BabyWeight;
+                division.BabyTemperature = updBaby.BabyTemperature;
+                division.BabyDate = updBaby.BabyDate;
+                division.BabyComment = updBaby.BabyComment;
+
+
+
+                context.SaveChanges();
+                context.Dispose();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 }
