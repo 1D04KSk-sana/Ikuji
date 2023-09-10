@@ -163,11 +163,17 @@ namespace Ikuji
         {
             try
             {
-                var context = new BabyContext();
-                var babyInfo = context.Babys.Single(x => x.BabyId == babynumber);
-                context.Babys.Remove(babyInfo);
-                context.SaveChanges();
-                context.Dispose();
+                DialogResult dr = MessageBox.Show("データを削除してもよろしいですか？", "確認", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+
+                if (dr == System.Windows.Forms.DialogResult.Yes)
+                {
+                    var context = new BabyContext();
+                    var babyInfo = context.Babys.Single(x => x.BabyId == babynumber);
+                    context.Babys.Remove(babyInfo);
+                    context.SaveChanges();
+                    context.Dispose();
+                    MessageBox.Show("データを削除しました。");
+                }
             }
             catch (Exception ex)
             {
