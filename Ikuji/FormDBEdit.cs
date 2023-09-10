@@ -32,6 +32,8 @@ namespace Ikuji
         {
             //cmbViewChangeを"全部"に
             cmbViewChange.SelectedIndex = 0;
+
+            SetButton();
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -335,11 +337,39 @@ namespace Ikuji
             pnlDynamic.Controls.Add(lblTemperature);
         }
 
+        /// <summary>
+        /// Deleteボタン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (dgvRecordEditing.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("データが選択されていません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             babyDBConnections.DeleteBabyData(int.Parse(dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString()));
             GetdgvRecordEditingView();
             SettingdgvRecordEditing();
+        }
+
+        ///////////////////////////////
+        //メソッド名：SetButton()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：ボタンのセット
+        ///////////////////////////////
+        private void SetButton()
+        {
+            SideRoundButton btnReturn = new SideRoundButton(3)
+            {
+                Text = "戻る",
+                Size = new System.Drawing.Size(60, 30),
+                Location = new System.Drawing.Point(20, 15)
+            };
+            btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            this.Controls.Add(btnReturn);
         }
     }
 }

@@ -87,14 +87,15 @@ namespace Ikuji
         //戻り値   ：赤ちゃんミルクデータリスト
         //機　能   ：赤ちゃんミルクデータの取得
         ///////////////////////////////
-        public List<Baby> GetBabyDataMilkOmutu(string babyMainName)
+        public List<Baby> GetBabyDataMilkOmutu(string babyMainName, DateTime babyDateTime)
         {
             List<Baby> babyList = new List<Baby>();
+            List<Baby> babyDateList = new List<Baby>();
 
             try
             {
                 var context = new BabyContext();
-                babyList = context.Babys.Where((x) => x.BabyMain == babyMainName).ToList();
+                babyList = context.Babys.Where((x) => x.BabyMain == babyMainName && x.BabyDate == babyDateTime.Date).ToList();
                 context.Dispose();
             }
             catch (Exception ex)
