@@ -164,7 +164,7 @@ namespace Ikuji
                 BabyId = int.Parse(dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString()),
                 BabyWeight = babyWeight,
                 BabyTemperature = babyTemperature,
-                BabyDate = dtpMonthDay.Value.ToShortDateString(),
+                BabyDate = dtpMonthDay.Value.Date,
                 BabyComment = babyComment,
             };
         }
@@ -182,7 +182,7 @@ namespace Ikuji
                 //Id、種類、日付、時間、分、コメントをデータにセット
                 BabyId = int.Parse(dgvRecordEditing[0, dgvRecordEditing.CurrentCellAddress.Y].Value.ToString()),
                 BabySub = otherKinds,
-                BabyDate = dtpMonthDay.Value.ToShortDateString(),
+                BabyDate = dtpMonthDay.Value.Date,
                 BabyHour = cmbHour.SelectedIndex,
                 BabyMinit = cmbMinit.SelectedIndex,
                 BabyComment = babyComment
@@ -588,5 +588,6 @@ namespace Ikuji
             btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             this.Controls.Add(btnReturn);
         }
+
     }
 }
