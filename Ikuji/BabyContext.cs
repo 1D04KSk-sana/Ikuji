@@ -10,5 +10,7 @@ namespace Ikuji
     class BabyContext : DbContext
     {
         public DbSet<Baby> Babys { get; set; }
+
+        public DbSet<BabyInfomation> BabyInfomations { get; set; }
     }
 }
