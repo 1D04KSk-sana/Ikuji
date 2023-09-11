@@ -13,5 +13,7 @@ namespace Ikuji
         public string BabyName { get; set; }
 
         public DateTime BabyBirthDay { get; set; }
+
+        public bool BabyArart {  get; set; }
     }
 }

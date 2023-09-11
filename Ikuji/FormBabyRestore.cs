@@ -22,15 +22,30 @@ namespace Ikuji
 
         BabyDBConnections babyDBConnections = new BabyDBConnections();
 
+        SideRoundButton btnRestore = new SideRoundButton(1)
+        {
+            Text = "登録",
+            Size = new System.Drawing.Size(150, 40),
+            Location = new System.Drawing.Point(20, 260),
+        };
+
         string babyName = String.Empty;
-        DateTime babyBirthDay = DateTime.Now;
+        DateTime babyBirthDay = DateTime.Now.Date;
+        bool flgDBCount = true;
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
+            if (flgDBCount)
+            {
+                BabyInfomation babyInfomation = babyDBConnections.GetBabyInfomationData();
+
+                babyName = babyInfomation.BabyName;
+                babyBirthDay = babyInfomation.BabyBirthDay;
+            }
             if (babyName != txbNameRestore.Text || babyBirthDay != dtpBirhDay.Value.Date)
             {
                 DialogResult dialogResult = MessageBox.Show("変更を保存していません。本当に閉じますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                
+
                 if (dialogResult == DialogResult.Cancel)
                 {
                     return;
@@ -42,29 +57,26 @@ namespace Ikuji
 
         private void btnRestore_Click(object sender, EventArgs e)
         {
-            using (var dbContext = new BabyContext())
+            if (!flgDBCount)
             {
-                if (dbContext.BabyInfomations.Count() == 0)
-                {
-                    DataBabyRestore();
-                    return;
-                }
+                DataBabyRestore();
+                flgDBCount = true;
+                btnRestore.Text = "更新";
+                return;
             }
         }
 
         private void FormBabyRestore_Load(object sender, EventArgs e)
         {
-            bool flg = true;
-
             using (var dbContext = new BabyContext())
             {
                 if (dbContext.BabyInfomations.Count() == 0)
                 {
-                    flg = false;
+                    flgDBCount = false;
                 }
             }
 
-            if (flg)
+            if (flgDBCount)
             {
                 BabyInfomation babyInfomation = babyDBConnections.GetBabyInfomationData();
 
@@ -73,22 +85,17 @@ namespace Ikuji
 
                 txbNameRestore.Text = babyName;
                 dtpBirhDay.Value = babyBirthDay;
+                btnRestore.Text = "更新";
+            }
 
-                SetButton("更新");
-            }
-            else
-            {
-                SetButton("登録");
-            }
+            SetButton();
         }
 
         ///////////////////////////////
         //メソッド名：DataBabyRestore()
         //引　数   ：なし
-        //戻り値   ：true or false
-        //機　能   ：入力データの形式チェック
-        //          ：エラーがない場合True
-        //          ：エラーがある場合False
+        //戻り値   ：なし
+        //機　能   ：赤ちゃん情報の登録
         ///////////////////////////////
         private void DataBabyRestore()
         {
@@ -170,7 +177,7 @@ namespace Ikuji
         //戻り値   ：なし
         //機　能   ：ボタンのセット
         ///////////////////////////////
-        private void SetButton(string btnRestoreTitle)
+        private void SetButton()
         {
             SideRoundButton btnReturn = new SideRoundButton(3)
             {
@@ -181,12 +188,6 @@ namespace Ikuji
             btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             this.Controls.Add(btnReturn);
 
-            SideRoundButton btnRestore = new SideRoundButton(1)
-            {
-                Text = btnRestoreTitle,
-                Size = new System.Drawing.Size(150, 40),
-                Location = new System.Drawing.Point(20, 260),
-            };
             btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             this.Controls.Add(btnRestore);
         }
