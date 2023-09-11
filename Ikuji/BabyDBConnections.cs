@@ -10,6 +10,30 @@ namespace Ikuji
     class BabyDBConnections
     {
         ///////////////////////////////
+        //メソッド名：AddBabyInfomationData()
+        //引　数   ：赤ちゃん情報データ
+        //戻り値   ：True or False
+        //機　能   ：赤ちゃん情報データの登録
+        ///////////////////////////////
+        public bool AddBabyInfomationData(BabyInfomation resBabyInfomation)
+        {
+            try
+            {
+                var context = new BabyContext();
+                context.BabyInfomations.Add(resBabyInfomation);
+                context.SaveChanges();
+                context.Dispose();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        ///////////////////////////////
         //メソッド名：AddBabyData()
         //引　数   ：赤ちゃんデータ
         //戻り値   ：True or False
