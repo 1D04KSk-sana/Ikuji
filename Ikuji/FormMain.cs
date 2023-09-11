@@ -144,25 +144,25 @@ namespace Ikuji
             BabyOmutu itemSSize = new BabyOmutu()
             {
                 BabyOmutuId = 1,
-                BabyOmutuSize = "S",
+                BabyOmutuSize = 0,
                 BabyOmutuAmount = 0
             };
             BabyOmutu itemMSize = new BabyOmutu()
             {
                 BabyOmutuId = 2,
-                BabyOmutuSize = "M",
+                BabyOmutuSize = 1,
                 BabyOmutuAmount = 0
             };
             BabyOmutu itemLSize = new BabyOmutu()
             {
                 BabyOmutuId = 3,
-                BabyOmutuSize = "L",
+                BabyOmutuSize = 2,
                 BabyOmutuAmount = 0
             };
             BabyOmutu itemBigSize = new BabyOmutu()
             {
                 BabyOmutuId = 4,
-                BabyOmutuSize = "ビッグ",
+                BabyOmutuSize = 3,
                 BabyOmutuAmount = 0
             };
 

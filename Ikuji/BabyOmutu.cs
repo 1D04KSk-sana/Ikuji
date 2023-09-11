@@ -10,7 +10,7 @@ namespace Ikuji
     {
         public int BabyOmutuId { get; set; }
 
-        public string BabyOmutuSize { get; set; }
+        public int BabyOmutuSize { get; set; }
 
         public int BabyOmutuAmount { get; set; }
     }

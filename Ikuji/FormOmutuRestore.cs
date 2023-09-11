@@ -62,6 +62,8 @@ namespace Ikuji
             var resBaby = GenerateDataBaby(omutuKind);
             //赤ちゃん情報の登録
             RestoreAddBabyData(resBaby);
+
+            babyDBConnections.DecreaseBabyOmutuData();
         }
 
         ///////////////////////////////

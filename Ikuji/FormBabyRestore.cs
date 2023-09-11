@@ -32,29 +32,17 @@ namespace Ikuji
         string babyName = String.Empty;
         DateTime babyBirthDay = DateTime.Now.Date;
         bool flgDBCount = true;
+        int babyIsOmutuSize = 0;
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            if (flgDBCount)
+            if (!ControlDataBabyUpdate())
             {
-                BabyInfomation babyInfomation = babyDBConnections.GetBabyInfomationData();
-
-                babyName = babyInfomation.BabyName;
-                babyBirthDay = babyInfomation.BabyBirthDay;
+                return;
             }
-            if (babyName != txbNameRestore.Text || babyBirthDay != dtpBirhDay.Value.Date)
-            {
-                DialogResult dialogResult = MessageBox.Show("変更を保存していません。本当に閉じますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-
-                if (dialogResult == DialogResult.Cancel)
-                {
-                    return;
-                }
-            }
-
             this.Close();
         }
-
+        
         private void btnRestore_Click(object sender, EventArgs e)
         {
             if (!flgDBCount)
@@ -62,14 +50,19 @@ namespace Ikuji
                 DataBabyRestore();
                 flgDBCount = true;
                 btnRestore.Text = "更新";
+                ControlDataBabyUpdate();
                 return;
             }
 
             DataBabyUpdate();
+
+            ControlDataBabyUpdate();
         }
 
         private void FormBabyRestore_Load(object sender, EventArgs e)
         {
+            cmbOmutuSize.SelectedIndex = 0;
+
             using (var dbContext = new BabyContext())
             {
                 if (dbContext.BabyInfomations.Count() == 0)
@@ -84,13 +77,45 @@ namespace Ikuji
 
                 babyName = babyInfomation.BabyName;
                 babyBirthDay = babyInfomation.BabyBirthDay;
+                babyIsOmutuSize = babyInfomation.BabyIsOmutuSize;
 
                 txbNameRestore.Text = babyName;
                 dtpBirhDay.Value = babyBirthDay;
+                cmbOmutuSize.SelectedIndex = babyIsOmutuSize;
                 btnRestore.Text = "更新";
             }
 
             SetButton();
+        }
+
+        ///////////////////////////////
+        //メソッド名：ControlDataBabyUpdate()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：赤ちゃん情報の登録
+        ///////////////////////////////
+        private bool ControlDataBabyUpdate()
+        {
+            if (flgDBCount)
+            {
+                BabyInfomation babyInfomation = babyDBConnections.GetBabyInfomationData();
+
+                babyName = babyInfomation.BabyName;
+                babyBirthDay = babyInfomation.BabyBirthDay;
+                babyIsOmutuSize = babyInfomation.BabyIsOmutuSize;
+
+                if (babyName != txbNameRestore.Text || babyBirthDay != dtpBirhDay.Value.Date || babyIsOmutuSize != cmbOmutuSize.SelectedIndex)
+                {
+                    DialogResult dialogResult = MessageBox.Show("変更を保存していません。本当に閉じますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+                    if (dialogResult == DialogResult.Cancel)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
         ///////////////////////////////
@@ -159,6 +184,7 @@ namespace Ikuji
             {
                 BabyName = babyName,
                 BabyBirthDay = dtpBirhDay.Value.Date,
+                BabyIsOmutuSize = cmbOmutuSize.SelectedIndex,
             };
         }
 

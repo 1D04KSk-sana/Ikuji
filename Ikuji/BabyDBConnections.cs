@@ -61,6 +61,31 @@ namespace Ikuji
         }
 
         ///////////////////////////////
+        //メソッド名：DecreaseBabyOmutuData()
+        //引　数   ：赤ちゃんオムツデータ
+        //戻り値   ：True or False
+        //機　能   ：赤ちゃんオムツデータの登録
+        ///////////////////////////////
+        public void DecreaseBabyOmutuData()
+        {
+            try
+            {
+                var context = new BabyContext();
+                var divisionInfomation = context.BabyInfomations.Single(x => x.BabyInfomationId == 1);
+                var division = context.BabyOmutus.Single(x => x.BabyOmutuSize == divisionInfomation.BabyIsOmutuSize);
+
+                division.BabyOmutuAmount = division.BabyOmutuAmount - 1;
+
+                context.SaveChanges();
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        ///////////////////////////////
         //メソッド名：AddBabyInfomationData()
         //引　数   ：赤ちゃん情報データ
         //戻り値   ：True or False
@@ -103,6 +128,7 @@ namespace Ikuji
                 {
                     BabyName = division.BabyName,
                     BabyBirthDay = division.BabyBirthDay,
+                    BabyIsOmutuSize = division.BabyIsOmutuSize,
                 };
 
                 context.Dispose();
@@ -130,6 +156,7 @@ namespace Ikuji
 
                 division.BabyName = resBabyInfomation.BabyName;
                 division.BabyBirthDay = resBabyInfomation.BabyBirthDay;
+                division.BabyIsOmutuSize = resBabyInfomation.BabyIsOmutuSize;
                 
                 context.SaveChanges();
                 context.Dispose();

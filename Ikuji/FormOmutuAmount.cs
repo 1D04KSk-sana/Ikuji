@@ -92,7 +92,7 @@ namespace Ikuji
         {
             return new BabyOmutu
             {
-                BabyOmutuSize = cmbOmutuSize.SelectedItem.ToString(),
+                BabyOmutuSize = cmbOmutuSize.SelectedIndex,
                 BabyOmutuAmount = intOmutuAmount
             };
         }
