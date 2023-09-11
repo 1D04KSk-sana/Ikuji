@@ -36,13 +36,36 @@ namespace Ikuji
                 if (dbContext.BabyInfomations.Count() == 0)
                 {
                     DataBabyRestore();
+                    return;
                 }
             }
         }
 
         private void FormBabyRestore_Load(object sender, EventArgs e)
         {
-            SetButton();
+            bool flg = true;
+
+            using (var dbContext = new BabyContext())
+            {
+                if (dbContext.BabyInfomations.Count() == 0)
+                {
+                    flg = false;
+                }
+            }
+
+            if (flg)
+            {
+                BabyInfomation babyInfomation = babyDBConnections.GetBabyInfomationData();
+
+                txbNameRestore.Text = babyInfomation.BabyName;
+                dtpBirhDay.Value = babyInfomation.BabyBirthDay;
+
+                SetButton("更新");
+            }
+            else
+            {
+                SetButton("登録");
+            }
         }
 
         ///////////////////////////////
@@ -129,11 +152,11 @@ namespace Ikuji
 
         ///////////////////////////////
         //メソッド名：SetButton()
-        //引　数   ：なし
+        //引　数   ：btnRestoreTitle = btnReoreのタイトル
         //戻り値   ：なし
         //機　能   ：ボタンのセット
         ///////////////////////////////
-        private void SetButton()
+        private void SetButton(string btnRestoreTitle)
         {
             SideRoundButton btnReturn = new SideRoundButton(3)
             {
@@ -146,7 +169,7 @@ namespace Ikuji
 
             SideRoundButton btnRestore = new SideRoundButton(1)
             {
-                Text = "登録ボタン",
+                Text = btnRestoreTitle,
                 Size = new System.Drawing.Size(150, 40),
                 Location = new System.Drawing.Point(20, 260),
             };
