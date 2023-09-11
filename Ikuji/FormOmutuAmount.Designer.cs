@@ -32,6 +32,9 @@
             this.cmbOmutuSize = new System.Windows.Forms.ComboBox();
             this.txbOmutuAmount = new System.Windows.Forms.TextBox();
             this.lblOmutuAmount = new System.Windows.Forms.Label();
+            this.lblRemain = new System.Windows.Forms.Label();
+            this.lblRemainAmount = new System.Windows.Forms.Label();
+            this.lblSheet = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblOmutuSize
@@ -59,6 +62,7 @@
             this.cmbOmutuSize.Name = "cmbOmutuSize";
             this.cmbOmutuSize.Size = new System.Drawing.Size(121, 25);
             this.cmbOmutuSize.TabIndex = 0;
+            this.cmbOmutuSize.SelectedIndexChanged += new System.EventHandler(this.cmbOmutuSize_SelectedIndexChanged);
             // 
             // txbOmutuAmount
             // 
@@ -79,12 +83,45 @@
             this.lblOmutuAmount.TabIndex = 16;
             this.lblOmutuAmount.Text = "枚数";
             // 
+            // lblRemain
+            // 
+            this.lblRemain.AutoSize = true;
+            this.lblRemain.Font = new System.Drawing.Font("MS UI Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRemain.Location = new System.Drawing.Point(300, 179);
+            this.lblRemain.Name = "lblRemain";
+            this.lblRemain.Size = new System.Drawing.Size(81, 17);
+            this.lblRemain.TabIndex = 17;
+            this.lblRemain.Text = "オムツ残量";
+            // 
+            // lblRemainAmount
+            // 
+            this.lblRemainAmount.AutoSize = true;
+            this.lblRemainAmount.Font = new System.Drawing.Font("MS UI Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblRemainAmount.Location = new System.Drawing.Point(408, 179);
+            this.lblRemainAmount.Name = "lblRemainAmount";
+            this.lblRemainAmount.Size = new System.Drawing.Size(17, 17);
+            this.lblRemainAmount.TabIndex = 18;
+            this.lblRemainAmount.Text = "0";
+            // 
+            // lblSheet
+            // 
+            this.lblSheet.AutoSize = true;
+            this.lblSheet.Font = new System.Drawing.Font("MS UI Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblSheet.Location = new System.Drawing.Point(431, 179);
+            this.lblSheet.Name = "lblSheet";
+            this.lblSheet.Size = new System.Drawing.Size(25, 17);
+            this.lblSheet.TabIndex = 19;
+            this.lblSheet.Text = "枚";
+            // 
             // FormOmutuAmount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(600, 360);
+            this.Controls.Add(this.lblSheet);
+            this.Controls.Add(this.lblRemainAmount);
+            this.Controls.Add(this.lblRemain);
             this.Controls.Add(this.lblOmutuAmount);
             this.Controls.Add(this.txbOmutuAmount);
             this.Controls.Add(this.lblOmutuSize);
@@ -104,5 +141,8 @@
         private System.Windows.Forms.ComboBox cmbOmutuSize;
         private System.Windows.Forms.TextBox txbOmutuAmount;
         private System.Windows.Forms.Label lblOmutuAmount;
+        private System.Windows.Forms.Label lblRemain;
+        private System.Windows.Forms.Label lblRemainAmount;
+        private System.Windows.Forms.Label lblSheet;
     }
 }

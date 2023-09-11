@@ -34,6 +34,37 @@ namespace Ikuji
         }
 
         ///////////////////////////////
+        //メソッド名：GetBabyOmutuData()
+        //引　数   ：赤ちゃんオムツデータ
+        //戻り値   ：True or False
+        //機　能   ：赤ちゃんオムツデータの登録
+        ///////////////////////////////
+        public BabyOmutu GetBabyOmutuData(int intOmutuSize)
+        {
+            BabyOmutu babyOmutu = null;
+
+            try
+            {
+                var context = new BabyContext();
+                var division = context.BabyOmutus.Single(x => x.BabyOmutuSize == intOmutuSize);
+
+                babyOmutu = new BabyOmutu
+                {
+                    BabyOmutuSize = division.BabyOmutuSize,
+                    BabyOmutuAmount = division.BabyOmutuAmount,
+                };
+
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            };
+
+            return babyOmutu;
+        }
+
+        ///////////////////////////////
         //メソッド名：UpdateBabyOmutuData()
         //引　数   ：なし
         //戻り値   ：赤ちゃん情報データリスト

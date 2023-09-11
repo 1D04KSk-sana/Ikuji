@@ -23,10 +23,16 @@ namespace Ikuji
         BabyDBConnections babyDBConnections = new BabyDBConnections();
 
         int intOmutuAmount = 0;
+        int intOmutuAmountTotal = 0;
 
         private void FormOmutuAmount_Load(object sender, EventArgs e)
         {
-            cmbOmutuSize.SelectedIndex = 0;
+            BabyInfomation babyInfomation = babyDBConnections.GetBabyInfomationData();
+            cmbOmutuSize.SelectedIndex = babyInfomation.BabyIsOmutuSize;
+
+            BabyOmutu babyOmutu = babyDBConnections.GetBabyOmutuData(cmbOmutuSize.SelectedIndex);
+            intOmutuAmountTotal = babyOmutu.BabyOmutuAmount;
+            lblRemainAmount.Text = intOmutuAmountTotal.ToString();
 
             SetButton();
         }
@@ -45,6 +51,15 @@ namespace Ikuji
 
             var resBabyOmutu = GenerateDataBaby();
             RestoreUpdateBabyOmutuData(resBabyOmutu);
+
+            lblRemainAmount.Text = intOmutuAmountTotal.ToString();
+        }
+
+        private void cmbOmutuSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BabyOmutu babyOmutu = babyDBConnections.GetBabyOmutuData(cmbOmutuSize.SelectedIndex);
+            intOmutuAmountTotal = babyOmutu.BabyOmutuAmount;
+            lblRemainAmount.Text = intOmutuAmountTotal.ToString();
         }
 
         ///////////////////////////////
@@ -78,6 +93,7 @@ namespace Ikuji
             }
 
             intOmutuAmount = int.Parse(babyOmutuAmount);
+            intOmutuAmountTotal = intOmutuAmountTotal + intOmutuAmount;
 
             return true;
         }
@@ -144,7 +160,7 @@ namespace Ikuji
 
             SideRoundButton btnRestore = new SideRoundButton(1)
             {
-                Text = "登録ボタン",
+                Text = "追加",
                 Size = new System.Drawing.Size(150, 40),
                 Location = new System.Drawing.Point(20, 260),
             };
