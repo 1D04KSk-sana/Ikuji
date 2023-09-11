@@ -74,6 +74,17 @@ namespace Ikuji
             this.Opacity = 0;
         }
 
+        private void btnOmutuAmount_Click(object sender, EventArgs e)
+        {
+            FormOmutuAmount formOmutuAmount = new FormOmutuAmount();
+
+            formOmutuAmount.Owner = this;
+            formOmutuAmount.FormClosed += ChildForm_FormClosed;
+            formOmutuAmount.Show();
+
+            this.Opacity = 0;
+        }
+
         private void btnWeightRestore_Click(object sender, EventArgs e)
         {
             FormWeightRestore formWeightRestore = new FormWeightRestore();
@@ -105,14 +116,60 @@ namespace Ikuji
 
             //作成したDBを保存
             context.SaveChanges();
+            
+            if (context.BabyInfomations.Count() != 0)
+            {
+                SetBirthDay();
+            }
+            if (context.BabyOmutus.Count() == 0)
+            {
+                SetOmutuList();
+            }
 
             //作成した変数を削除
             context.Dispose();
 
             //ボタンの宣言
             SetButton();
+        }
 
-            SetBirthDay();
+        ///////////////////////////////
+        //メソッド名：SetOmutuList()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：おむつDBのセット
+        ///////////////////////////////
+        private void SetOmutuList()
+        {
+            BabyOmutu itemSSize = new BabyOmutu()
+            {
+                BabyOmutuId = 1,
+                BabyOmutuSize = "S",
+                BabyOmutuAmount = 0
+            };
+            BabyOmutu itemMSize = new BabyOmutu()
+            {
+                BabyOmutuId = 2,
+                BabyOmutuSize = "M",
+                BabyOmutuAmount = 0
+            };
+            BabyOmutu itemLSize = new BabyOmutu()
+            {
+                BabyOmutuId = 3,
+                BabyOmutuSize = "L",
+                BabyOmutuAmount = 0
+            };
+            BabyOmutu itemBigSize = new BabyOmutu()
+            {
+                BabyOmutuId = 4,
+                BabyOmutuSize = "ビッグ",
+                BabyOmutuAmount = 0
+            };
+
+            babyDBConnections.AddBabyOmutuData(itemSSize);
+            babyDBConnections.AddBabyOmutuData(itemMSize);
+            babyDBConnections.AddBabyOmutuData(itemLSize);
+            babyDBConnections.AddBabyOmutuData(itemBigSize);
         }
 
         ///////////////////////////////
@@ -136,7 +193,6 @@ namespace Ikuji
                 ntfBabyInfomation.BalloonTipTitle = "お誕生日おめでとうございます！";
                 ntfBabyInfomation.BalloonTipText = intYearOld.ToString() + "歳ですね！\n健やかに育って下さい！";
                 ntfBabyInfomation.ShowBalloonTip(3000);
-
             }
         }
 
@@ -183,6 +239,15 @@ namespace Ikuji
             };
             btnOmutuRestore.Click += new System.EventHandler(this.btnOmutuRestore_Click);
             this.Controls.Add(btnOmutuRestore);
+
+            SideRoundButton btnOmutuAmount = new SideRoundButton(1)
+            {
+                Text = "+",
+                Size = new System.Drawing.Size(40, 33),
+                Location = new System.Drawing.Point(70, 282)
+            };
+            btnOmutuAmount.Click += new System.EventHandler(this.btnOmutuAmount_Click);
+            this.Controls.Add(btnOmutuAmount);
 
             SideRoundButton btnWeightRestore = new SideRoundButton(1)
             {

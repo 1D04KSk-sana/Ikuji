@@ -10,6 +10,57 @@ namespace Ikuji
     class BabyDBConnections
     {
         ///////////////////////////////
+        //メソッド名：AddBabyOmutuData()
+        //引　数   ：赤ちゃんオムツデータ
+        //戻り値   ：True or False
+        //機　能   ：赤ちゃんオムツデータの登録
+        ///////////////////////////////
+        public bool AddBabyOmutuData(BabyOmutu resBabyOmutu)
+        {
+            try
+            {
+                var context = new BabyContext();
+                context.BabyOmutus.Add(resBabyOmutu);
+                context.SaveChanges();
+                context.Dispose();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        ///////////////////////////////
+        //メソッド名：UpdateBabyOmutuData()
+        //引　数   ：なし
+        //戻り値   ：赤ちゃん情報データリスト
+        //機　能   ：赤ちゃん情報データの取得
+        ///////////////////////////////
+        public bool UpdateBabyOmutuData(BabyOmutu resBabyOmutu)
+        {
+            try
+            {
+                var context = new BabyContext();
+                var division = context.BabyOmutus.Single(x => x.BabyOmutuSize == resBabyOmutu.BabyOmutuSize);
+
+                division.BabyOmutuAmount = division.BabyOmutuAmount + resBabyOmutu.BabyOmutuAmount;
+
+                context.SaveChanges();
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            };
+
+            return true;
+        }
+
+        ///////////////////////////////
         //メソッド名：AddBabyInfomationData()
         //引　数   ：赤ちゃん情報データ
         //戻り値   ：True or False
@@ -320,8 +371,6 @@ namespace Ikuji
                 division.BabyTemperature = updBaby.BabyTemperature;
                 division.BabyDate = updBaby.BabyDate;
                 division.BabyComment = updBaby.BabyComment;
-
-
 
                 context.SaveChanges();
                 context.Dispose();
