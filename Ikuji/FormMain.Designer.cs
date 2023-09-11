@@ -28,31 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.pctLogo = new System.Windows.Forms.PictureBox();
+            this.ntfBabyInfomation = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pctLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // pctLogo
             // 
             this.pctLogo.Image = global::Ikuji.Properties.Resources.Icon_Touka_Mini;
-            this.pctLogo.Location = new System.Drawing.Point(278, 54);
+            this.pctLogo.Location = new System.Drawing.Point(208, 43);
+            this.pctLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pctLogo.Name = "pctLogo";
-            this.pctLogo.Size = new System.Drawing.Size(200, 200);
+            this.pctLogo.Size = new System.Drawing.Size(150, 160);
             this.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctLogo.TabIndex = 0;
             this.pctLogo.TabStop = false;
             // 
+            // ntfBabyInfomation
+            // 
+            this.ntfBabyInfomation.Icon = ((System.Drawing.Icon)(resources.GetObject("ntfBabyInfomation.Icon")));
+            this.ntfBabyInfomation.Text = "notifyIcon1";
+            this.ntfBabyInfomation.Visible = true;
+            // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 360);
             this.Controls.Add(this.pctLogo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.Text = "Ikuji";
@@ -66,6 +75,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pctLogo;
+        private System.Windows.Forms.NotifyIcon ntfBabyInfomation;
     }
 }
 

@@ -65,6 +65,34 @@ namespace Ikuji
         }
 
         ///////////////////////////////
+        //メソッド名：UpdateBabyInfomationData()
+        //引　数   ：なし
+        //戻り値   ：赤ちゃん情報データリスト
+        //機　能   ：赤ちゃん情報データの取得
+        ///////////////////////////////
+        public bool UpdateBabyInfomationData(BabyInfomation resBabyInfomation)
+        {
+            try
+            {
+                var context = new BabyContext();
+                var division = context.BabyInfomations.Single(x => x.BabyInfomationId == 1);
+
+                division.BabyName = resBabyInfomation.BabyName;
+                division.BabyBirthDay = resBabyInfomation.BabyBirthDay;
+                
+                context.SaveChanges();
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            };
+
+            return true;
+        }
+
+        ///////////////////////////////
         //メソッド名：AddBabyData()
         //引　数   ：赤ちゃんデータ
         //戻り値   ：True or False

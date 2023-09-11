@@ -64,6 +64,8 @@ namespace Ikuji
                 btnRestore.Text = "更新";
                 return;
             }
+
+            DataBabyUpdate();
         }
 
         private void FormBabyRestore_Load(object sender, EventArgs e)
@@ -109,6 +111,23 @@ namespace Ikuji
         }
 
         ///////////////////////////////
+        //メソッド名：DataBabyUpdate()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：赤ちゃん情報の登録
+        ///////////////////////////////
+        private void DataBabyUpdate()
+        {
+            if (!GetVaildDataBabyRestore())
+            {
+                return;
+            }
+
+            var resBabyInfomation = GenerateDataBaby();
+            UpdateBabyInfomationData(resBabyInfomation);
+        }
+
+        ///////////////////////////////
         //メソッド名：GetValidDataBabyRestore()
         //引　数   ：なし
         //戻り値   ：true or false
@@ -141,6 +160,34 @@ namespace Ikuji
                 BabyName = babyName,
                 BabyBirthDay = dtpBirhDay.Value.Date,
             };
+        }
+
+        ///////////////////////////////
+        //メソッド名：UpdateBabyInfomationData()
+        //引　数   ：赤ちゃん情報
+        //戻り値   ：なし
+        //機　能   ：赤ちゃん情報の登録
+        ///////////////////////////////
+        private void UpdateBabyInfomationData(BabyInfomation resBabyInfomation)
+        {
+            //登録確認メッセージ
+            DialogResult result = MessageBox.Show("更新しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+            if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            //赤ちゃん情報の登録
+            bool flg = babyDBConnections.UpdateBabyInfomationData(resBabyInfomation);
+            if (flg)
+            {
+                MessageBox.Show("データを更新しました", "確認", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("データを更新できませんでした", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         ///////////////////////////////
