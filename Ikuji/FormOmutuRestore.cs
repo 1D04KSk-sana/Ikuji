@@ -63,7 +63,10 @@ namespace Ikuji
             //赤ちゃん情報の登録
             RestoreAddBabyData(resBaby);
 
-            babyDBConnections.DecreaseBabyOmutuData();
+            int babyOmutuAmount = babyDBConnections.DecreaseBabyOmutuData();
+
+            ntfBabyOmutu.BalloonTipText = "オムツは残り" + babyOmutuAmount.ToString() + "枚です。";
+            ntfBabyOmutu.ShowBalloonTip(3000);
         }
 
         ///////////////////////////////

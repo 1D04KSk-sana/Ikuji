@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOmutuRestore));
             this.dtpMonthDay = new System.Windows.Forms.DateTimePicker();
             this.cmbHour = new System.Windows.Forms.ComboBox();
@@ -40,6 +41,7 @@
             this.lblComment = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblMinit = new System.Windows.Forms.Label();
+            this.ntfBabyOmutu = new System.Windows.Forms.NotifyIcon(this.components);
             this.pnlUntiOsikko.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -246,6 +248,14 @@
             this.lblMinit.TabIndex = 15;
             this.lblMinit.Text = "分";
             // 
+            // ntfBabyOmutu
+            // 
+            this.ntfBabyOmutu.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ntfBabyOmutu.BalloonTipTitle = "オムツの残量が残り少ないです。";
+            this.ntfBabyOmutu.Icon = ((System.Drawing.Icon)(resources.GetObject("ntfBabyOmutu.Icon")));
+            this.ntfBabyOmutu.Text = "notifyIcon1";
+            this.ntfBabyOmutu.Visible = true;
+            // 
             // FormOmutuRestore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -286,5 +296,6 @@
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblMinit;
         private System.Windows.Forms.Label lblBabySub;
+        private System.Windows.Forms.NotifyIcon ntfBabyOmutu;
     }
 }

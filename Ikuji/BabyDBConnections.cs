@@ -97,8 +97,10 @@ namespace Ikuji
         //戻り値   ：True or False
         //機　能   ：赤ちゃんオムツデータの登録
         ///////////////////////////////
-        public void DecreaseBabyOmutuData()
+        public int DecreaseBabyOmutuData()
         {
+            int babyOmutuAmount = 0;
+
             try
             {
                 var context = new BabyContext();
@@ -107,6 +109,8 @@ namespace Ikuji
 
                 division.BabyOmutuAmount = division.BabyOmutuAmount - 1;
 
+                babyOmutuAmount = division.BabyOmutuAmount;
+
                 context.SaveChanges();
                 context.Dispose();
             }
@@ -114,6 +118,8 @@ namespace Ikuji
             {
                 MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            return babyOmutuAmount;
         }
 
         ///////////////////////////////
