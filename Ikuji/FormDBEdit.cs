@@ -449,7 +449,7 @@ namespace Ikuji
             //背景色の設定　※枠線がないので色を背景に合わせると目立たない
             pnlDynamic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
             //配置位置の設定
-            pnlDynamic.Location = new Point(220, 7);
+            pnlDynamic.Location = new Point(245, 7);
             //サイズの設定
             pnlDynamic.Size = new Size(350, 150);
 
@@ -571,6 +571,26 @@ namespace Ikuji
             };
             btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             this.Controls.Add(btnReturn);
+
+            SideRoundButton btnDelete = new SideRoundButton(0)
+            {
+                Text = "削除",
+                Size = new System.Drawing.Size(60, 30),
+                //Location = new System.Drawing.Point(130, 40)
+                Location = new System.Drawing.Point(120, 50)
+            };
+            btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.Controls.Add(btnDelete);
+
+            SideRoundButton btnUpdate = new SideRoundButton(1)
+            {
+                Text = "更新",
+                Size = new System.Drawing.Size(60, 30),
+                //Location = new System.Drawing.Point(130, 75)
+                Location = new System.Drawing.Point(190, 50)
+            };
+            btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.Controls.Add(btnUpdate);
         }
 
     }
