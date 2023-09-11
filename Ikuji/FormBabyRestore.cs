@@ -23,9 +23,20 @@ namespace Ikuji
         BabyDBConnections babyDBConnections = new BabyDBConnections();
 
         string babyName = String.Empty;
+        DateTime babyBirthDay = DateTime.Now;
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
+            if (babyName != txbNameRestore.Text || babyBirthDay != dtpBirhDay.Value.Date)
+            {
+                DialogResult dialogResult = MessageBox.Show("変更を保存していません。本当に閉じますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                
+                if (dialogResult == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+
             this.Close();
         }
 
@@ -57,8 +68,11 @@ namespace Ikuji
             {
                 BabyInfomation babyInfomation = babyDBConnections.GetBabyInfomationData();
 
-                txbNameRestore.Text = babyInfomation.BabyName;
-                dtpBirhDay.Value = babyInfomation.BabyBirthDay;
+                babyName = babyInfomation.BabyName;
+                babyBirthDay = babyInfomation.BabyBirthDay;
+
+                txbNameRestore.Text = babyName;
+                dtpBirhDay.Value = babyBirthDay;
 
                 SetButton("更新");
             }
