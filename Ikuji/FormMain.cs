@@ -17,6 +17,8 @@ namespace Ikuji
             InitializeComponent();
         }
 
+        BabyDBConnections babyDBConnections = new BabyDBConnections();
+
         private void btnBabyRestore_Click(object sender, EventArgs e)
         {
             FormBabyRestore formBabyRestore = new FormBabyRestore();
@@ -109,6 +111,33 @@ namespace Ikuji
 
             //ボタンの宣言
             SetButton();
+
+            SetBirthDay();
+        }
+
+        ///////////////////////////////
+        //メソッド名：SetBirthDay()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：日付のセット
+        ///////////////////////////////
+        private void SetBirthDay()
+        {
+            DateTime nowDateTime = DateTime.Now;
+
+            BabyInfomation babyInfomation = babyDBConnections.GetBabyInfomationData();
+            DateTime birthDateTime = babyInfomation.BabyBirthDay;
+
+            if (nowDateTime.Month == birthDateTime.Month)
+            {
+                int intYearOld = nowDateTime.Year - birthDateTime.Year;
+
+                ntfBabyInfomation.BalloonTipIcon = ToolTipIcon.None;
+                ntfBabyInfomation.BalloonTipTitle = "お誕生日おめでとうございます！";
+                ntfBabyInfomation.BalloonTipText = intYearOld.ToString() + "歳ですね！\n健やかに育って下さい！";
+                ntfBabyInfomation.ShowBalloonTip(3000);
+
+            }
         }
 
         ///////////////////////////////

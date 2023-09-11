@@ -60,6 +60,7 @@
     <Compile Include="Baby.cs" />
     <Compile Include="BabyContext.cs" />
     <Compile Include="BabyDBConnections.cs" />
+    <Compile Include="BabyInfomation.cs" />
     <Compile Include="DataInputCheck.cs" />
     <Compile Include="FormBabyRestore.cs">
       <SubType>Form</SubType>

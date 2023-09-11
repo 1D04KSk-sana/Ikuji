@@ -10,6 +10,89 @@ namespace Ikuji
     class BabyDBConnections
     {
         ///////////////////////////////
+        //メソッド名：AddBabyInfomationData()
+        //引　数   ：赤ちゃん情報データ
+        //戻り値   ：True or False
+        //機　能   ：赤ちゃん情報データの登録
+        ///////////////////////////////
+        public bool AddBabyInfomationData(BabyInfomation resBabyInfomation)
+        {
+            try
+            {
+                var context = new BabyContext();
+                context.BabyInfomations.Add(resBabyInfomation);
+                context.SaveChanges();
+                context.Dispose();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetBabyInfomationData()
+        //引　数   ：なし
+        //戻り値   ：赤ちゃん情報データリスト
+        //機　能   ：赤ちゃん情報データの取得
+        ///////////////////////////////
+        public BabyInfomation GetBabyInfomationData()
+        {
+            BabyInfomation babyInfomation = null;
+
+            try
+            {
+                var context = new BabyContext();
+                var division = context.BabyInfomations.Single(x => x.BabyInfomationId == 1);
+
+                babyInfomation = new BabyInfomation
+                {
+                    BabyName = division.BabyName,
+                    BabyBirthDay = division.BabyBirthDay,
+                };
+
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            };
+
+            return babyInfomation;
+        }
+
+        ///////////////////////////////
+        //メソッド名：UpdateBabyInfomationData()
+        //引　数   ：なし
+        //戻り値   ：赤ちゃん情報データリスト
+        //機　能   ：赤ちゃん情報データの取得
+        ///////////////////////////////
+        public bool UpdateBabyInfomationData(BabyInfomation resBabyInfomation)
+        {
+            try
+            {
+                var context = new BabyContext();
+                var division = context.BabyInfomations.Single(x => x.BabyInfomationId == 1);
+
+                division.BabyName = resBabyInfomation.BabyName;
+                division.BabyBirthDay = resBabyInfomation.BabyBirthDay;
+                
+                context.SaveChanges();
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            };
+
+            return true;
+        }
+
+        ///////////////////////////////
         //メソッド名：AddBabyData()
         //引　数   ：赤ちゃんデータ
         //戻り値   ：True or False
