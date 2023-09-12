@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -180,18 +181,41 @@ namespace Ikuji
         ///////////////////////////////
         private void SetBirthDay()
         {
-            DateTime nowDateTime = DateTime.Now;
+            DateTime nowDateTime = DateTime.Now.Date;
 
             BabyInfomation babyInfomation = babyDBConnections.GetBabyInfomationData();
             DateTime birthDateTime = babyInfomation.BabyBirthDay;
 
-            if (nowDateTime.Month == birthDateTime.Month)
+            if (nowDateTime.Month == birthDateTime.Month && nowDateTime.Day == birthDateTime.Day)
             {
                 int intYearOld = nowDateTime.Year - birthDateTime.Year;
 
                 ntfBabyInfomation.BalloonTipIcon = ToolTipIcon.None;
                 ntfBabyInfomation.BalloonTipTitle = "お誕生日おめでとうございます！";
                 ntfBabyInfomation.BalloonTipText = intYearOld.ToString() + "歳ですね！\n健やかに育って下さい！";
+                ntfBabyInfomation.ShowBalloonTip(3000);
+            }
+
+            DateTime month3DateTime = birthDateTime.AddMonths(3);
+            DateTime month4DateTime = birthDateTime.AddMonths(4);
+
+            if (nowDateTime >= month3DateTime && nowDateTime <= month4DateTime)
+            {
+                ntfBabyInfomation.BalloonTipIcon = ToolTipIcon.Info;
+                ntfBabyInfomation.BalloonTipTitle = "三か月検診の時期が迫っています！";
+                ntfBabyInfomation.BalloonTipText = "時期などの目安は通知をクリックしてサイトをご確認ください。";
+
+                // バルーンテキストがクリックされたときのイベントハンドラを設定します
+                ntfBabyInfomation.BalloonTipClicked += (sender, e) =>
+                {
+                    // リンクを開く処理をここに追加します
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = "https://www.city.osaka.lg.jp/kodomo/page/0000370520.html",
+                        UseShellExecute = true
+                    });
+                };
+
                 ntfBabyInfomation.ShowBalloonTip(3000);
             }
         }
