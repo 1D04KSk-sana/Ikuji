@@ -48,9 +48,8 @@ namespace Ikuji
             if (!flgDBCount)
             {
                 DataBabyRestore();
-                flgDBCount = true;
-                btnRestore.Text = "更新";
                 ControlDataBabyUpdate();
+                btnRestore.Text = "更新";
                 return;
             }
 
@@ -105,6 +104,18 @@ namespace Ikuji
                 babyIsOmutuSize = babyInfomation.BabyIsOmutuSize;
 
                 if (babyName != txbNameRestore.Text || babyBirthDay != dtpBirhDay.Value.Date || babyIsOmutuSize != cmbOmutuSize.SelectedIndex)
+                {
+                    DialogResult dialogResult = MessageBox.Show("変更を保存していません。本当に閉じますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+                    if (dialogResult == DialogResult.Cancel)
+                    {
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                if (txbNameRestore.Text != String.Empty || dtpBirhDay.Value.Date != DateTime.Now.Date || cmbOmutuSize.SelectedIndex != 0)
                 {
                     DialogResult dialogResult = MessageBox.Show("変更を保存していません。本当に閉じますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
@@ -237,6 +248,8 @@ namespace Ikuji
             if (flg)
             {
                 MessageBox.Show("データを登録しました", "確認", MessageBoxButtons.OK);
+
+                flgDBCount = true;
             }
             else
             {

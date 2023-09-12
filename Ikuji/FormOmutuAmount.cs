@@ -27,12 +27,25 @@ namespace Ikuji
 
         private void FormOmutuAmount_Load(object sender, EventArgs e)
         {
-            BabyInfomation babyInfomation = babyDBConnections.GetBabyInfomationData();
-            cmbOmutuSize.SelectedIndex = babyInfomation.BabyIsOmutuSize;
+            using (var context = new BabyContext())
+            {
+                if (context.BabyInfomations.Count() != 0)
+                {
+                    BabyInfomation babyInfomation = babyDBConnections.GetBabyInfomationData();
+                    cmbOmutuSize.SelectedIndex = babyInfomation.BabyIsOmutuSize;
+                }
+                else
+                {
+                    cmbOmutuSize.SelectedIndex = 0;
+                }
 
-            BabyOmutu babyOmutu = babyDBConnections.GetBabyOmutuData(cmbOmutuSize.SelectedIndex);
-            intOmutuAmountTotal = babyOmutu.BabyOmutuAmount;
-            lblRemainAmount.Text = intOmutuAmountTotal.ToString();
+                if (context.BabyOmutus.Count() != 0)
+                {
+                    BabyOmutu babyOmutu = babyDBConnections.GetBabyOmutuData(cmbOmutuSize.SelectedIndex);
+                    intOmutuAmountTotal = babyOmutu.BabyOmutuAmount;
+                    lblRemainAmount.Text = intOmutuAmountTotal.ToString();
+                }
+            }
 
             SetButton();
         }
