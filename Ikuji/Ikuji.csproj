@@ -63,6 +63,12 @@
     <Compile Include="BabyInfomation.cs" />
     <Compile Include="BabyOmutu.cs" />
     <Compile Include="DataInputCheck.cs" />
+    <Compile Include="FormMilkTimer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMilkTimer.Designer.cs">
+      <DependentUpon>FormMilkTimer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormBabyRestore.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     <Compile Include="sideroundbutton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="FormMilkTimer.resx">
+      <DependentUpon>FormMilkTimer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormBabyRestore.resx">
       <DependentUpon>FormBabyRestore.cs</DependentUpon>
     </EmbeddedResource>

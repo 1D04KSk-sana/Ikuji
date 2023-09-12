@@ -291,5 +291,16 @@ namespace Ikuji
             btnGraph.Click += new System.EventHandler(this.btnGraph_Click);
             this.Controls.Add(btnGraph);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormMilkTimer formMilkTimer = new FormMilkTimer();
+
+            formMilkTimer.Owner = this;
+            formMilkTimer.FormClosed += ChildForm_FormClosed;
+            formMilkTimer.Show();
+
+            this.Opacity = 0;
+        }
     }
 }
