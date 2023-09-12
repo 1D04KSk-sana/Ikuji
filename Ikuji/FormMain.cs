@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -74,6 +75,17 @@ namespace Ikuji
             this.Opacity = 0;
         }
 
+        private void btnOmutuAmount_Click(object sender, EventArgs e)
+        {
+            FormOmutuAmount formOmutuAmount = new FormOmutuAmount();
+
+            formOmutuAmount.Owner = this;
+            formOmutuAmount.FormClosed += ChildForm_FormClosed;
+            formOmutuAmount.Show();
+
+            this.Opacity = 0;
+        }
+
         private void btnWeightRestore_Click(object sender, EventArgs e)
         {
             FormWeightRestore formWeightRestore = new FormWeightRestore();
@@ -105,14 +117,60 @@ namespace Ikuji
 
             //作成したDBを保存
             context.SaveChanges();
+            
+            if (context.BabyInfomations.Count() != 0)
+            {
+                SetBirthDay();
+            }
+            if (context.BabyOmutus.Count() == 0)
+            {
+                SetOmutuList();
+            }
 
             //作成した変数を削除
             context.Dispose();
 
             //ボタンの宣言
             SetButton();
+        }
 
-            SetBirthDay();
+        ///////////////////////////////
+        //メソッド名：SetOmutuList()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：おむつDBのセット
+        ///////////////////////////////
+        private void SetOmutuList()
+        {
+            BabyOmutu itemSSize = new BabyOmutu()
+            {
+                BabyOmutuId = 1,
+                BabyOmutuSize = 0,
+                BabyOmutuAmount = 0
+            };
+            BabyOmutu itemMSize = new BabyOmutu()
+            {
+                BabyOmutuId = 2,
+                BabyOmutuSize = 1,
+                BabyOmutuAmount = 0
+            };
+            BabyOmutu itemLSize = new BabyOmutu()
+            {
+                BabyOmutuId = 3,
+                BabyOmutuSize = 2,
+                BabyOmutuAmount = 0
+            };
+            BabyOmutu itemBigSize = new BabyOmutu()
+            {
+                BabyOmutuId = 4,
+                BabyOmutuSize = 3,
+                BabyOmutuAmount = 0
+            };
+
+            babyDBConnections.AddBabyOmutuData(itemSSize);
+            babyDBConnections.AddBabyOmutuData(itemMSize);
+            babyDBConnections.AddBabyOmutuData(itemLSize);
+            babyDBConnections.AddBabyOmutuData(itemBigSize);
         }
 
         ///////////////////////////////
@@ -123,12 +181,12 @@ namespace Ikuji
         ///////////////////////////////
         private void SetBirthDay()
         {
-            DateTime nowDateTime = DateTime.Now;
+            DateTime nowDateTime = DateTime.Now.Date;
 
             BabyInfomation babyInfomation = babyDBConnections.GetBabyInfomationData();
             DateTime birthDateTime = babyInfomation.BabyBirthDay;
 
-            if (nowDateTime.Month == birthDateTime.Month)
+            if (nowDateTime.Month == birthDateTime.Month && nowDateTime.Day == birthDateTime.Day)
             {
                 int intYearOld = nowDateTime.Year - birthDateTime.Year;
 
@@ -136,7 +194,29 @@ namespace Ikuji
                 ntfBabyInfomation.BalloonTipTitle = "お誕生日おめでとうございます！";
                 ntfBabyInfomation.BalloonTipText = intYearOld.ToString() + "歳ですね！\n健やかに育って下さい！";
                 ntfBabyInfomation.ShowBalloonTip(3000);
+            }
 
+            DateTime month3DateTime = birthDateTime.AddMonths(3);
+            DateTime month4DateTime = birthDateTime.AddMonths(4);
+
+            if (nowDateTime >= month3DateTime && nowDateTime <= month4DateTime)
+            {
+                ntfBabyInfomation.BalloonTipIcon = ToolTipIcon.Info;
+                ntfBabyInfomation.BalloonTipTitle = "三か月検診の時期が迫っています！";
+                ntfBabyInfomation.BalloonTipText = "時期などの目安は通知をクリックしてサイトをご確認ください。";
+
+                // バルーンテキストがクリックされたときのイベントハンドラを設定します
+                ntfBabyInfomation.BalloonTipClicked += (sender, e) =>
+                {
+                    // リンクを開く処理をここに追加します
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = "https://www.city.osaka.lg.jp/kodomo/page/0000370520.html",
+                        UseShellExecute = true
+                    });
+                };
+
+                ntfBabyInfomation.ShowBalloonTip(3000);
             }
         }
 
@@ -183,6 +263,15 @@ namespace Ikuji
             };
             btnOmutuRestore.Click += new System.EventHandler(this.btnOmutuRestore_Click);
             this.Controls.Add(btnOmutuRestore);
+
+            SideRoundButton btnOmutuAmount = new SideRoundButton(1)
+            {
+                Text = "+",
+                Size = new System.Drawing.Size(40, 33),
+                Location = new System.Drawing.Point(70, 282)
+            };
+            btnOmutuAmount.Click += new System.EventHandler(this.btnOmutuAmount_Click);
+            this.Controls.Add(btnOmutuAmount);
 
             SideRoundButton btnWeightRestore = new SideRoundButton(1)
             {

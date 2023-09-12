@@ -5,29 +5,34 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Ikuji
 {
-    public partial class FormOmutuRestore : Form
+    public partial class FormOmutuAmount : Form
     {
-        public FormOmutuRestore()
+        public FormOmutuAmount()
         {
             InitializeComponent();
         }
 
-        //クラスの宣言
+        DataInputCheck dataInputCheck = new DataInputCheck();
         BabyDBConnections babyDBConnections = new BabyDBConnections();
 
-        //変数の宣言
-        public string omutuComment = "";
+        int intOmutuAmount = 0;
+        int intOmutuAmountTotal = 0;
 
-        private void FormOmutuRestore_Load(object sender, EventArgs e)
+        private void FormOmutuAmount_Load(object sender, EventArgs e)
         {
-            DateTime dt = DateTime.Now;
-            cmbHour.Text = dt.Hour.ToString();
-            cmbMinit.Text = dt.Minute.ToString();
+            BabyInfomation babyInfomation = babyDBConnections.GetBabyInfomationData();
+            cmbOmutuSize.SelectedIndex = babyInfomation.BabyIsOmutuSize;
+
+            BabyOmutu babyOmutu = babyDBConnections.GetBabyOmutuData(cmbOmutuSize.SelectedIndex);
+            intOmutuAmountTotal = babyOmutu.BabyOmutuAmount;
+            lblRemainAmount.Text = intOmutuAmountTotal.ToString();
 
             SetButton();
         }
@@ -39,34 +44,22 @@ namespace Ikuji
 
         private void btnRestore_Click(object sender, EventArgs e)
         {
-            string omutuKind = "";
-
-            //GetVaildDataBabyRestoreからの戻り値がfalseのとき、メソッドを終了
             if (!GetVaildDataBabyRestore())
             {
                 return;
             }
 
-            //おしっこがチェックされているとき
-            if (rdbOsikko.Checked)
-            {
-                omutuKind = rdbOsikko.Text;
-            }
-            //うんちがチェックされているとき
-            if (rdbUnti.Checked)
-            {
-                omutuKind = rdbUnti.Text;
-            }
+            var resBabyOmutu = GenerateDataBaby();
+            RestoreUpdateBabyOmutuData(resBabyOmutu);
 
-            //赤ちゃん情報のセット
-            var resBaby = GenerateDataBaby(omutuKind);
-            //赤ちゃん情報の登録
-            RestoreAddBabyData(resBaby);
+            lblRemainAmount.Text = intOmutuAmountTotal.ToString();
+        }
 
-            int babyOmutuAmount = babyDBConnections.DecreaseBabyOmutuData();
-
-            ntfBabyOmutu.BalloonTipText = "オムツは残り" + babyOmutuAmount.ToString() + "枚です。";
-            ntfBabyOmutu.ShowBalloonTip(3000);
+        private void cmbOmutuSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BabyOmutu babyOmutu = babyDBConnections.GetBabyOmutuData(cmbOmutuSize.SelectedIndex);
+            intOmutuAmountTotal = babyOmutu.BabyOmutuAmount;
+            lblRemainAmount.Text = intOmutuAmountTotal.ToString();
         }
 
         ///////////////////////////////
@@ -79,29 +72,54 @@ namespace Ikuji
         ///////////////////////////////
         private bool GetVaildDataBabyRestore()
         {
-            //もしもrdbOsikkoがチェックされてなくて、かつrdbUntiがチェックされてないとき⇒MessageBoxでエラーを表示しfalseを返す
-            if(!rdbOsikko.Checked && !rdbUnti.Checked) 
+            //もしもtxbCommentのisNullOrEmptyがfalseのとき⇒txbCommentのテキストの空白を消してomutuCommentに代入
+            if (String.IsNullOrEmpty(txbOmutuAmount.Text))
             {
-                MessageBox.Show("うんちかおしっこか選択してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
+                MessageBox.Show("枚数を入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            //もしもtxbCommentのisNullOrEmptyがfalseのとき⇒txbCommentのテキストの空白を消してomutuCommentに代入
-            if(!String.IsNullOrEmpty(txbComment.Text)) 
+            //一旦文字をstringに代入
+            string babyOmutuAmount = txbOmutuAmount.Text.Trim();
+
+            //全角数字を半角数字に変換
+            babyOmutuAmount = Regex.Replace(babyOmutuAmount, "[０-９]", p => ((char)(p.Value[0] - '０' + '0')).ToString());
+
+            //数字チェック
+            if (!dataInputCheck.CheckNumeric(babyOmutuAmount))
             {
-                omutuComment = txbComment.Text.Trim();
+                MessageBox.Show("枚数は数字で入力してください", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
+
+            intOmutuAmount = int.Parse(babyOmutuAmount);
+            intOmutuAmountTotal = intOmutuAmountTotal + intOmutuAmount;
 
             return true;
         }
 
         ///////////////////////////////
-        //メソッド名：RestoreAddBabyData()
-        //引　数   ：resBaby = 赤ちゃん情報
+        //メソッド名：GenerateDataBaby()
+        //引　数   ：なし
+        //戻り値   ：赤ちゃんデータ
+        //機　能   ：赤ちゃんデータのセット
+        ///////////////////////////////
+        private BabyOmutu GenerateDataBaby()
+        {
+            return new BabyOmutu
+            {
+                BabyOmutuSize = cmbOmutuSize.SelectedIndex,
+                BabyOmutuAmount = intOmutuAmount
+            };
+        }
+
+        ///////////////////////////////
+        //メソッド名：RestoreUpdateBabyOmutuData()
+        //引　数   ：赤ちゃん情報
         //戻り値   ：なし
         //機　能   ：赤ちゃん情報の登録
         ///////////////////////////////
-        private void RestoreAddBabyData(Baby resBaby)
+        private void RestoreUpdateBabyOmutuData(BabyOmutu resBabyOmutu)
         {
             //登録確認メッセージ
             DialogResult result = MessageBox.Show("登録しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
@@ -112,7 +130,7 @@ namespace Ikuji
             }
 
             //赤ちゃん情報の登録
-            bool flg = babyDBConnections.AddBabyData(resBaby);
+            bool flg = babyDBConnections.UpdateBabyOmutuData(resBabyOmutu);
             if (flg)
             {
                 MessageBox.Show("データを登録しました", "確認", MessageBoxButtons.OK);
@@ -121,27 +139,6 @@ namespace Ikuji
             {
                 MessageBox.Show("データを登録できませんでした", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        ///////////////////////////////
-        //メソッド名：GenerateDataBaby()
-        //引　数   ：omutuKinds = 排泄物の種類
-        //戻り値   ：赤ちゃんデータ
-        //機　能   ：赤ちゃんデータのセット
-        ///////////////////////////////
-        private Baby GenerateDataBaby(string omutuKinds)
-        {
-            return new Baby
-            {
-                BabyMain = "オムツ",
-                BabySub = omutuKinds,
-                BabyWeight = null,
-                BabyTemperature = null,
-                BabyDate = dtpMonthDay.Value.Date,
-                BabyHour = cmbHour.SelectedIndex,
-                BabyMinit = cmbMinit.SelectedIndex,
-                BabyComment = omutuComment,
-            };
         }
 
         ///////////////////////////////
@@ -163,7 +160,7 @@ namespace Ikuji
 
             SideRoundButton btnRestore = new SideRoundButton(1)
             {
-                Text = "登録ボタン",
+                Text = "追加",
                 Size = new System.Drawing.Size(150, 40),
                 Location = new System.Drawing.Point(20, 260),
             };

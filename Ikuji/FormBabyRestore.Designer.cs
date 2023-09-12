@@ -33,12 +33,14 @@
             this.dtpBirhDay = new System.Windows.Forms.DateTimePicker();
             this.lblName = new System.Windows.Forms.Label();
             this.lblBirhDay = new System.Windows.Forms.Label();
+            this.lblOmutuSize = new System.Windows.Forms.Label();
+            this.cmbOmutuSize = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txbNameRestore
             // 
             this.txbNameRestore.Font = new System.Drawing.Font("MS UI Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txbNameRestore.Location = new System.Drawing.Point(125, 98);
+            this.txbNameRestore.Location = new System.Drawing.Point(172, 98);
             this.txbNameRestore.Name = "txbNameRestore";
             this.txbNameRestore.Size = new System.Drawing.Size(173, 24);
             this.txbNameRestore.TabIndex = 8;
@@ -46,7 +48,7 @@
             // dtpBirhDay
             // 
             this.dtpBirhDay.CalendarFont = new System.Drawing.Font("MS UI Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.dtpBirhDay.Location = new System.Drawing.Point(125, 183);
+            this.dtpBirhDay.Location = new System.Drawing.Point(172, 154);
             this.dtpBirhDay.Name = "dtpBirhDay";
             this.dtpBirhDay.Size = new System.Drawing.Size(200, 19);
             this.dtpBirhDay.TabIndex = 9;
@@ -65,11 +67,35 @@
             // 
             this.lblBirhDay.AutoSize = true;
             this.lblBirhDay.Font = new System.Drawing.Font("MS UI Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lblBirhDay.Location = new System.Drawing.Point(41, 183);
+            this.lblBirhDay.Location = new System.Drawing.Point(41, 154);
             this.lblBirhDay.Name = "lblBirhDay";
             this.lblBirhDay.Size = new System.Drawing.Size(73, 17);
             this.lblBirhDay.TabIndex = 11;
             this.lblBirhDay.Text = "お誕生日";
+            // 
+            // lblOmutuSize
+            // 
+            this.lblOmutuSize.AutoSize = true;
+            this.lblOmutuSize.Font = new System.Drawing.Font("MS UI Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblOmutuSize.Location = new System.Drawing.Point(41, 206);
+            this.lblOmutuSize.Name = "lblOmutuSize";
+            this.lblOmutuSize.Size = new System.Drawing.Size(87, 17);
+            this.lblOmutuSize.TabIndex = 12;
+            this.lblOmutuSize.Text = "オムツサイズ";
+            // 
+            // cmbOmutuSize
+            // 
+            this.cmbOmutuSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOmutuSize.FormattingEnabled = true;
+            this.cmbOmutuSize.Items.AddRange(new object[] {
+            "S",
+            "M",
+            "L",
+            "ビッグ"});
+            this.cmbOmutuSize.Location = new System.Drawing.Point(172, 206);
+            this.cmbOmutuSize.Name = "cmbOmutuSize";
+            this.cmbOmutuSize.Size = new System.Drawing.Size(121, 20);
+            this.cmbOmutuSize.TabIndex = 13;
             // 
             // FormBabyRestore
             // 
@@ -77,6 +103,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(600, 360);
+            this.Controls.Add(this.cmbOmutuSize);
+            this.Controls.Add(this.lblOmutuSize);
             this.Controls.Add(this.lblBirhDay);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.dtpBirhDay);
@@ -98,5 +126,7 @@
         private System.Windows.Forms.DateTimePicker dtpBirhDay;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblBirhDay;
+        private System.Windows.Forms.Label lblOmutuSize;
+        private System.Windows.Forms.ComboBox cmbOmutuSize;
     }
 }

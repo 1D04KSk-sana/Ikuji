@@ -10,6 +10,119 @@ namespace Ikuji
     class BabyDBConnections
     {
         ///////////////////////////////
+        //メソッド名：AddBabyOmutuData()
+        //引　数   ：赤ちゃんオムツデータ
+        //戻り値   ：True or False
+        //機　能   ：赤ちゃんオムツデータの登録
+        ///////////////////////////////
+        public bool AddBabyOmutuData(BabyOmutu resBabyOmutu)
+        {
+            try
+            {
+                var context = new BabyContext();
+                context.BabyOmutus.Add(resBabyOmutu);
+                context.SaveChanges();
+                context.Dispose();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetBabyOmutuData()
+        //引　数   ：赤ちゃんオムツデータ
+        //戻り値   ：True or False
+        //機　能   ：赤ちゃんオムツデータの登録
+        ///////////////////////////////
+        public BabyOmutu GetBabyOmutuData(int intOmutuSize)
+        {
+            BabyOmutu babyOmutu = null;
+
+            try
+            {
+                var context = new BabyContext();
+                var division = context.BabyOmutus.Single(x => x.BabyOmutuSize == intOmutuSize);
+
+                babyOmutu = new BabyOmutu
+                {
+                    BabyOmutuSize = division.BabyOmutuSize,
+                    BabyOmutuAmount = division.BabyOmutuAmount,
+                };
+
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            };
+
+            return babyOmutu;
+        }
+
+        ///////////////////////////////
+        //メソッド名：UpdateBabyOmutuData()
+        //引　数   ：なし
+        //戻り値   ：赤ちゃん情報データリスト
+        //機　能   ：赤ちゃん情報データの取得
+        ///////////////////////////////
+        public bool UpdateBabyOmutuData(BabyOmutu resBabyOmutu)
+        {
+            try
+            {
+                var context = new BabyContext();
+                var division = context.BabyOmutus.Single(x => x.BabyOmutuSize == resBabyOmutu.BabyOmutuSize);
+
+                division.BabyOmutuAmount = division.BabyOmutuAmount + resBabyOmutu.BabyOmutuAmount;
+
+                context.SaveChanges();
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            };
+
+            return true;
+        }
+
+        ///////////////////////////////
+        //メソッド名：DecreaseBabyOmutuData()
+        //引　数   ：赤ちゃんオムツデータ
+        //戻り値   ：True or False
+        //機　能   ：赤ちゃんオムツデータの登録
+        ///////////////////////////////
+        public int DecreaseBabyOmutuData()
+        {
+            int babyOmutuAmount = 0;
+
+            try
+            {
+                var context = new BabyContext();
+                var divisionInfomation = context.BabyInfomations.Single(x => x.BabyInfomationId == 1);
+                var division = context.BabyOmutus.Single(x => x.BabyOmutuSize == divisionInfomation.BabyIsOmutuSize);
+
+                division.BabyOmutuAmount = division.BabyOmutuAmount - 1;
+
+                babyOmutuAmount = division.BabyOmutuAmount;
+
+                context.SaveChanges();
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return babyOmutuAmount;
+        }
+
+        ///////////////////////////////
         //メソッド名：AddBabyInfomationData()
         //引　数   ：赤ちゃん情報データ
         //戻り値   ：True or False
@@ -52,6 +165,7 @@ namespace Ikuji
                 {
                     BabyName = division.BabyName,
                     BabyBirthDay = division.BabyBirthDay,
+                    BabyIsOmutuSize = division.BabyIsOmutuSize,
                 };
 
                 context.Dispose();
@@ -79,6 +193,7 @@ namespace Ikuji
 
                 division.BabyName = resBabyInfomation.BabyName;
                 division.BabyBirthDay = resBabyInfomation.BabyBirthDay;
+                division.BabyIsOmutuSize = resBabyInfomation.BabyIsOmutuSize;
                 
                 context.SaveChanges();
                 context.Dispose();
@@ -320,8 +435,6 @@ namespace Ikuji
                 division.BabyTemperature = updBaby.BabyTemperature;
                 division.BabyDate = updBaby.BabyDate;
                 division.BabyComment = updBaby.BabyComment;
-
-
 
                 context.SaveChanges();
                 context.Dispose();
