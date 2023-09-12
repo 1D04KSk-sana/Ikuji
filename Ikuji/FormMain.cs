@@ -97,6 +97,17 @@ namespace Ikuji
             this.Opacity = 0;
         }
 
+        private void pctSetting_Click(object sender, EventArgs e)
+        {
+            FormSetting formSetting = new FormSetting();
+
+            formSetting.Owner = this;
+            formSetting.FormClosed += ChildForm_FormClosed;
+            formSetting.Show();
+
+            this.Opacity = 0;
+        }
+
         private void ChildForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Opacity = 1;
