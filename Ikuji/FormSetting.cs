@@ -21,6 +21,7 @@ namespace Ikuji
         bool flgDBCount = false;
         bool babyBirthAlart = false;
         bool babyOmutuAlart = false;
+        bool baby3MonthAlart = false;
 
         private void FormSetting_Load(object sender, EventArgs e)
         {
@@ -36,6 +37,7 @@ namespace Ikuji
                 var resBabyAlart = babyDBConnections.GetBabyAlartData();
                 chkBirthDay.Checked = resBabyAlart.BabyBirthAlart;
                 chkOmutu.Checked = resBabyAlart.BabyOmutuAlart;
+                chk3Month.Checked = resBabyAlart.Baby3MonthAlart;
             }
 
             SetButton();
@@ -70,8 +72,9 @@ namespace Ikuji
 
                 babyBirthAlart = babyAlart.BabyBirthAlart;
                 babyOmutuAlart = babyAlart.BabyOmutuAlart;
+                baby3MonthAlart = babyAlart.Baby3MonthAlart;
 
-                if (babyBirthAlart != chkBirthDay.Checked || babyOmutuAlart != chkOmutu.Checked)
+                if (babyBirthAlart != chkBirthDay.Checked || babyOmutuAlart != chkOmutu.Checked || baby3MonthAlart != chk3Month.Checked)
                 {
                     DialogResult dialogResult = MessageBox.Show("変更を保存していません。本当に閉じますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
@@ -125,6 +128,7 @@ namespace Ikuji
             {
                 BabyBirthAlart = chkBirthDay.Checked,
                 BabyOmutuAlart = chkOmutu.Checked,
+                Baby3MonthAlart = chk3Month.Checked,
             };
         }
 

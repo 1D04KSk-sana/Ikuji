@@ -48,6 +48,7 @@ namespace Ikuji
 
                 division.BabyBirthAlart = resBabyAlart.BabyBirthAlart;
                 division.BabyOmutuAlart = resBabyAlart.BabyOmutuAlart;
+                division.Baby3MonthAlart = resBabyAlart.Baby3MonthAlart;
 
                 context.SaveChanges();
                 context.Dispose();
@@ -79,7 +80,8 @@ namespace Ikuji
                 babyAlart = new BabyAlart
                 {
                     BabyBirthAlart = division.BabyBirthAlart,
-                    BabyOmutuAlart = division.BabyOmutuAlart
+                    BabyOmutuAlart = division.BabyOmutuAlart,
+                    Baby3MonthAlart = division.Baby3MonthAlart
                 };
 
                 context.Dispose();

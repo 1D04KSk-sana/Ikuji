@@ -13,5 +13,7 @@ namespace Ikuji
         public bool BabyBirthAlart { get; set; }
 
         public bool BabyOmutuAlart { get; set; }
+
+        public bool Baby3MonthAlart { get; set; }
     }
 }

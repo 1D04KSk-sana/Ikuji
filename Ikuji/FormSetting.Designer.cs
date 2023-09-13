@@ -30,6 +30,7 @@
         {
             this.chkBirthDay = new System.Windows.Forms.CheckBox();
             this.chkOmutu = new System.Windows.Forms.CheckBox();
+            this.chk3Month = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // chkBirthDay
@@ -58,12 +59,26 @@
             this.chkOmutu.Text = "オムツ残量通知設定";
             this.chkOmutu.UseVisualStyleBackColor = true;
             // 
+            // chk3Month
+            // 
+            this.chk3Month.AutoSize = true;
+            this.chk3Month.Checked = true;
+            this.chk3Month.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk3Month.Font = new System.Drawing.Font("MS UI Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.chk3Month.Location = new System.Drawing.Point(56, 232);
+            this.chk3Month.Name = "chk3Month";
+            this.chk3Month.Size = new System.Drawing.Size(172, 21);
+            this.chk3Month.TabIndex = 2;
+            this.chk3Month.Text = "3か月検診通知設定";
+            this.chk3Month.UseVisualStyleBackColor = true;
+            // 
             // FormSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.chk3Month);
             this.Controls.Add(this.chkOmutu);
             this.Controls.Add(this.chkBirthDay);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -80,5 +95,6 @@
 
         private System.Windows.Forms.CheckBox chkBirthDay;
         private System.Windows.Forms.CheckBox chkOmutu;
+        private System.Windows.Forms.CheckBox chk3Month;
     }
 }
