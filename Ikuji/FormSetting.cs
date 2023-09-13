@@ -19,6 +19,8 @@ namespace Ikuji
 
         BabyDBConnections babyDBConnections = new BabyDBConnections();
         bool flgDBCount = false;
+        bool babyBirthAlart = false;
+        bool babyOmutuAlart = false;
 
         private void FormSetting_Load(object sender, EventArgs e)
         {
@@ -33,6 +35,7 @@ namespace Ikuji
             {
                 var resBabyAlart = babyDBConnections.GetBabyAlartData();
                 chkBirthDay.Checked = resBabyAlart.BabyBirthAlart;
+                chkOmutu.Checked = resBabyAlart.BabyOmutuAlart;
             }
 
             SetButton();
@@ -40,6 +43,10 @@ namespace Ikuji
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
+            if (!ControlDataBabyUpdate())
+            {
+                return;
+            }
             this.Close();
         }
 
@@ -47,6 +54,35 @@ namespace Ikuji
         {
             var resBabyAlart = GenerateDataBabyAlart();
             RestoreAddBabyData(resBabyAlart);
+        }
+
+        ///////////////////////////////
+        //メソッド名：ControlDataBabyUpdate()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：コントロールが更新されているか確認
+        ///////////////////////////////
+        private bool ControlDataBabyUpdate()
+        {
+            if (flgDBCount)
+            {
+                BabyAlart babyAlart = babyDBConnections.GetBabyAlartData();
+
+                babyBirthAlart = babyAlart.BabyBirthAlart;
+                babyOmutuAlart = babyAlart.BabyOmutuAlart;
+
+                if (babyBirthAlart != chkBirthDay.Checked || babyOmutuAlart != chkOmutu.Checked)
+                {
+                    DialogResult dialogResult = MessageBox.Show("変更を保存していません。本当に閉じますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+                    if (dialogResult == DialogResult.Cancel)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
         ///////////////////////////////
@@ -87,7 +123,8 @@ namespace Ikuji
         {
             return new BabyAlart
             {
-                BabyBirthAlart = chkBirthDay.Checked
+                BabyBirthAlart = chkBirthDay.Checked,
+                BabyOmutuAlart = chkOmutu.Checked,
             };
         }
 

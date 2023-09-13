@@ -63,9 +63,22 @@ namespace Ikuji
             //赤ちゃん情報の登録
             RestoreAddBabyData(resBaby);
 
-            int babyOmutuAmount = babyDBConnections.DecreaseBabyOmutuData();
+            using (var context = new BabyContext())
+            {
+                if (context.BabyInfomations.Count() != 0)
+                {
+                    int babyOmutuAmount = babyDBConnections.DecreaseBabyOmutuData();
 
-            ntfBabyOmutu.BalloonTipText = "オムツは残り" + babyOmutuAmount.ToString() + "枚です。";
+                    ntfBabyOmutu.BalloonTipTitle = "オムツの残量が残り少ないです。";
+                    ntfBabyOmutu.BalloonTipText = "オムツは残り" + babyOmutuAmount.ToString() + "枚です。";                    
+                }
+                else
+                {
+                    ntfBabyOmutu.BalloonTipTitle = "オムツの残量の通知ができません。";
+                    ntfBabyOmutu.BalloonTipText = "オムツのサイズが設定されていません.";
+                }
+            }
+
             ntfBabyOmutu.ShowBalloonTip(3000);
         }
 

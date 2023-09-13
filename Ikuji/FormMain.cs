@@ -199,7 +199,8 @@ namespace Ikuji
             BabyAlart itemAlart = new BabyAlart()
             {
                 BabyAlartId = 1,
-                BabyBirthAlart = true
+                BabyBirthAlart = true,
+                BabyOmutuAlart = true
             };
 
             babyDBConnections.AddBabyAlartData(itemAlart);

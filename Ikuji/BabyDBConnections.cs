@@ -47,6 +47,7 @@ namespace Ikuji
                 var division = context.BabyAlarts.Single(x => x.BabyAlartId == 1);
 
                 division.BabyBirthAlart = resBabyAlart.BabyBirthAlart;
+                division.BabyOmutuAlart = resBabyAlart.BabyOmutuAlart;
 
                 context.SaveChanges();
                 context.Dispose();
@@ -77,7 +78,8 @@ namespace Ikuji
 
                 babyAlart = new BabyAlart
                 {
-                    BabyBirthAlart = division.BabyBirthAlart
+                    BabyBirthAlart = division.BabyBirthAlart,
+                    BabyOmutuAlart = division.BabyOmutuAlart
                 };
 
                 context.Dispose();
@@ -188,9 +190,11 @@ namespace Ikuji
                 var divisionInfomation = context.BabyInfomations.Single(x => x.BabyInfomationId == 1);
                 var division = context.BabyOmutus.Single(x => x.BabyOmutuSize == divisionInfomation.BabyIsOmutuSize);
 
-                division.BabyOmutuAmount = division.BabyOmutuAmount - 1;
-
-                babyOmutuAmount = division.BabyOmutuAmount;
+                if (division.BabyOmutuAmount -1 > 0)
+                {
+                    division.BabyOmutuAmount = division.BabyOmutuAmount - 1;
+                    babyOmutuAmount = division.BabyOmutuAmount;
+                }
 
                 context.SaveChanges();
                 context.Dispose();
