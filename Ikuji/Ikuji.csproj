@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Baby.cs" />
+    <Compile Include="BabyAlart.cs" />
     <Compile Include="BabyContext.cs" />
     <Compile Include="BabyDBConnections.cs" />
     <Compile Include="BabyInfomation.cs" />

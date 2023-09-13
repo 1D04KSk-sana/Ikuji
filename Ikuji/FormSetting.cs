@@ -17,14 +17,78 @@ namespace Ikuji
             InitializeComponent();
         }
 
+        BabyDBConnections babyDBConnections = new BabyDBConnections();
+        bool flgDBCount = false;
+
         private void FormSetting_Load(object sender, EventArgs e)
         {
+            using (var context = new BabyContext())
+            {
+                if (context.BabyAlarts.Count() != 0)
+                {
+                    flgDBCount = true;
+                }
+            }
+            if (flgDBCount)
+            {
+                var resBabyAlart = babyDBConnections.GetBabyAlartData();
+                chkBirthDay.Checked = resBabyAlart.BabyBirthAlart;
+            }
+
             SetButton();
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnRestore_Click(object sender, EventArgs e)
+        {
+            var resBabyAlart = GenerateDataBabyAlart();
+            RestoreAddBabyData(resBabyAlart);
+        }
+
+        ///////////////////////////////
+        //メソッド名：RestoreAddBabyData()
+        //引　数   ：赤ちゃん情報
+        //戻り値   ：なし
+        //機　能   ：赤ちゃん情報の登録
+        ///////////////////////////////
+        private void RestoreAddBabyData(BabyAlart resBabyAlart)
+        {
+            //登録確認メッセージ
+            DialogResult result = MessageBox.Show("更新しますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+            if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            //赤ちゃん情報の登録
+            bool flg = babyDBConnections.UpdateBabyAlartData(resBabyAlart);
+            if (flg)
+            {
+                MessageBox.Show("データを更新しました", "確認", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("データを更新できませんでした", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        ///////////////////////////////
+        //メソッド名：GenerateDataBabyAlart()
+        //引　数   ：なし
+        //戻り値   ：赤ちゃん情報データ
+        //機　能   ：赤ちゃん情報データのセット
+        ///////////////////////////////
+        private BabyAlart GenerateDataBabyAlart()
+        {
+            return new BabyAlart
+            {
+                BabyBirthAlart = chkBirthDay.Checked
+            };
         }
 
         ///////////////////////////////
@@ -50,7 +114,7 @@ namespace Ikuji
                 Size = new System.Drawing.Size(150, 40),
                 Location = new System.Drawing.Point(20, 260),
             };
-            //btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
+            btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             this.Controls.Add(btnRestore);
         }
     }

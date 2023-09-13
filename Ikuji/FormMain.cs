@@ -137,6 +137,10 @@ namespace Ikuji
             {
                 SetOmutuList();
             }
+            if (context.BabyAlarts.Count() == 0)
+            {
+                SetAlartList();
+            }
 
             //作成した変数を削除
             context.Dispose();
@@ -185,6 +189,23 @@ namespace Ikuji
         }
 
         ///////////////////////////////
+        //メソッド名：SetAlartList()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：通知DBのセット
+        ///////////////////////////////
+        private void SetAlartList()
+        {
+            BabyAlart itemAlart = new BabyAlart()
+            {
+                BabyAlartId = 1,
+                BabyBirthAlart = true
+            };
+
+            babyDBConnections.AddBabyAlartData(itemAlart);
+        }
+
+        ///////////////////////////////
         //メソッド名：SetBirthDay()
         //引　数   ：なし
         //戻り値   ：なし
@@ -192,6 +213,12 @@ namespace Ikuji
         ///////////////////////////////
         private void SetBirthDay()
         {
+            var resBabyAlart = babyDBConnections.GetBabyAlartData();
+            if (!resBabyAlart.BabyBirthAlart)
+            {
+                return;
+            }
+
             DateTime nowDateTime = DateTime.Now.Date;
 
             BabyInfomation babyInfomation = babyDBConnections.GetBabyInfomationData();

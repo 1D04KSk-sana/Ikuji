@@ -10,6 +10,87 @@ namespace Ikuji
     class BabyDBConnections
     {
         ///////////////////////////////
+        //メソッド名：AddBabyAlartData()
+        //引　数   ：赤ちゃん通知データ
+        //戻り値   ：True or False
+        //機　能   ：赤ちゃん通知データの登録
+        ///////////////////////////////
+        public bool AddBabyAlartData(BabyAlart resBabyAlart)
+        {
+            try
+            {
+                var context = new BabyContext();
+                context.BabyAlarts.Add(resBabyAlart);
+                context.SaveChanges();
+                context.Dispose();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        ///////////////////////////////
+        //メソッド名：UpdateBabyAlartData()
+        //引　数   ：なし
+        //戻り値   ：赤ちゃん通知データリスト
+        //機　能   ：赤ちゃん通知データの取得
+        ///////////////////////////////
+        public bool UpdateBabyAlartData(BabyAlart resBabyAlart)
+        {
+            try
+            {
+                var context = new BabyContext();
+                var division = context.BabyAlarts.Single(x => x.BabyAlartId == 1);
+
+                division.BabyBirthAlart = resBabyAlart.BabyBirthAlart;
+
+                context.SaveChanges();
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            };
+
+            return true;
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetBabyAlartData()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：赤ちゃん通知データの取得
+        ///////////////////////////////
+        public BabyAlart GetBabyAlartData()
+        {
+            BabyAlart babyAlart = null;
+
+            try
+            {
+                var context = new BabyContext();
+                var division = context.BabyAlarts.Single(x => x.BabyAlartId == 1);
+
+                babyAlart = new BabyAlart
+                {
+                    BabyBirthAlart = division.BabyBirthAlart
+                };
+
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            };
+
+            return babyAlart;
+        }
+
+        ///////////////////////////////
         //メソッド名：AddBabyOmutuData()
         //引　数   ：赤ちゃんオムツデータ
         //戻り値   ：True or False

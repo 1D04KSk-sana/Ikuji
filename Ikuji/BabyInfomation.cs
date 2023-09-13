@@ -15,7 +15,5 @@ namespace Ikuji
         public DateTime BabyBirthDay { get; set; }
 
         public int BabyIsOmutuSize { get; set; }
-
-        public bool BabyArart {  get; set; }
     }
 }

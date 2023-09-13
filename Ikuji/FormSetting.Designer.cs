@@ -28,7 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.chkBirthDay = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
+            // 
+            // chkBirthDay
+            // 
+            this.chkBirthDay.AutoSize = true;
+            this.chkBirthDay.Font = new System.Drawing.Font("MS UI Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.chkBirthDay.Location = new System.Drawing.Point(56, 103);
+            this.chkBirthDay.Name = "chkBirthDay";
+            this.chkBirthDay.Size = new System.Drawing.Size(163, 21);
+            this.chkBirthDay.TabIndex = 0;
+            this.chkBirthDay.Text = "お誕生日通知設定";
+            this.chkBirthDay.UseVisualStyleBackColor = true;
             // 
             // FormSetting
             // 
@@ -36,15 +48,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.chkBirthDay);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FormSetting";
             this.Text = "通知設定";
             this.Load += new System.EventHandler(this.FormSetting_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.CheckBox chkBirthDay;
     }
 }
