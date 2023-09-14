@@ -60,14 +60,14 @@ namespace Ikuji
                 FlatAppearance.MouseDownBackColor = System.Drawing.Color.Pink;
             }
 
-            //グラフ表示(赤)
+            //登録・更新(青)
             if (num == 1)
             {
                 BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(195)))), ((int)(((byte)(255)))));
                 FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
             }
 
-            //登録・更新(青)
+            //グラフ表示(赤)
             if (num == 2)
             {
                 BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
