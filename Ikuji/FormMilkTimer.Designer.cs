@@ -51,6 +51,7 @@
             this.lblTimer.Size = new System.Drawing.Size(440, 167);
             this.lblTimer.TabIndex = 0;
             this.lblTimer.Text = "10:00";
+            this.lblTimer.Click += new System.EventHandler(this.lblTimer_Click);
             // 
             // ntfTimerAlart
             // 
@@ -64,6 +65,7 @@
             this.pnlTimer.Name = "pnlTimer";
             this.pnlTimer.Size = new System.Drawing.Size(525, 127);
             this.pnlTimer.TabIndex = 1;
+            this.pnlTimer.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTimer_Paint);
             // 
             // FormMilkTimer
             // 

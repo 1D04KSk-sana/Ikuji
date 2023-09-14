@@ -49,7 +49,7 @@ namespace Ikuji
             Location = new System.Drawing.Point(280, 70),
         };
 
-        int time = 300;
+        int time = 600;
         int minute = 0;
         int second = 0;
         int totalTime = 0;
@@ -99,7 +99,6 @@ namespace Ikuji
             {
                 TimerFinishEvent();
             }
-
         }
 
         public void btnTimerStart_Click(object sender, EventArgs e)
@@ -134,6 +133,15 @@ namespace Ikuji
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
+            if (timMilk.Enabled)
+            {
+                timMilk.Enabled = false;
+                DialogResult result = MessageBox.Show("タイマーが稼働中です。\n本当に戻りますか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
             this.Close();
         }
 
@@ -216,6 +224,16 @@ namespace Ikuji
 
             btnTimeDown.Click += new System.EventHandler(this.btnTimeDown_Click);
             pnlTimer.Controls.Add(btnTimeDown);
+        }
+
+        private void lblTimer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlTimer_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

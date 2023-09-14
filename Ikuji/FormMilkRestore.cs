@@ -27,6 +27,22 @@ namespace Ikuji
         {
             this.Close();
         }
+       
+        private void btnMilkTimer_Click(object sender, EventArgs e)
+        {
+            FormMilkTimer formMikTimer = new FormMilkTimer();
+
+            formMikTimer.Owner = this;
+            formMikTimer.FormClosed += ChildForm_FormClosed;
+            formMikTimer.Show();
+
+            this.Opacity = 0;
+        }
+
+        private void ChildForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Opacity = 1;
+        }
 
         private void FormMilkRestore_Load(object sender, EventArgs e)
         {
@@ -164,6 +180,15 @@ namespace Ikuji
             };
             btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             this.Controls.Add(btnRestore);
+
+            SideRoundButton btnMilkTimer = new SideRoundButton(1)
+            {
+                Text = "授乳タイマーへ",
+                Size = new System.Drawing.Size(150, 40),
+                Location = new System.Drawing.Point(200, 260),
+            };
+            btnMilkTimer.Click += new System.EventHandler(this.btnMilkTimer_Click);
+            this.Controls.Add(btnMilkTimer);
         }
     }
 }
