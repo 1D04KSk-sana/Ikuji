@@ -41,8 +41,7 @@
             // 
             this.lblOmutuSize.AutoSize = true;
             this.lblOmutuSize.Font = new System.Drawing.Font("MS UI Gothic", 10F);
-            this.lblOmutuSize.Location = new System.Drawing.Point(39, 103);
-            this.lblOmutuSize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblOmutuSize.Location = new System.Drawing.Point(52, 129);
             this.lblOmutuSize.Name = "lblOmutuSize";
             this.lblOmutuSize.Size = new System.Drawing.Size(48, 17);
             this.lblOmutuSize.TabIndex = 14;
@@ -58,26 +57,27 @@
             "M",
             "L",
             "ビッグ"});
-            this.cmbOmutuSize.Location = new System.Drawing.Point(109, 100);
+            this.cmbOmutuSize.Location = new System.Drawing.Point(145, 125);
+            this.cmbOmutuSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbOmutuSize.Name = "cmbOmutuSize";
-            this.cmbOmutuSize.Size = new System.Drawing.Size(121, 25);
+            this.cmbOmutuSize.Size = new System.Drawing.Size(160, 25);
             this.cmbOmutuSize.TabIndex = 0;
             this.cmbOmutuSize.SelectedIndexChanged += new System.EventHandler(this.cmbOmutuSize_SelectedIndexChanged);
             // 
             // txbOmutuAmount
             // 
             this.txbOmutuAmount.Font = new System.Drawing.Font("MS UI Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txbOmutuAmount.Location = new System.Drawing.Point(109, 176);
+            this.txbOmutuAmount.Location = new System.Drawing.Point(145, 220);
+            this.txbOmutuAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbOmutuAmount.Name = "txbOmutuAmount";
-            this.txbOmutuAmount.Size = new System.Drawing.Size(121, 24);
+            this.txbOmutuAmount.Size = new System.Drawing.Size(160, 24);
             this.txbOmutuAmount.TabIndex = 15;
             // 
             // lblOmutuAmount
             // 
             this.lblOmutuAmount.AutoSize = true;
             this.lblOmutuAmount.Font = new System.Drawing.Font("MS UI Gothic", 10F);
-            this.lblOmutuAmount.Location = new System.Drawing.Point(39, 179);
-            this.lblOmutuAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblOmutuAmount.Location = new System.Drawing.Point(52, 224);
             this.lblOmutuAmount.Name = "lblOmutuAmount";
             this.lblOmutuAmount.Size = new System.Drawing.Size(42, 17);
             this.lblOmutuAmount.TabIndex = 16;
@@ -87,7 +87,8 @@
             // 
             this.lblRemain.AutoSize = true;
             this.lblRemain.Font = new System.Drawing.Font("MS UI Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lblRemain.Location = new System.Drawing.Point(300, 179);
+            this.lblRemain.Location = new System.Drawing.Point(400, 224);
+            this.lblRemain.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRemain.Name = "lblRemain";
             this.lblRemain.Size = new System.Drawing.Size(81, 17);
             this.lblRemain.TabIndex = 17;
@@ -97,7 +98,8 @@
             // 
             this.lblRemainAmount.AutoSize = true;
             this.lblRemainAmount.Font = new System.Drawing.Font("MS UI Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lblRemainAmount.Location = new System.Drawing.Point(408, 179);
+            this.lblRemainAmount.Location = new System.Drawing.Point(544, 224);
+            this.lblRemainAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRemainAmount.Name = "lblRemainAmount";
             this.lblRemainAmount.Size = new System.Drawing.Size(17, 17);
             this.lblRemainAmount.TabIndex = 18;
@@ -107,7 +109,8 @@
             // 
             this.lblSheet.AutoSize = true;
             this.lblSheet.Font = new System.Drawing.Font("MS UI Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lblSheet.Location = new System.Drawing.Point(431, 179);
+            this.lblSheet.Location = new System.Drawing.Point(575, 224);
+            this.lblSheet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSheet.Name = "lblSheet";
             this.lblSheet.Size = new System.Drawing.Size(25, 17);
             this.lblSheet.TabIndex = 19;
@@ -115,10 +118,10 @@
             // 
             // FormOmutuAmount
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
-            this.ClientSize = new System.Drawing.Size(600, 360);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblSheet);
             this.Controls.Add(this.lblRemainAmount);
             this.Controls.Add(this.lblRemain);
@@ -127,9 +130,10 @@
             this.Controls.Add(this.lblOmutuSize);
             this.Controls.Add(this.cmbOmutuSize);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "FormOmutuAmount";
-            this.Text = "FormOmutuAmount";
+            this.Text = "オムツ追加";
             this.Load += new System.EventHandler(this.FormOmutuAmount_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
