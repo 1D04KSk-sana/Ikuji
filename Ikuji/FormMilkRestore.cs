@@ -181,7 +181,7 @@ namespace Ikuji
             btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             this.Controls.Add(btnRestore);
 
-            SideRoundButton btnMilkTimer = new SideRoundButton(1)
+            SideRoundButton btnMilkTimer = new SideRoundButton(0)
             {
                 Text = "授乳タイマーへ",
                 Size = new System.Drawing.Size(150, 40),
