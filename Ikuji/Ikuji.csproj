@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Baby.cs" />
+    <Compile Include="BabyAlart.cs" />
     <Compile Include="BabyContext.cs" />
     <Compile Include="BabyDBConnections.cs" />
     <Compile Include="BabyInfomation.cs" />
@@ -117,6 +118,12 @@
     <Compile Include="FormOmutuRestore.Designer.cs">
       <DependentUpon>FormOmutuRestore.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSetting.Designer.cs">
+      <DependentUpon>FormSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormWeightRestore.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormOmutuRestore.resx">
       <DependentUpon>FormOmutuRestore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSetting.resx">
+      <DependentUpon>FormSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormWeightRestore.resx">
       <DependentUpon>FormWeightRestore.cs</DependentUpon>
