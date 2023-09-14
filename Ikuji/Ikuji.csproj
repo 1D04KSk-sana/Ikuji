@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Baby.cs" />
+    <Compile Include="BabyAlart.cs" />
     <Compile Include="BabyContext.cs" />
     <Compile Include="BabyDBConnections.cs" />
     <Compile Include="BabyInfomation.cs" />
@@ -117,6 +118,12 @@
     <Compile Include="FormOmutuRestore.Designer.cs">
       <DependentUpon>FormOmutuRestore.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSetting.Designer.cs">
+      <DependentUpon>FormSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormWeightRestore.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +162,9 @@
     <EmbeddedResource Include="FormOmutuRestore.resx">
       <DependentUpon>FormOmutuRestore.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormSetting.resx">
+      <DependentUpon>FormSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormWeightRestore.resx">
       <DependentUpon>FormWeightRestore.cs</DependentUpon>
     </EmbeddedResource>
@@ -184,6 +194,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Icon_Touka_Not.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Setting.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

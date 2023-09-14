@@ -91,7 +91,7 @@ namespace Ikuji
         //メソッド名：ControlDataBabyUpdate()
         //引　数   ：なし
         //戻り値   ：なし
-        //機　能   ：赤ちゃん情報の登録
+        //機　能   ：コントロールが更新されているか確認
         ///////////////////////////////
         private bool ControlDataBabyUpdate()
         {
