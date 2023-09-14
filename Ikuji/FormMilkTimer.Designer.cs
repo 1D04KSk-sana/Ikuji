@@ -32,12 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMilkTimer));
             this.timMilk = new System.Windows.Forms.Timer(this.components);
             this.lblTimer = new System.Windows.Forms.Label();
-            this.btnTimerStart = new System.Windows.Forms.Button();
-            this.btnTimerStop = new System.Windows.Forms.Button();
             this.ntfTimerAlart = new System.Windows.Forms.NotifyIcon(this.components);
-            this.btnTimeUp = new System.Windows.Forms.Button();
-            this.btnTimeDown = new System.Windows.Forms.Button();
-            this.btnReturn = new System.Windows.Forms.Button();
+            this.pnlTimer = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // timMilk
@@ -48,32 +44,13 @@
             // lblTimer
             // 
             this.lblTimer.AutoSize = true;
-            this.lblTimer.Font = new System.Drawing.Font("MS UI Gothic", 50F);
-            this.lblTimer.Location = new System.Drawing.Point(280, 67);
+            this.lblTimer.Font = new System.Drawing.Font("MS UI Gothic", 100F);
+            this.lblTimer.Location = new System.Drawing.Point(124, 73);
+            this.lblTimer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(220, 84);
+            this.lblTimer.Size = new System.Drawing.Size(440, 167);
             this.lblTimer.TabIndex = 0;
             this.lblTimer.Text = "10:00";
-            // 
-            // btnTimerStart
-            // 
-            this.btnTimerStart.Location = new System.Drawing.Point(217, 316);
-            this.btnTimerStart.Name = "btnTimerStart";
-            this.btnTimerStart.Size = new System.Drawing.Size(157, 70);
-            this.btnTimerStart.TabIndex = 1;
-            this.btnTimerStart.Text = "スタート";
-            this.btnTimerStart.UseVisualStyleBackColor = true;
-            this.btnTimerStart.Click += new System.EventHandler(this.btnTimerStart_Click);
-            // 
-            // btnTimerStop
-            // 
-            this.btnTimerStop.Location = new System.Drawing.Point(399, 316);
-            this.btnTimerStop.Name = "btnTimerStop";
-            this.btnTimerStop.Size = new System.Drawing.Size(157, 70);
-            this.btnTimerStop.TabIndex = 2;
-            this.btnTimerStop.Text = "ストップ";
-            this.btnTimerStop.UseVisualStyleBackColor = true;
-            this.btnTimerStop.Click += new System.EventHandler(this.btnTimerStop_Click);
             // 
             // ntfTimerAlart
             // 
@@ -81,47 +58,25 @@
             this.ntfTimerAlart.Icon = ((System.Drawing.Icon)(resources.GetObject("ntfTimerAlart.Icon")));
             this.ntfTimerAlart.Visible = true;
             // 
-            // btnTimeUp
+            // pnlTimer
             // 
-            this.btnTimeUp.Location = new System.Drawing.Point(217, 228);
-            this.btnTimeUp.Name = "btnTimeUp";
-            this.btnTimeUp.Size = new System.Drawing.Size(157, 70);
-            this.btnTimeUp.TabIndex = 3;
-            this.btnTimeUp.Text = "１分増やす";
-            this.btnTimeUp.UseVisualStyleBackColor = true;
-            this.btnTimeUp.Click += new System.EventHandler(this.btnTimeUp_Click);
-            // 
-            // btnTimeDown
-            // 
-            this.btnTimeDown.Location = new System.Drawing.Point(399, 228);
-            this.btnTimeDown.Name = "btnTimeDown";
-            this.btnTimeDown.Size = new System.Drawing.Size(157, 70);
-            this.btnTimeDown.TabIndex = 4;
-            this.btnTimeDown.Text = "１分減らす";
-            this.btnTimeDown.UseVisualStyleBackColor = true;
-            this.btnTimeDown.Click += new System.EventHandler(this.btnTimeDown_Click);
-            // 
-            // btnReturn
-            // 
-            this.btnReturn.Location = new System.Drawing.Point(52, 22);
-            this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(75, 23);
-            this.btnReturn.TabIndex = 5;
-            this.btnReturn.Text = "戻る";
-            this.btnReturn.UseVisualStyleBackColor = true;
-            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            this.pnlTimer.Location = new System.Drawing.Point(39, 221);
+            this.pnlTimer.Name = "pnlTimer";
+            this.pnlTimer.Size = new System.Drawing.Size(525, 127);
+            this.pnlTimer.TabIndex = 1;
             // 
             // FormMilkTimer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnReturn);
-            this.Controls.Add(this.btnTimeDown);
-            this.Controls.Add(this.btnTimeUp);
-            this.Controls.Add(this.btnTimerStop);
-            this.Controls.Add(this.btnTimerStart);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(252)))), ((int)(((byte)(185)))));
+            this.ClientSize = new System.Drawing.Size(600, 360);
+            this.Controls.Add(this.pnlTimer);
             this.Controls.Add(this.lblTimer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "FormMilkTimer";
             this.Text = "授乳タイマー";
             this.Load += new System.EventHandler(this.FormMilkTimer_Load);
@@ -134,11 +89,7 @@
 
         private System.Windows.Forms.Timer timMilk;
         private System.Windows.Forms.Label lblTimer;
-        private System.Windows.Forms.Button btnTimerStart;
-        private System.Windows.Forms.Button btnTimerStop;
         private System.Windows.Forms.NotifyIcon ntfTimerAlart;
-        private System.Windows.Forms.Button btnTimeUp;
-        private System.Windows.Forms.Button btnTimeDown;
-        private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.Panel pnlTimer;
     }
 }
