@@ -14,7 +14,5 @@ namespace Ikuji
         public DbSet<BabyInfomation> BabyInfomations { get; set; }
 
         public DbSet<BabyOmutu> BabyOmutus { get; set; }
-
-        public DbSet<BabyAlart> BabyAlarts { get; set; }
     }
 }

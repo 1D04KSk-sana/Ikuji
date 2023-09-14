@@ -251,6 +251,7 @@
             // ntfBabyOmutu
             // 
             this.ntfBabyOmutu.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ntfBabyOmutu.BalloonTipTitle = "オムツの残量が残り少ないです。";
             this.ntfBabyOmutu.Icon = ((System.Drawing.Icon)(resources.GetObject("ntfBabyOmutu.Icon")));
             this.ntfBabyOmutu.Text = "notifyIcon1";
             this.ntfBabyOmutu.Visible = true;

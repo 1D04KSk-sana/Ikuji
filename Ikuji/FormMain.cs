@@ -97,17 +97,6 @@ namespace Ikuji
             this.Opacity = 0;
         }
 
-        private void pctSetting_Click(object sender, EventArgs e)
-        {
-            FormSetting formSetting = new FormSetting();
-
-            formSetting.Owner = this;
-            formSetting.FormClosed += ChildForm_FormClosed;
-            formSetting.Show();
-
-            this.Opacity = 0;
-        }
-
         private void ChildForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Opacity = 1;
@@ -131,21 +120,11 @@ namespace Ikuji
             
             if (context.BabyInfomations.Count() != 0)
             {
-                DateTime nowDateTime = DateTime.Now.Date;
-
-                BabyInfomation babyInfomation = babyDBConnections.GetBabyInfomationData();
-                DateTime birthDateTime = babyInfomation.BabyBirthDay;
-
-                SetBirthDay(nowDateTime, birthDateTime);
-                SetVaccine(nowDateTime, birthDateTime);
+                SetBirthDay();
             }
             if (context.BabyOmutus.Count() == 0)
             {
                 SetOmutuList();
-            }
-            if (context.BabyAlarts.Count() == 0)
-            {
-                SetAlartList();
             }
 
             //作成した変数を削除
@@ -195,37 +174,17 @@ namespace Ikuji
         }
 
         ///////////////////////////////
-        //メソッド名：SetAlartList()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：通知DBのセット
-        ///////////////////////////////
-        private void SetAlartList()
-        {
-            BabyAlart itemAlart = new BabyAlart()
-            {
-                BabyAlartId = 1,
-                BabyBirthAlart = true,
-                BabyOmutuAlart = true,
-                Baby3MonthAlart = true,
-            };
-
-            babyDBConnections.AddBabyAlartData(itemAlart);
-        }
-
-        ///////////////////////////////
         //メソッド名：SetBirthDay()
         //引　数   ：なし
         //戻り値   ：なし
         //機　能   ：日付のセット
         ///////////////////////////////
-        private void SetBirthDay(DateTime nowDateTime, DateTime birthDateTime)
+        private void SetBirthDay()
         {
-            var resBabyAlart = babyDBConnections.GetBabyAlartData();
-            if (!resBabyAlart.BabyBirthAlart)
-            {
-                return;
-            }
+            DateTime nowDateTime = DateTime.Now.Date;
+
+            BabyInfomation babyInfomation = babyDBConnections.GetBabyInfomationData();
+            DateTime birthDateTime = babyInfomation.BabyBirthDay;
 
             if (nowDateTime.Month == birthDateTime.Month && nowDateTime.Day == birthDateTime.Day)
             {
@@ -235,22 +194,6 @@ namespace Ikuji
                 ntfBabyInfomation.BalloonTipTitle = "お誕生日おめでとうございます！";
                 ntfBabyInfomation.BalloonTipText = intYearOld.ToString() + "歳ですね！\n健やかに育って下さい！";
                 ntfBabyInfomation.ShowBalloonTip(3000);
-            }
-
-        }
-
-        ///////////////////////////////
-        //メソッド名：SetVaccine()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：ワクチンのセット
-        ///////////////////////////////
-        private void SetVaccine(DateTime nowDateTime, DateTime birthDateTime)
-        {
-            var resBabyAlart = babyDBConnections.GetBabyAlartData();
-            if (!resBabyAlart.Baby3MonthAlart)
-            {
-                return;
             }
 
             DateTime month3DateTime = birthDateTime.AddMonths(3);
